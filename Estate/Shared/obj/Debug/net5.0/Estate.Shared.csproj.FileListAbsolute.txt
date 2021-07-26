@@ -1,0 +1,12 @@
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\bin\Debug\net5.0\Estate.Shared.deps.json
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\bin\Debug\net5.0\Estate.Shared.dll
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\bin\Debug\net5.0\ref\Estate.Shared.dll
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\bin\Debug\net5.0\Estate.Shared.pdb
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\obj\Debug\net5.0\Estate.Shared.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\obj\Debug\net5.0\Estate.Shared.AssemblyInfoInputs.cache
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\obj\Debug\net5.0\Estate.Shared.AssemblyInfo.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\obj\Debug\net5.0\Estate.Shared.csproj.CoreCompileInputs.cache
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\obj\Debug\net5.0\Estate.Shared.dll
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\obj\Debug\net5.0\ref\Estate.Shared.dll
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\obj\Debug\net5.0\Estate.Shared.pdb
+C:\Users\dszemenk\source\repos\Estate\Estate\Shared\obj\Debug\net5.0\Estate.Shared.csprojAssemblyReference.cache

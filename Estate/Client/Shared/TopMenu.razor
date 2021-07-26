@@ -1,0 +1,31 @@
+﻿@implements IDisposable
+
+<AuthorizeView>
+    <Authorized>
+        <div class="top-menu">
+            <span class="popover-header">
+                Inloggad som 
+            </span>
+        </div>
+    </Authorized>
+    <NotAuthorized>
+        <div>
+            <NavLink href="">Logga in</NavLink>
+            <NavLink href="register">Skapa konto</NavLink>
+        </div>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+
+    protected override void OnInitialized()
+    {
+        //GoldService.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        //GoldService.OnChange -= StateHasChanged;
+    }
+
+}
