@@ -654,5 +654,9 @@ C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclar
 C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Shared\TopMenu.razor.g.cs
 C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Apartments.razor.g.cs
 C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Pages\Apartments.razor.g.cs
-C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Shared\AddApartment.razor.g.cs
-C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Shared\AddApartment.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Pages\ApartmentForm.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Pages\ApartmentForm.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Tenants.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Pages\TenantForm.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Pages\TenantForm.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Pages\Tenants.razor.g.cs

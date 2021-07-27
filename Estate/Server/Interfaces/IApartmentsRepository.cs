@@ -10,5 +10,8 @@ namespace Estate.Server.Interfaces
     {
         Task<IList<Apartment>> GetApartments();
         Task<ServiceResponse<int>> AddApartment(Apartment apartment);
+        Task<ServiceResponse<int>> EditApartment(Apartment apartment);
+        Task<ServiceResponse<int>> DeleteApartment(int id);
+        Task<Apartment> GetApartment(int id);
     }
 }

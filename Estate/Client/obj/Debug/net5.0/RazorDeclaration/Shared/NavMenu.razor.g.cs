@@ -146,7 +146,7 @@ using Blazored.LocalStorage;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 54 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Shared\NavMenu.razor"
+#line 59 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Shared\NavMenu.razor"
        
     private bool collapseNavMenu = true;
 

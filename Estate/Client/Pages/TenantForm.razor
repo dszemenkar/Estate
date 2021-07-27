@@ -1,0 +1,78 @@
+﻿@page "/tenant/create"
+@page "/tenant/edit/{Id:int}"
+
+@inject ITenantService TenantService
+@inject IToastService ToastService
+@inject NavigationManager NavigationManager
+
+
+<div class="row mt-2 mb-5">
+    <h3 class="card-title text-info mb-3 ml-3">@Title hyresgäst</h3>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <EditForm Model="tenant" OnValidSubmit="HandleSubmit">
+                    <DataAnnotationsValidator></DataAnnotationsValidator>
+                    <div class="form-group">
+                        <label for="firstName" class="required">Förnamn</label>
+                        <InputText id="firstName" @bind-Value="tenant.FirstName" class="form-control"></InputText>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Efternamn</label>
+                        <InputText id="lastName" @bind-Value="tenant.LastName" class="form-control"></InputText>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Epost</label>
+                        <InputText id="email" @bind-Value="tenant.Email" class="form-control"></InputText>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Spara hyresgäst</button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    private Tenant tenant { get; set; } = new Tenant();
+    private string Title { get; set; } = "Lägg till";
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != null)
+        {
+            Title = "Uppdatera";
+            tenant = await TenantService.GetTenant(Id.Value);
+        }
+        else
+        {
+            tenant = new Tenant();
+        }
+    }
+
+
+    private async void HandleSubmit()
+    {
+        if (!string.IsNullOrEmpty(tenant.FirstName) || !string.IsNullOrEmpty(tenant.LastName))
+        {
+            if (Id != null)
+            {
+                await TenantService.EditTenant(tenant);
+            }
+            else
+            {
+                await TenantService.AddTenant(tenant);
+            }
+
+            NavigationManager.NavigateTo("/tenants");
+        }
+        else
+        {
+            ToastService.ShowError("Du måste fylla i värden för att lägga till en ny hyresgäst.");
+        }
+
+    }
+}

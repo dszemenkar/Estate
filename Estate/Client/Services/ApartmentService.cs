@@ -37,6 +37,38 @@ namespace Estate.Client.Services
 
         }
 
+        public async Task DeleteApartment(int id)
+        {
+            var result = await _http.DeleteAsync("api/apartments/" + id.ToString());
+            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                _toastService.ShowError(await result.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                _toastService.ShowSuccess($"Lägenheten har tagits bort.", "Lägenheten raderad");
+            }
+        }
+
+        public async Task EditApartment(Apartment apartment)
+        {
+            var result = await _http.PutAsJsonAsync<Apartment>("api/apartments", apartment);
+            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                _toastService.ShowError(await result.Content.ReadAsStringAsync());
+            }
+            else
+            {
+                _toastService.ShowSuccess($"{apartment.Title} har uppdaterats.", "Lägenheten uppdaterad");
+            }
+        }
+
+        public async Task<Apartment> GetApartment(int id)
+        {
+            var result = await _http.GetFromJsonAsync<Apartment>("api/apartments/" + id.ToString());
+            return result;
+        }
+
         public async Task GetApartments()
         {
             Apartments = await _http.GetFromJsonAsync<IList<Apartment>>("api/apartments");

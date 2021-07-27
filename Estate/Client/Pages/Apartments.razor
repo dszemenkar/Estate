@@ -1,22 +1,13 @@
 ﻿@page "/apartments"
 @inject IApartmentService ApartmentService
 @inject IToastService ToastService
+@inject NavigationManager NavigationManager
 @attribute [Authorize]
 
 <h3>Lägenheter</h3>
 
 <div style="margin: 20px;">
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" @onclick="ShowAdd">
-        Lägg till lägenhet
-    </button>
-    <div style="margin: 20px;">
-        @if (show == true)
-        {
-            <AddApartment />
-        }
-
-    </div>
+    <NavLink href="@($"apartment/create")" class="btn btn-primary"> Lägg till lägenhet </NavLink>
 </div>
 
 @if (ApartmentService.Apartments == null)
@@ -28,38 +19,42 @@ else
     <table class="table">
         <thead>
             <tr>
+                <th>#</th>
                 <th>Namn</th>
                 <th>Lägenhetsnummer</th>
                 <th>Kvadratmeter</th>
                 <th>Våning</th>
                 <th>Pris</th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
             @foreach (var entry in ApartmentService.Apartments)
             {
-                <tr>
-                    <td>@entry.Title</td>
-                    <td>@entry.Number</td>
-                    <td>@entry.SqMeters</td>
-                    <td>@entry.Floor</td>
-                    <td>@entry.Price</td>
-                    <td>
-                        @if (entry.IsAvailable)
-                        {
-                            <button class="btn btn-primary" @onclick="AddTenant">Lägg till hyresgäst</button>
-                        }
-                    </td>
-                </tr>
+            <tr>
+                <td>@entry.Id</td>
+                <td>@entry.Title</td>
+                <td>@entry.Number</td>
+                <td>@entry.SqMeters</td>
+                <td>@entry.Floor</td>
+                <td>@entry.Price</td>
+                <td>
+                    @if (entry.IsAvailable)
+                    {
+                        <button class="btn btn-primary" @onclick="AddTenant">Lägg till hyresgäst</button>
+                    }
+                </td>
+                <td><button class="btn btn-danger" @onclick="@(() => Delete(entry.Id))"> - </button></td>
+                <td><NavLink href="@($"apartment/edit/{entry.Id}")" class="btn btn-warning"> * </NavLink></td>
+            </tr>
             }
         </tbody>
     </table>
 }
 
 @code {
-
-    private bool show = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -71,12 +66,9 @@ else
         Console.WriteLine("Hej*!");
     }
 
-    private void ShowAdd()
+    private async void Delete(int id)
     {
-        if (show == false)
-            show = true;
-        else
-            show = false;
+        await ApartmentService.DeleteApartment(id);
+        NavigationManager.NavigateTo("/");
     }
-
 }

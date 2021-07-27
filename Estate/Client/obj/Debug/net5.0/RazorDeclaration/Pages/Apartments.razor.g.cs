@@ -139,7 +139,7 @@ using Blazored.LocalStorage;
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Apartments.razor"
+#line 5 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Apartments.razor"
            [Authorize]
 
 #line default
@@ -154,10 +154,8 @@ using Blazored.LocalStorage;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 60 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Apartments.razor"
+#line 57 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Apartments.razor"
        
-
-    private bool show = false;
 
     protected override async Task OnInitializedAsync()
     {
@@ -169,18 +167,16 @@ using Blazored.LocalStorage;
         Console.WriteLine("Hej*!");
     }
 
-    private void ShowAdd()
+    private async void Delete(int id)
     {
-        if (show == false)
-            show = true;
-        else
-            show = false;
+        await ApartmentService.DeleteApartment(id);
+        NavigationManager.NavigateTo("/");
     }
-
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApartmentService ApartmentService { get; set; }
     }

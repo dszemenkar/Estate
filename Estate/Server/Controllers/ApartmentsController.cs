@@ -30,5 +30,23 @@ namespace Estate.Server.Controllers
         {
             return Ok(await _context.AddApartment(apartment));
         }
+
+        [HttpPut]
+        public async Task<IActionResult> EditApartment(Apartment apartment)
+        {
+            return Ok(await _context.EditApartment(apartment));
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteApartment(int id)
+        {
+            return Ok(await _context.DeleteApartment(id));
+        }
+
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetApartment(int id)
+        {
+            return Ok(await _context.GetApartment(id));
+        }
     }
 }

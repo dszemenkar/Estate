@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31313.79
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estate.Server", "Estate\Server\Estate.Server.csproj", "{034DA6F1-A79F-439E-8E3F-2BC9D77B95DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estate.Server", "Estate\Server\Estate.Server.csproj", "{034DA6F1-A79F-439E-8E3F-2BC9D77B95DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estate.Client", "Estate\Client\Estate.Client.csproj", "{699E7BE6-3398-412E-B5B8-AE705300FCED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estate.Client", "Estate\Client\Estate.Client.csproj", "{699E7BE6-3398-412E-B5B8-AE705300FCED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Estate.Shared", "Estate\Shared\Estate.Shared.csproj", "{F1AC88DF-F8EF-46F4-BCCF-F73FD0842602}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Estate.Shared", "Estate\Shared\Estate.Shared.csproj", "{F1AC88DF-F8EF-46F4-BCCF-F73FD0842602}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
