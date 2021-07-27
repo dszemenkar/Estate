@@ -652,3 +652,7 @@ C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\ref\Estate.
 C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Estate.Client.pdb
 C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Shared\TopMenu.razor.g.cs
 C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Shared\TopMenu.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Pages\Apartments.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Pages\Apartments.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Shared\AddApartment.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Shared\AddApartment.razor.g.cs

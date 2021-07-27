@@ -1,0 +1,82 @@
+﻿@page "/apartments"
+@inject IApartmentService ApartmentService
+@inject IToastService ToastService
+@attribute [Authorize]
+
+<h3>Lägenheter</h3>
+
+<div style="margin: 20px;">
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" @onclick="ShowAdd">
+        Lägg till lägenhet
+    </button>
+    <div style="margin: 20px;">
+        @if (show == true)
+        {
+            <AddApartment />
+        }
+
+    </div>
+</div>
+
+@if (ApartmentService.Apartments == null)
+{
+    <span>Laddar in lägenheter..</span>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Namn</th>
+                <th>Lägenhetsnummer</th>
+                <th>Kvadratmeter</th>
+                <th>Våning</th>
+                <th>Pris</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in ApartmentService.Apartments)
+            {
+                <tr>
+                    <td>@entry.Title</td>
+                    <td>@entry.Number</td>
+                    <td>@entry.SqMeters</td>
+                    <td>@entry.Floor</td>
+                    <td>@entry.Price</td>
+                    <td>
+                        @if (entry.IsAvailable)
+                        {
+                            <button class="btn btn-primary" @onclick="AddTenant">Lägg till hyresgäst</button>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+
+    private bool show = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ApartmentService.GetApartments();
+    }
+
+    private void AddTenant()
+    {
+        Console.WriteLine("Hej*!");
+    }
+
+    private void ShowAdd()
+    {
+        if (show == false)
+            show = true;
+        else
+            show = false;
+    }
+
+}

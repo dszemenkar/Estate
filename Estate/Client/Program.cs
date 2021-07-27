@@ -29,6 +29,7 @@ namespace Estate.Client
             builder.Services.AddOptions();
             builder.Services.AddAuthorizationCore();
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IApartmentService, ApartmentService>();
 
             await builder.Build().RunAsync();
         }
