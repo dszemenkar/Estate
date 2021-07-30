@@ -26,6 +26,9 @@ namespace Estate.Server.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<bool>("Archieved")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Floor")
                         .HasColumnType("int");
 
@@ -56,6 +59,9 @@ namespace Estate.Server.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("AppUserRolesId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
@@ -85,7 +91,100 @@ namespace Estate.Server.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("AppUserRolesId");
+
                     b.ToTable("AppUsers");
+                });
+
+            modelBuilder.Entity("Estate.Shared.AppUserRoles", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Role")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("AppUserRoles");
+                });
+
+            modelBuilder.Entity("Estate.Shared.Invoice", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("AmountExclTax")
+                        .HasColumnType("decimal(9,2)");
+
+                    b.Property<decimal>("AmountInclTax")
+                        .HasColumnType("decimal(9,2)");
+
+                    b.Property<int>("ApartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("Archieved")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("InvoiceDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("InvoiceNo")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("MarkedAsPaid")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Paid")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Printed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ApartmentId");
+
+                    b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("Estate.Shared.InvoiceLine", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<decimal>("AmountExclTax")
+                        .HasColumnType("decimal(9,2)");
+
+                    b.Property<decimal>("AmountInclTax")
+                        .HasColumnType("decimal(9,2)");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("DiscountPercent")
+                        .HasColumnType("decimal(4,2)");
+
+                    b.Property<int>("InvoiceId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LineNo")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InvoiceId");
+
+                    b.ToTable("InvoiceLines");
                 });
 
             modelBuilder.Entity("Estate.Shared.Tenant", b =>
@@ -95,11 +194,26 @@ namespace Estate.Server.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApartmentId")
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int?>("ApartmentId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AppUserId")
+                    b.Property<int?>("AppUserId")
                         .HasColumnType("int");
+
+                    b.Property<bool>("Archieved")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("EInvoice")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -107,14 +221,35 @@ namespace Estate.Server.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Phone")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ZipCode")
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ApartmentId");
+                    b.HasIndex("ApartmentId")
+                        .IsUnique()
+                        .HasFilter("[ApartmentId] IS NOT NULL");
+
+                    b.HasIndex("AppUserId");
 
                     b.ToTable("Tenants");
                 });
 
-            modelBuilder.Entity("Estate.Shared.Tenant", b =>
+            modelBuilder.Entity("Estate.Shared.AppUser", b =>
+                {
+                    b.HasOne("Estate.Shared.AppUserRoles", "AppUserRoles")
+                        .WithMany("AppUsers")
+                        .HasForeignKey("AppUserRolesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("AppUserRoles");
+                });
+
+            modelBuilder.Entity("Estate.Shared.Invoice", b =>
                 {
                     b.HasOne("Estate.Shared.Apartment", "Apartment")
                         .WithMany()
@@ -123,6 +258,47 @@ namespace Estate.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("Apartment");
+                });
+
+            modelBuilder.Entity("Estate.Shared.InvoiceLine", b =>
+                {
+                    b.HasOne("Estate.Shared.Invoice", "Invoice")
+                        .WithMany("InvoiceLines")
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Invoice");
+                });
+
+            modelBuilder.Entity("Estate.Shared.Tenant", b =>
+                {
+                    b.HasOne("Estate.Shared.Apartment", "Apartment")
+                        .WithOne("Tenant")
+                        .HasForeignKey("Estate.Shared.Tenant", "ApartmentId");
+
+                    b.HasOne("Estate.Shared.AppUser", "AppUser")
+                        .WithMany()
+                        .HasForeignKey("AppUserId");
+
+                    b.Navigation("Apartment");
+
+                    b.Navigation("AppUser");
+                });
+
+            modelBuilder.Entity("Estate.Shared.Apartment", b =>
+                {
+                    b.Navigation("Tenant");
+                });
+
+            modelBuilder.Entity("Estate.Shared.AppUserRoles", b =>
+                {
+                    b.Navigation("AppUsers");
+                });
+
+            modelBuilder.Entity("Estate.Shared.Invoice", b =>
+                {
+                    b.Navigation("InvoiceLines");
                 });
 #pragma warning restore 612, 618
         }

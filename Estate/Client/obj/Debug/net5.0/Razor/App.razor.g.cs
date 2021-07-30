@@ -129,6 +129,13 @@ using Blazored.LocalStorage;
 #line hidden
 #nullable disable
 #nullable restore
+#line 19 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+using Append.Blazor.Printing;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 1 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\App.razor"
 using Estate.Client.Shared;
 

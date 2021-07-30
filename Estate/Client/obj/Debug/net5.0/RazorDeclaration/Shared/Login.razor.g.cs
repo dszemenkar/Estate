@@ -138,6 +138,13 @@ using Blazored.LocalStorage;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 19 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+using Append.Blazor.Printing;
+
+#line default
+#line hidden
+#nullable disable
     public partial class Login : Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
@@ -146,7 +153,7 @@ using Blazored.LocalStorage;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 24 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Shared\Login.razor"
+#line 27 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Shared\Login.razor"
        
     bool isAuthenticated = false;
     private UserLogin user = new UserLogin();

@@ -26,41 +26,33 @@ namespace Estate.Client.Services
         public async Task AddApartment(Apartment apartment)
         {
             var result = await _http.PostAsJsonAsync<Apartment>("api/apartments", apartment);
-            if (result.StatusCode != System.Net.HttpStatusCode.OK)
-            {
-                _toastService.ShowError(await result.Content.ReadAsStringAsync());
-            }
-            else
-            {
-                _toastService.ShowSuccess($"{apartment.Title} har lagts till i listan över lägenheter.", "Lägenheten tillagd");
-            }
 
+            var resp = await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
+            
+            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+                _toastService.ShowSuccess(resp.Message);
+            else
+                _toastService.ShowSuccess(resp.Message);
         }
 
         public async Task DeleteApartment(int id)
         {
             var result = await _http.DeleteAsync("api/apartments/" + id.ToString());
+            var resp = await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
-            {
-                _toastService.ShowError(await result.Content.ReadAsStringAsync());
-            }
+                _toastService.ShowError(resp.Message);
             else
-            {
-                _toastService.ShowSuccess($"Lägenheten har tagits bort.", "Lägenheten raderad");
-            }
+                _toastService.ShowSuccess(resp.Message);
         }
 
         public async Task EditApartment(Apartment apartment)
         {
             var result = await _http.PutAsJsonAsync<Apartment>("api/apartments", apartment);
+            var resp = await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
-            {
-                _toastService.ShowError(await result.Content.ReadAsStringAsync());
-            }
+                _toastService.ShowError(resp.Message);
             else
-            {
-                _toastService.ShowSuccess($"{apartment.Title} har uppdaterats.", "Lägenheten uppdaterad");
-            }
+                _toastService.ShowSuccess(resp.Message);
         }
 
         public async Task<Apartment> GetApartment(int id)

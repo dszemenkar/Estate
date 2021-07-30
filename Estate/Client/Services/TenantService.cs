@@ -21,11 +21,11 @@ namespace Estate.Client.Services
             _http = http;
         }
 
-        public IList<Tenant> Tenants { get => throw new NotImplementedException(); set => throw new NotImplementedException(); }
+        public IList<Tenant> Tenants { get; set; } = new List<Tenant>();
 
         public async Task AddTenant(Tenant tenant)
         {
-            var result = await _http.PostAsJsonAsync<Tenant>("api/tenants", tenant);
+            var result = await _http.PostAsJsonAsync<Tenant>("api/tenant", tenant);
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 _toastService.ShowError(await result.Content.ReadAsStringAsync());
@@ -38,7 +38,7 @@ namespace Estate.Client.Services
 
         public async Task DeleteTenant(int id)
         {
-            var result = await _http.DeleteAsync("api/tenants/" + id.ToString());
+            var result = await _http.DeleteAsync("api/tenant/" + id.ToString());
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 _toastService.ShowError(await result.Content.ReadAsStringAsync());
@@ -51,7 +51,7 @@ namespace Estate.Client.Services
 
         public async Task EditTenant(Tenant tenant)
         {
-            var result = await _http.PutAsJsonAsync<Tenant>("api/tenants", tenant);
+            var result = await _http.PutAsJsonAsync<Tenant>("api/tenant", tenant);
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
             {
                 _toastService.ShowError(await result.Content.ReadAsStringAsync());
@@ -64,13 +64,19 @@ namespace Estate.Client.Services
 
         public async Task<Tenant> GetTenant(int id)
         {
-            var result = await _http.GetFromJsonAsync<Tenant>("api/tenants/" + id.ToString());
+            var result = await _http.GetFromJsonAsync<Tenant>("api/tenant/" + id.ToString());
+            return result;
+        }
+
+        public async Task<Tenant> GetTenantForApartment(int apartmentId)
+        {
+            var result = await _http.GetFromJsonAsync<Tenant>("api/tenant/apartment/" + apartmentId.ToString());
             return result;
         }
 
         public async Task GetTenants()
         {
-            Tenants = await _http.GetFromJsonAsync<IList<Tenant>>("api/tenants");
+            Tenants = await _http.GetFromJsonAsync<IList<Tenant>>("api/tenant");
         }
     }
 }

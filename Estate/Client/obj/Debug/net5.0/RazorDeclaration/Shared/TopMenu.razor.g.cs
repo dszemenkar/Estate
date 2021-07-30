@@ -138,6 +138,13 @@ using Blazored.LocalStorage;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 19 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+using Append.Blazor.Printing;
+
+#line default
+#line hidden
+#nullable disable
     public partial class TopMenu : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
@@ -146,23 +153,27 @@ using Blazored.LocalStorage;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 19 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Shared\TopMenu.razor"
+#line 20 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Shared\TopMenu.razor"
        
+    private AppUser AppUser { get; set; }
 
     protected override void OnInitialized()
     {
         //GoldService.OnChange += StateHasChanged;
+        //AppUser = await AuthService.GetCurrentAppUser();
     }
 
     public void Dispose()
     {
         //GoldService.OnChange -= StateHasChanged;
+        //AppUser = await AuthService.GetCurrentAppUser();
     }
 
 
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAuthService AuthService { get; set; }
     }
 }
 #pragma warning restore 1591

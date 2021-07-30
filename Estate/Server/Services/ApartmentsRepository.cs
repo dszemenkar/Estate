@@ -30,19 +30,24 @@ namespace Estate.Server.Services
         {
             var db = await _context.Apartments.FirstOrDefaultAsync(x => x.Id == id);
             if (db == null)
-                return null;
+                return new ServiceResponse<int> { Data = db.Id, Message = "Hittar inte lägenheten." };
 
-            _context.Apartments.Remove(db);
+            var tenant = await _context.Tenants.Where(x => x.ApartmentId == db.Id).FirstOrDefaultAsync();
+            if (tenant != null)
+                return new ServiceResponse<int> { Data = db.Id, Message = "Lägenheten kan inte raderas. " + tenant.FirstName + " " + tenant.LastName + " står för närvarande som hyresgäst. Plocka bort hyresgästen först." };
+
+            db.Archieved = true;
+            //_context.Apartments.Remove(db);
             await _context.SaveChangesAsync();
 
-            return new ServiceResponse<int> { Data = db.Id, Message = "Lägenheten raderad" };
+            return new ServiceResponse<int> { Data = db.Id, Message = "Radera lägenhet" };
         }
 
         public async Task<ServiceResponse<int>> EditApartment(Apartment apartment)
         {
             var db = _context.Apartments.Where(x => x.Id == apartment.Id).FirstOrDefault();
             if (db == null)
-                return null;
+                return new ServiceResponse<int> { Data = db.Id, Message = "Hittar inte lägenheten." };
 
             db.IsAvailable = apartment.IsAvailable;
             db.Title = apartment.Title;
@@ -58,18 +63,19 @@ namespace Estate.Server.Services
 
         public async Task<Apartment> GetApartment(int id)
         {
-            var db = await _context.Apartments.FirstOrDefaultAsync(x => x.Id == id);
-            if (db == null)
-                return null;
+            Apartment db = new Apartment();
+            db = await _context.Apartments.FirstOrDefaultAsync(x => x.Id == id);
 
             return db;
         }
 
         public async Task<IList<Apartment>> GetApartments()
         {
-            var apartments = await _context.Apartments.ToListAsync();
-            if (apartments.Count == 0)
-                return null;
+            List<Apartment> apartments = new List<Apartment>();
+            apartments = await _context.Apartments.Where(x => x.Archieved == false)
+                                        //.Include(x => x.Tenant)
+                                        .ToListAsync();
+
             return apartments;
         }
     }

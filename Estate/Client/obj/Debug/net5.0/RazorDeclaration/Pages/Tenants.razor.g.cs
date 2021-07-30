@@ -139,6 +139,13 @@ using Blazored.LocalStorage;
 #line hidden
 #nullable disable
 #nullable restore
+#line 19 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+using Append.Blazor.Printing;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
 #line 5 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Tenants.razor"
            [Authorize]
 
@@ -154,18 +161,39 @@ using Blazored.LocalStorage;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 48 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Tenants.razor"
+#line 71 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Tenants.razor"
        
+
+    bool ShowModal { get; set; } = false;
+    Tenant Selected { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         await TenantService.GetTenants();
     }
 
+    private void Close()
+    {
+        ShowModal = false;
+    }
+
+    private void ShowModalView(Tenant tenant)
+    {
+        Selected = tenant;
+        ShowModal = true;
+    }
+
     private async void Delete(int id)
     {
         await TenantService.DeleteTenant(id);
-        NavigationManager.NavigateTo("/");
+        Close();
+        UpdateView();
+    }
+
+    private async void UpdateView()
+    {
+        await TenantService.GetTenants();
+        this.StateHasChanged();
     }
 
 #line default

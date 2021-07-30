@@ -18,5 +18,7 @@ namespace Estate.Shared
         public bool IsConfirmed { get; set; }
         public bool IsDeleted { get; set; }
         public DateTime DateCreated { get; set; } = DateTime.Now;
+        public int AppUserRolesId { get; set; }
+        public AppUserRoles AppUserRoles { get; set; }
     }
 }

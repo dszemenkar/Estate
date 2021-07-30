@@ -15,5 +15,7 @@ namespace Estate.Shared
         public bool IsAvailable { get; set; }
         public decimal Price { get; set; }
         public int Number { get; set; }
+        public Tenant Tenant { get; set; }
+        public bool Archieved { get; set; }
     }
 }

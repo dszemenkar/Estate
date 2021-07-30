@@ -14,5 +14,6 @@ namespace Estate.Client.Interfaces
         Task EditTenant(Tenant tenant);
         Task DeleteTenant(int id);
         Task GetTenants();
+        Task<Tenant> GetTenantForApartment(int apartmentId);
     }
 }

@@ -1,0 +1,154 @@
+﻿@page "/invoice/create"
+@page "/invoice/edit/{Id:int}"
+
+
+@inject IInvoiceService InvoiceService
+@inject IApartmentService ApartmentService
+@inject ITenantService TenantService
+@inject IToastService ToastService
+@inject NavigationManager NavigationManager
+
+
+<div>
+    <h3 class="card-title text-info mb-3 ml-3">@Title faktura</h3>
+        <div class="card">
+            <div class="card-body">
+                @if (showForm)
+                {
+                <EditForm Model="invoice" OnValidSubmit="HandleSubmit">
+                    <DataAnnotationsValidator></DataAnnotationsValidator>
+                    <div class="form-group">
+                        <label for="invoiceDate">Fakturadatum</label>
+                        <InputDate id="invoiceDate" @bind-Value="invoice.InvoiceDate" class="form-control"></InputDate>
+                    </div>
+                    <div class="form-group">
+                        <label for="tenant">Lägenhet</label>
+                        <select class="form-control" @bind="selectedApartment">
+                            <option selected disabled value="0">Lägenhet</option>
+                            @foreach (var apartment in ApartmentService.Apartments)
+                            {
+                                <option value="@apartment.Id">Lägenhet: @apartment.Number </option>
+                            }
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-success">Skapa faktura</button>
+                </EditForm>
+                }
+                @if (!showForm)
+                {
+                    @if (!string.IsNullOrEmpty(tenant.FirstName))
+                    {
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">Faktura för lägenhet @apartment.Number Datum: @invoice.InvoiceDate.ToString("yyyy-MM-dd")</h5>
+                                <h6 class="card-subtitle mb-2 text-muted">Hyresgäst:</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">@tenant.FirstName @tenant.LastName</h6>
+                                <h6 class="card-subtitle mb-2 text-muted">@tenant.Email</h6>
+                                    <table class="table">
+                                        <thead>
+                                            <tr>
+                                                <th>#</th>
+                                                <th>Beskrivning</th>
+                                                <th>Exkl. moms</th>
+                                                <th>Inkl. moms</th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var line in lines)
+                                            {
+                                                <tr>
+                                                    <td>@line.LineNo</td>
+                                                    <td>@line.Description</td>
+                                                    <td>@line.AmountExclTax</td>
+                                                    <td>@line.AmountInclTax</td>
+                                                    <td><button class="btn btn-danger" @onclick="@(() => Delete(line.Id))">Radera</button></td>
+                                                </tr>
+                                            }
+                                        <tr>
+                                            <td></td>
+                                            <td>Summa:</td>
+                                            <td>@lines.Sum(x => x.AmountExclTax)</td>
+                                            <td>@lines.Sum(x => x.AmountInclTax)</td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                <p class="card-text">Detta är hur fakturan kommer att se ut. Lägg till rader eller klicka på spara och stäng.</p>
+                                <NavLink href="@($"invoice/addline/{Id.Value}")" class="btn btn-primary"> Lägg till fakturarad </NavLink>
+                                <NavLink href="/invoices" class="btn btn-dark"> Spara och stäng </NavLink>
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    else
+                {
+                    <h5>Hämtar faktura...</h5>
+                }
+                }
+            </div>
+        </div>
+</div>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    private Invoice invoice { get; set; } = new Invoice();
+    private Apartment apartment { get; set; } = new Apartment();
+    private Tenant tenant { get; set; } = new Tenant();
+    private List<InvoiceLine> lines { get; set; } = new List<InvoiceLine>();
+    private string Title { get; set; } = "Skapa";
+    int selectedApartment = 0;
+    bool showForm = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        if (Id != null)
+        {
+            Title = "Uppdatera";
+            showForm = false;
+
+            invoice = await InvoiceService.GetInvoice(Id.Value);
+            lines = await InvoiceService.GetInvoiceLines(Id.Value);
+            apartment = await ApartmentService.GetApartment(invoice.ApartmentId);
+            tenant = await TenantService.GetTenantForApartment(apartment.Id);
+        }
+        else
+        {
+            await ApartmentService.GetApartments();
+        }
+    }
+
+    private void Delete(int id)
+    {
+        Console.WriteLine("Deleting...");
+    }
+
+    private async void HandleSubmit()
+    {
+        if (!string.IsNullOrEmpty(invoice.ApartmentId.ToString()))
+        {
+            invoice.ApartmentId = selectedApartment;
+
+            var result = await InvoiceService.AddInvoice(invoice);
+
+            if (result.Success)
+            {
+                ToastService.ShowSuccess(result.Message);
+                NavigationManager.NavigateTo("/invoice/addline/" + result.Data.ToString());
+            }
+            else
+            {
+                ToastService.ShowError(result.Message);
+            }
+        }
+        else
+        {
+            ToastService.ShowError("Du måste lägga till en lägenhet för att skapa faktura.");
+        }
+
+    }
+}

@@ -28,5 +28,11 @@ namespace Estate.Client.Services
 
             return await result.Content.ReadFromJsonAsync<ServiceResponse<string>>();
         }
+
+        public async Task<AppUser> GetCurrentAppUser()
+        {
+            var result = await _http.GetFromJsonAsync<AppUser>("api/user");
+            return result;
+        }
     }
 }

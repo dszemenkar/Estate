@@ -138,6 +138,13 @@ using Blazored.LocalStorage;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 19 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+using Append.Blazor.Printing;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/apartment/create")]
     [Microsoft.AspNetCore.Components.RouteAttribute("/apartment/edit/{Id:int}")]
     public partial class ApartmentForm : Microsoft.AspNetCore.Components.ComponentBase
@@ -148,7 +155,7 @@ using Blazored.LocalStorage;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 49 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\ApartmentForm.razor"
+#line 58 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\ApartmentForm.razor"
        
     [Parameter]
     public int? Id { get; set; }
@@ -156,12 +163,26 @@ using Blazored.LocalStorage;
     private Apartment apartment { get; set; } = new Apartment();
     private string Title { get; set; } = "Lägg till";
 
+    int selectedTenant = 0;
+    bool showTenants = false;
+
     protected override async Task OnInitializedAsync()
     {
+        await TenantService.GetTenants();
+
         if (Id != null)
         {
             Title = "Uppdatera";
             apartment = await ApartmentService.GetApartment(Id.Value);
+
+            foreach (var tenant in TenantService.Tenants)
+            {
+                if (tenant.ApartmentId == Id)
+                {
+                    selectedTenant = tenant.Id;
+                }
+            }
+            showTenants = true;
         }
         else
         {
@@ -174,15 +195,25 @@ using Blazored.LocalStorage;
     {
         if (apartment.Number != 0 || apartment.Price != 0 || apartment.SqMeters != 0)
         {
+            if (selectedTenant > 0)
+            {
+                var tenant = await TenantService.GetTenant(selectedTenant);
+                tenant.ApartmentId = apartment.Id;
+                await TenantService.EditTenant(tenant);
+                apartment.IsAvailable = false;
+            }
+            else
+            {
+                apartment.IsAvailable = true;
+            }
+
             if (Id != null)
             {
                 await ApartmentService.EditApartment(apartment);
-                ToastService.ShowSuccess("Lägenheten är sparad!", "Uppdaterad lägenhet");
             }
             else
             {
                 await ApartmentService.AddApartment(apartment);
-                ToastService.ShowSuccess("Lägenheten är sparad!", "Ny lägenhet");
             }
 
             NavigationManager.NavigateTo("/apartments");
@@ -197,6 +228,7 @@ using Blazored.LocalStorage;
 #line default
 #line hidden
 #nullable disable
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITenantService TenantService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApartmentService ApartmentService { get; set; }

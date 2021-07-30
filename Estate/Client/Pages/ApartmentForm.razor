@@ -4,6 +4,7 @@
 @inject IApartmentService ApartmentService
 @inject IToastService ToastService
 @inject NavigationManager NavigationManager
+@inject ITenantService TenantService
 
 
 <div class="row mt-2 mb-5">
@@ -33,12 +34,20 @@
                         <label for="price" class="required">Pris</label>
                         <InputNumber id="price" @bind-Value="apartment.Price" class="form-control"></InputNumber>
                     </div>
-                    <div class="form-check">
-                        <span style="margin-right: 50px;">
-                            <label for="isavailable">Tillgänglig</label>
-                        </span>
-                        <InputCheckbox id="isavailable" @bind-Value="apartment.IsAvailable" class="form-check-input"></InputCheckbox>
-                    </div>
+                    @if (showTenants)
+                    {
+                <div class="form-group">
+                    <label for="tenant">Hyresgäst</label>
+                    <select class="form-control" @bind="selectedTenant">
+                        <option selected disabled value="-1">Lägg till hyresgäst</option>
+                        @foreach (var tenant in TenantService.Tenants)
+                        {
+                            <option value="@tenant.Id">@tenant.FirstName @tenant.LastName</option>
+                        }
+                    </select>
+                </div>
+                    }
+                    
                     <button type="submit" class="btn btn-success">Spara lägenhet</button>
                 </EditForm>
             </div>
@@ -53,12 +62,26 @@
     private Apartment apartment { get; set; } = new Apartment();
     private string Title { get; set; } = "Lägg till";
 
+    int selectedTenant = 0;
+    bool showTenants = false;
+
     protected override async Task OnInitializedAsync()
     {
+        await TenantService.GetTenants();
+
         if (Id != null)
         {
             Title = "Uppdatera";
             apartment = await ApartmentService.GetApartment(Id.Value);
+
+            foreach (var tenant in TenantService.Tenants)
+            {
+                if (tenant.ApartmentId == Id)
+                {
+                    selectedTenant = tenant.Id;
+                }
+            }
+            showTenants = true;
         }
         else
         {
@@ -71,15 +94,25 @@
     {
         if (apartment.Number != 0 || apartment.Price != 0 || apartment.SqMeters != 0)
         {
+            if (selectedTenant > 0)
+            {
+                var tenant = await TenantService.GetTenant(selectedTenant);
+                tenant.ApartmentId = apartment.Id;
+                await TenantService.EditTenant(tenant);
+                apartment.IsAvailable = false;
+            }
+            else
+            {
+                apartment.IsAvailable = true;
+            }
+
             if (Id != null)
             {
                 await ApartmentService.EditApartment(apartment);
-                ToastService.ShowSuccess("Lägenheten är sparad!", "Uppdaterad lägenhet");
             }
             else
             {
                 await ApartmentService.AddApartment(apartment);
-                ToastService.ShowSuccess("Lägenheten är sparad!", "Ny lägenhet");
             }
 
             NavigationManager.NavigateTo("/apartments");

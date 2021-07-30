@@ -12,7 +12,7 @@
 
 @if (TenantService.Tenants == null)
 {
-    <span>Laddar in hyresgäster..</span>
+    <span>Hämtar hyresgäster..</span>
 }
 else
 {
@@ -37,24 +37,68 @@ else
                     <td>@entry.Email</td>
                     <td>@entry.ApartmentId</td>
                     <td>@entry.AppUserId</td>
-                    <td><button class="btn btn-danger" @onclick="@(() => Delete(entry.Id))"> - </button></td>
-                    <td><NavLink href="@($"tenant/edit/{entry.Id}")" class="btn btn-warning"> * </NavLink></td>
+                    <td><button class="btn btn-danger" @onclick="@(() => ShowModalView(entry))">Radera</button></td>
+                    <td><NavLink href="@($"tenant/edit/{entry.Id}")" class="btn btn-dark">Ändra</NavLink></td>
                 </tr>
             }
         </tbody>
     </table>
+
+    @if (ShowModal)
+    {
+        <div class="modal fade show d-block" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleLabel">Radera</h5>
+                        <button type="button" class="close" @onclick="@Close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Är du säker på att du vill radera? Hyresgästen kommer försvinna helt!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" @onclick="@(() => Delete(Selected.Id))">Radera</button>
+                        <button type="button" class="btn btn-secondary" @onclick="@Close">Avbryt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
 }
 
 @code {
+
+    bool ShowModal { get; set; } = false;
+    Tenant Selected { get; set; }
 
     protected override async Task OnInitializedAsync()
     {
         await TenantService.GetTenants();
     }
 
+    private void Close()
+    {
+        ShowModal = false;
+    }
+
+    private void ShowModalView(Tenant tenant)
+    {
+        Selected = tenant;
+        ShowModal = true;
+    }
+
     private async void Delete(int id)
     {
         await TenantService.DeleteTenant(id);
-        NavigationManager.NavigateTo("/");
+        Close();
+        UpdateView();
+    }
+
+    private async void UpdateView()
+    {
+        await TenantService.GetTenants();
+        this.StateHasChanged();
     }
 }

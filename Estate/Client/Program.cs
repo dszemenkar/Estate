@@ -1,3 +1,4 @@
+using Append.Blazor.Printing;
 using Blazored.LocalStorage;
 using Blazored.Toast;
 using Estate.Client.Interfaces;
@@ -31,6 +32,9 @@ namespace Estate.Client
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IApartmentService, ApartmentService>();
             builder.Services.AddScoped<ITenantService, TenantService>();
+            builder.Services.AddScoped<IInvoiceService, InvoiceService>();
+            builder.Services.AddScoped<IPrintingService, PrintingService>();
+            builder.Services.AddSingleton<PDFService>();
 
             await builder.Build().RunAsync();
         }

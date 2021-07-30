@@ -1,10 +1,11 @@
-﻿@implements IDisposable
+﻿@inject IAuthService AuthService
+@implements IDisposable
 
 <AuthorizeView>
     <Authorized>
         <div class="top-menu">
             <span class="popover-header">
-                Inloggad som 
+                
             </span>
         </div>
     </Authorized>
@@ -17,15 +18,18 @@
 </AuthorizeView>
 
 @code {
+    private AppUser AppUser { get; set; }
 
     protected override void OnInitialized()
     {
         //GoldService.OnChange += StateHasChanged;
+        //AppUser = await AuthService.GetCurrentAppUser();
     }
 
     public void Dispose()
     {
         //GoldService.OnChange -= StateHasChanged;
+        //AppUser = await AuthService.GetCurrentAppUser();
     }
 
 }

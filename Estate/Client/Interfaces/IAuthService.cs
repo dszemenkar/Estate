@@ -10,5 +10,6 @@ namespace Estate.Client.Interfaces
     {
         Task<ServiceResponse<int>> Register(UserRegister request);
         Task<ServiceResponse<string>> Login(UserLogin request);
+        Task<AppUser> GetCurrentAppUser();
     }
 }

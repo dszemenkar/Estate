@@ -22,10 +22,31 @@
                         <InputText id="lastName" @bind-Value="tenant.LastName" class="form-control"></InputText>
                     </div>
                     <div class="form-group">
+                        <label for="address">Gatuadress</label>
+                        <InputText id="address" @bind-Value="tenant.Address" class="form-control"></InputText>
+                    </div>
+                    <div class="form-group">
+                        <label for="zipCode">Postnummer</label>
+                        <InputText id="zipCode" @bind-Value="tenant.ZipCode" class="form-control"></InputText>
+                    </div>
+                    <div class="form-group">
+                        <label for="city">Stad</label>
+                        <InputText id="city" @bind-Value="tenant.City" class="form-control"></InputText>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Telefonnummer</label>
+                        <InputText id="phone" @bind-Value="tenant.Phone" class="form-control"></InputText>
+                    </div>
+                    <div class="form-group">
                         <label for="email">Epost</label>
                         <InputText id="email" @bind-Value="tenant.Email" class="form-control"></InputText>
                     </div>
-
+                    <div class="form-check">
+                        <span style="margin-right: 50px;">
+                            <label for="einvoice">E-faktura</label>
+                        </span>
+                        <InputCheckbox id="einvoice" @bind-Value="tenant.EInvoice" class="form-check-input"></InputCheckbox>
+                    </div>
                     <button type="submit" class="btn btn-success">Spara hyresgäst</button>
                 </EditForm>
             </div>

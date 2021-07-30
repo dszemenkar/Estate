@@ -138,6 +138,13 @@ using Blazored.LocalStorage;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 19 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+using Append.Blazor.Printing;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/tenant/create")]
     [Microsoft.AspNetCore.Components.RouteAttribute("/tenant/edit/{Id:int}")]
     public partial class TenantForm : Microsoft.AspNetCore.Components.ComponentBase
@@ -148,7 +155,7 @@ using Blazored.LocalStorage;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 36 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
+#line 57 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
        
     [Parameter]
     public int? Id { get; set; }

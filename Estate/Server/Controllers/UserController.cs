@@ -1,5 +1,6 @@
 ﻿using Estate.Server.Data;
 using Estate.Server.Interfaces;
+using Estate.Shared;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -22,5 +23,11 @@ namespace Estate.Server.Controllers
             _utilityService = utilityService;
         }
 
+        [HttpGet]
+        public async Task<IActionResult> GetCurrentAppUser()
+        {
+            var user = await _utilityService.GetUser();
+            return Ok(user);
+        }
     }
 }

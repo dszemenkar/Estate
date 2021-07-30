@@ -34,6 +34,8 @@ namespace Estate.Server
             services.AddRazorPages();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IApartmentsRepository, ApartmentsRepository>();
+            services.AddScoped<ITenantRepository, TenantRepository>();
+            services.AddScoped<IInvoiceInterface, InvoiceRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
             {
                 opt.TokenValidationParameters = new TokenValidationParameters

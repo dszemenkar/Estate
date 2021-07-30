@@ -138,6 +138,13 @@ using Blazored.LocalStorage;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 19 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+using Append.Blazor.Printing;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/register")]
     public partial class Register : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -147,14 +154,9 @@ using Blazored.LocalStorage;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 45 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Register.razor"
+#line 50 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Register.razor"
        
     UserRegister user = new UserRegister();
-
-    protected override async Task OnInitializedAsync()
-    {
-        
-    }
 
     async void HandleRegistration()
     {

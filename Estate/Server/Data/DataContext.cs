@@ -16,6 +16,8 @@ namespace Estate.Server.Data
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Apartment> Apartments { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceLine> InvoiceLines { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -23,6 +25,21 @@ namespace Estate.Server.Data
             modelBuilder.Entity<Apartment>()
                 .Property(x => x.Price)
                 .HasColumnType("decimal(9,2)");
+            modelBuilder.Entity<InvoiceLine>()
+                .Property(x => x.AmountExclTax)
+                .HasColumnType("decimal(9,2)");
+            modelBuilder.Entity<InvoiceLine>()
+                .Property(x => x.AmountInclTax)
+                .HasColumnType("decimal(9,2)");
+            modelBuilder.Entity<Invoice>()
+                .Property(x => x.AmountExclTax)
+                .HasColumnType("decimal(9,2)");
+            modelBuilder.Entity<Invoice>()
+                .Property(x => x.AmountInclTax)
+                .HasColumnType("decimal(9,2)");
+            modelBuilder.Entity<InvoiceLine>()
+                .Property(x => x.DiscountPercent)
+                .HasColumnType("decimal(4,2)");
         }
     }
 }
