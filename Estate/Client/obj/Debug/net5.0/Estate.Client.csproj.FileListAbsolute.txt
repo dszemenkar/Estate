@@ -714,3 +714,9 @@ C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclar
 C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Shared\EmptyLayout.razor.g.cs
 C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Shared\DeleteModal.razor.g.cs
 C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Shared\DeleteModal.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Pages\TenantPages\MyInvoices.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Pages\TenantPages\MyInvoices.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Pages\ParkingSpaceForm.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\RazorDeclaration\Pages\ParkingSpaces.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Pages\ParkingSpaceForm.razor.g.cs
+C:\Users\dszemenk\source\repos\Estate\Estate\Client\obj\Debug\net5.0\Razor\Pages\ParkingSpaces.razor.g.cs

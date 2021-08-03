@@ -19,7 +19,6 @@ else
     <table class="table">
         <thead>
             <tr>
-                <th>#</th>
                 <th>Namn</th>
                 <th>Lägenhetsnummer</th>
                 <th>Kvadratmeter</th>
@@ -33,25 +32,24 @@ else
         <tbody>
             @foreach (var entry in ApartmentService.Apartments)
             {
-                <tr>
-                    <td>@entry.Id</td>
-                    <td>@entry.Title</td>
-                    <td>@entry.Number</td>
-                    <td>@entry.SqMeters</td>
-                    <td>@entry.Floor</td>
-                    <td>@entry.Price</td>
-                    
-                    @if (entry.IsAvailable)
-                    {
+            <tr class="@BusinessProperty(entry)">
+                <td>@entry.Title</td>
+                <td>@entry.Number</td>
+                <td>@entry.SqMeters</td>
+                <td>@entry.Floor</td>
+                <td>@entry.Price</td>
+
+                @if (entry.IsAvailable)
+                {
                     <td>Ja</td>
-                    }
-                    else
-                    {
+                }
+                else
+                {
                     <td>Nej</td>
-                    }
-                    <td><button class="btn btn-danger" @onclick="@(() => ShowModalView(entry))">Radera</button></td>
-                    <td><NavLink href="@($"apartment/edit/{entry.Id}")" class="btn btn-dark"> Ändra/Lägg till hyresgäst </NavLink></td>
-                </tr>
+                }
+                <td><NavLink href="@($"apartment/edit/{entry.Id}")" class="btn btn-dark"> Ändra/Lägg till hyresgäst </NavLink></td>
+                <td><button class="btn btn-danger" @onclick="@(() => ShowModalView(entry))">Radera</button></td>
+            </tr>
             }
         </tbody>
     </table>
@@ -88,6 +86,14 @@ else
     protected override async Task OnInitializedAsync()
     {
         await ApartmentService.GetApartments();
+    }
+
+    string BusinessProperty(Apartment apartment)
+    {
+        if (apartment.BusinessProperty)
+            return "table-primary";
+        else
+            return string.Empty;
     }
 
     private void Close()

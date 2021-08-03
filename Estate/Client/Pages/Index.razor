@@ -1,12 +1,36 @@
 ﻿@page "/"
 
-<AuthorizeView>
+<AuthorizeView Roles="Admin">
     <Authorized>
-        <h1>Välkommen, @context.User.Identity.Name.</h1>
+        <div class="jumbotron">
+            <h1 class="display-4">Hej, @context.User.Identity.Name!</h1>
+            <p class="lead"></p>
+            <hr class="my-4">
+
+            <p class="lead">
+                <a class="btn btn-primary btn-sm" href="invoices" role="button">Gå till betalningar</a>
+            </p>
+        </div>
     </Authorized>
-    <NotAuthorized>
-        <h1>.. ... ...</h1>
-        <p>...</p>
-        <Login></Login>
-    </NotAuthorized>
+</AuthorizeView>
+<AuthorizeView Roles="Tenant">
+    <Authorized>
+        <div class="jumbotron">
+            <h1 class="display-4">Hej, @context.User.Identity.Name!</h1>
+            <p class="lead"></p>
+            <hr class="my-4">
+            <p>Din avi för juli månad är nu redo för betalning</p>
+            <p></p>
+            <p class="lead">
+                <a class="btn btn-primary btn-lg" href="myinvoice" role="button">Gå till min hyresavi</a>
+            </p>
+        </div>
+    </Authorized>
+</AuthorizeView>
+<AuthorizeView>
+<NotAuthorized>
+    <h1>.. ... ...</h1>
+    <p>...</p>
+    <Login></Login>
+</NotAuthorized>
 </AuthorizeView>

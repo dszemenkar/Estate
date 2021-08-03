@@ -155,7 +155,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 58 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\ApartmentForm.razor"
+#line 65 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\ApartmentForm.razor"
        
     [Parameter]
     public int? Id { get; set; }

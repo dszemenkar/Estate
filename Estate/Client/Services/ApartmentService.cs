@@ -22,6 +22,8 @@ namespace Estate.Client.Services
         }
 
         public IList<Apartment> Apartments { get; set; } = new List<Apartment>();
+        public IList<Apartment> ApartmentsWithTenants { get; set; } = new List<Apartment>();
+
 
         public async Task AddApartment(Apartment apartment)
         {
@@ -64,6 +66,11 @@ namespace Estate.Client.Services
         public async Task GetApartments()
         {
             Apartments = await _http.GetFromJsonAsync<IList<Apartment>>("api/apartments");
+        }
+
+        public async Task GetApartmentsWithTenants()
+        {
+            ApartmentsWithTenants = await _http.GetFromJsonAsync<IList<Apartment>>("api/apartments/occupied");
         }
     }
 }

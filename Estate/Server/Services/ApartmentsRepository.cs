@@ -37,7 +37,7 @@ namespace Estate.Server.Services
                 return new ServiceResponse<int> { Data = db.Id, Message = "Lägenheten kan inte raderas. " + tenant.FirstName + " " + tenant.LastName + " står för närvarande som hyresgäst. Plocka bort hyresgästen först." };
 
             db.Archieved = true;
-            //_context.Apartments.Remove(db);
+
             await _context.SaveChangesAsync();
 
             return new ServiceResponse<int> { Data = db.Id, Message = "Radera lägenhet" };
@@ -55,6 +55,8 @@ namespace Estate.Server.Services
             db.Price = apartment.Price;
             db.Number = apartment.Number;
             db.Floor = apartment.Floor;
+            db.BusinessMonth = apartment.BusinessMonth;
+            db.BusinessProperty = apartment.BusinessProperty;
 
             await _context.SaveChangesAsync();
 
@@ -73,7 +75,15 @@ namespace Estate.Server.Services
         {
             List<Apartment> apartments = new List<Apartment>();
             apartments = await _context.Apartments.Where(x => x.Archieved == false)
-                                        //.Include(x => x.Tenant)
+                                        .ToListAsync();
+
+            return apartments;
+        }
+
+        public async Task<IList<Apartment>> GetApartmentsWithTenants()
+        {
+            List<Apartment> apartments = new List<Apartment>();
+            apartments = await _context.Apartments.Where(x => x.Archieved == false && x.IsAvailable == false)
                                         .ToListAsync();
 
             return apartments;

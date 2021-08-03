@@ -14,7 +14,9 @@ namespace Estate.Server.Data
         }
 
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<AppUserRoles> AppUserRoles { get; set; }
         public DbSet<Apartment> Apartments { get; set; }
+        public DbSet<ParkingSpace> ParkingSpaces { get; set; }
         public DbSet<Tenant> Tenants { get; set; }
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceLine> InvoiceLines { get; set; }
@@ -40,6 +42,9 @@ namespace Estate.Server.Data
             modelBuilder.Entity<InvoiceLine>()
                 .Property(x => x.DiscountPercent)
                 .HasColumnType("decimal(4,2)");
+            modelBuilder.Entity<ParkingSpace>()
+                .Property(x => x.Price)
+                .HasColumnType("decimal(9,2)");
         }
     }
 }

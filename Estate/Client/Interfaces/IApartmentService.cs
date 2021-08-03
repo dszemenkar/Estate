@@ -9,10 +9,12 @@ namespace Estate.Client.Interfaces
     public interface IApartmentService
     {
         IList<Apartment> Apartments { get; set; }
+        IList<Apartment> ApartmentsWithTenants { get; set; }
         Task<Apartment> GetApartment(int id);
         Task AddApartment(Apartment apartment);
         Task EditApartment(Apartment apartment);
         Task DeleteApartment(int id);
         Task GetApartments();
+        Task GetApartmentsWithTenants();
     }
 }

@@ -37,7 +37,9 @@
                     <InputDate id="dateOfBirth" @bind-Value="user.DateOfBirth" class="form-control"></InputDate>
                 </div>
                 <div class="form-check">
-                    <label for="confirmed">Godkänn</label>
+                    <span style="margin-right: 50px;">
+                        <label for="confirmed">Godkänn villkor</label>
+                    </span>
                     <InputCheckbox id="gold" @bind-Value="user.IsConfirmed" class="form-check-input"></InputCheckbox>
                     <ValidationMessage For="@(() => user.IsConfirmed)" />
                 </div>

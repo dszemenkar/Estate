@@ -21,7 +21,7 @@ else
                 Hyresavi
                 <small class="page-info">
                     <i class="fa fa-angle-double-right text-80"></i>
-                    Nr: #@invoice.InvoiceNo
+                    Referens: #@invoice.InvoiceNo
                 </small>
                 @if (invoice.Paid)
                 {
@@ -70,11 +70,16 @@ else
                                     Hyresavi
                                 </div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Nr:</span> #@invoice.InvoiceNo</div>
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Referens:</span> #@invoice.InvoiceNo</div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Datum:</span> @invoice.InvoiceDate.ToString("yy-MM-dd")</div>
+                                @if (apartment.BusinessProperty)
+                                {
+                                            <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Löpnr:</span> @invoice.BusinessMonth</div>
+                                }
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Villkor:</span> <span class="badge badge-warning badge-pill px-25">30 dagar</span></div>
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Fakturadatum:</span> @invoice.InvoiceDate.ToString("yyyy-MM-dd")</div>
+
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Betalas senast:</span> @PaymentDateTime.ToString("yyyy-MM-dd")</div>
 
                                 <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">BG:</span> 2830-1450<span class="badge badge-warning badge-pill px-25"></span></div>
                             </div>
@@ -87,8 +92,8 @@ else
                         <div class="table-responsive">
                             <table class="table table-striped table-borderless border-0 border-b-2 brc-default-l1">
                                 <thead class="bg-none bgc-default-tp1">
-                                    <tr class="text-white">
-                                        <th class="opacity-2">#</th>
+                                    <tr class="text-dark">
+                                        <th class="opacity-2">Rad</th>
                                         <th>Beskrivning</th>
                                         <th>Exkl. moms</th>
                                         <th>Inkl. moms</th>
@@ -107,8 +112,6 @@ else
                                             <td class="text-95">@line.AmountInclTax</td>
                                         </tr>
                                     }
-
-
                                 </tbody>
                             </table>
                         </div>
@@ -174,6 +177,7 @@ else
     decimal ExklMoms { get; set; }
     decimal InklMoms { get; set; }
     decimal MomsAmount { get; set; }
+    DateTime PaymentDateTime { get; set; }
 
     bool Loading { get; set; } = true;
 
@@ -188,15 +192,25 @@ else
         InklMoms = lines.Sum(x => x.AmountInclTax);
         MomsAmount = InklMoms - ExklMoms;
 
+        PaymentDate();
+
         Loading = false;
         this.StateHasChanged();
+
+        await InvoiceService.SendEInvoice(invoice);
 
         Print();
     }
 
     protected async void Print()
     {
-        await Task.Delay(5000);
+        await Task.Delay(3000);
         await JS.InvokeVoidAsync("printInvoice");
+    }
+
+    private void PaymentDate()
+    {
+        var lastDayOfMonth = DateTime.DaysInMonth(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month);
+        PaymentDateTime = new DateTime(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month, lastDayOfMonth);
     }
 }

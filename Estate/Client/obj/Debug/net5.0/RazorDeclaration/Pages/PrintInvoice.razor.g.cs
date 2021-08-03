@@ -155,7 +155,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 164 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\PrintInvoice.razor"
+#line 167 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\PrintInvoice.razor"
        
     [Parameter]
     public int Id { get; set; }
@@ -169,6 +169,7 @@ using Append.Blazor.Printing;
     decimal ExklMoms { get; set; }
     decimal InklMoms { get; set; }
     decimal MomsAmount { get; set; }
+    DateTime PaymentDateTime { get; set; }
 
     bool Loading { get; set; } = true;
 
@@ -183,16 +184,26 @@ using Append.Blazor.Printing;
         InklMoms = lines.Sum(x => x.AmountInclTax);
         MomsAmount = InklMoms - ExklMoms;
 
+        PaymentDate();
+
         Loading = false;
         this.StateHasChanged();
+
+        await InvoiceService.SendEInvoice(invoice);
 
         Print();
     }
 
     protected async void Print()
     {
-        await Task.Delay(5000);
+        await Task.Delay(3000);
         await JS.InvokeVoidAsync("printInvoice");
+    }
+
+    private void PaymentDate()
+    {
+        var lastDayOfMonth = DateTime.DaysInMonth(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month);
+        PaymentDateTime = new DateTime(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month, lastDayOfMonth);
     }
 
 #line default

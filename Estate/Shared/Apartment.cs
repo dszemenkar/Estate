@@ -10,6 +10,8 @@ namespace Estate.Shared
     {
         public int Id { get; set; }
         public string Title { get; set; }
+        public bool BusinessProperty { get; set; }
+        public int BusinessMonth { get; set; } = 0;
         public int SqMeters { get; set; }
         public int Floor { get; set; }
         public bool IsAvailable { get; set; }

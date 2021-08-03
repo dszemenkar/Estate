@@ -36,6 +36,7 @@ namespace Estate.Server
             services.AddScoped<IApartmentsRepository, ApartmentsRepository>();
             services.AddScoped<ITenantRepository, TenantRepository>();
             services.AddScoped<IInvoiceInterface, InvoiceRepository>();
+            services.AddScoped<IParkingInterface, ParkingRepository>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(opt =>
             {
                 opt.TokenValidationParameters = new TokenValidationParameters

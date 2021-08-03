@@ -1,0 +1,114 @@
+﻿@page "/parkingspaces/create"
+@page "/parkingspaces/edit/{Id:int}"
+
+@inject IParkingService ParkingService
+@inject IToastService ToastService
+@inject NavigationManager NavigationManager
+@inject ITenantService TenantService
+
+
+<div class="row mt-2 mb-5">
+    <h3 class="card-title text-info mb-3 ml-3">@Title parkeringsplats</h3>
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-body">
+                <EditForm Model="parking" OnValidSubmit="HandleSubmit">
+                    <DataAnnotationsValidator></DataAnnotationsValidator>
+                    <div class="form-group">
+                        <label for="number">Parkingsnummer</label>
+                        <InputNumber id="number" @bind-Value="parking.Number" class="form-control"></InputNumber>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Pris</label>
+                        <InputNumber id="price" @bind-Value="parking.Price" class="form-control"></InputNumber>
+                    </div>
+                    @if (showTenants)
+                    {
+                        <div class="form-group">
+                            <label for="tenant">Hyresgäst</label>
+                            <select class="form-control" @bind="selectedTenant">
+                                <option selected disabled value="-1">Lägg till hyresgäst</option>
+                                @foreach (var tenant in TenantService.Tenants)
+                                {
+                                    <option value="@tenant.Id">@tenant.FirstName @tenant.LastName</option>
+                                }
+                            </select>
+                        </div>
+                    }
+
+                    <button type="submit" class="btn btn-success">Spara parkeringsplats</button>
+                </EditForm>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    [Parameter]
+    public int? Id { get; set; }
+
+    private ParkingSpace parking { get; set; } = new ParkingSpace();
+    private string Title { get; set; } = "Lägg till";
+
+    int selectedTenant = 0;
+    bool showTenants = false;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await TenantService.GetTenants();
+
+        if (Id != null)
+        {
+            Title = "Uppdatera";
+            parking = await ParkingService.GetParkingSpace(Id.Value);
+
+            foreach (var tenant in TenantService.Tenants)
+            {
+                if (tenant.ParkingId == Id)
+                {
+                    selectedTenant = tenant.Id;
+                }
+            }
+            showTenants = true;
+        }
+        else
+        {
+            parking = new ParkingSpace();
+        }
+    }
+
+
+    private async void HandleSubmit()
+    {
+        if (parking.Number != 0 || parking.Price != 0)
+        {
+            if (selectedTenant > 0)
+            {
+                var tenant = await TenantService.GetTenant(selectedTenant);
+                tenant.ParkingId = parking.Id;
+                await TenantService.EditTenant(tenant);
+                parking.IsAvailable = false;
+            }
+            else
+            {
+                parking.IsAvailable = true;
+            }
+
+            if (Id != null)
+            {
+                await ParkingService.EditParkingSpace(parking);
+            }
+            else
+            {
+                await ParkingService.AddParkingSpace(parking);
+            }
+
+            NavigationManager.NavigateTo("/parkingspaces");
+        }
+        else
+        {
+            ToastService.ShowError("Du måste fylla i värden för att lägga till en ny parkeringsplats.");
+        }
+
+    }
+}

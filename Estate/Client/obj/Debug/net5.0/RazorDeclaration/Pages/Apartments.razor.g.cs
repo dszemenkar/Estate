@@ -161,7 +161,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 84 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Apartments.razor"
+#line 82 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Apartments.razor"
        
     bool ShowModal { get; set; } = false;
     Apartment Selected { get; set; }
@@ -169,6 +169,14 @@ using Append.Blazor.Printing;
     protected override async Task OnInitializedAsync()
     {
         await ApartmentService.GetApartments();
+    }
+
+    string BusinessProperty(Apartment apartment)
+    {
+        if (apartment.BusinessProperty)
+            return "table-primary";
+        else
+            return string.Empty;
     }
 
     private void Close()

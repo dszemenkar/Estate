@@ -1,0 +1,157 @@
+﻿@page "/myinvoice"
+@inject IInvoiceService InvoiceService
+@inject IToastService ToastService
+@inject IPrintingService PrintingService
+@inject IJSRuntime JS
+@inject NavigationManager NavigationManager
+
+@attribute [Authorize]
+
+<h3>Min hyresavi</h3>
+
+<div class="d-flex justify-content-between">
+    <p>Filtrera: </p>
+    <select class="form-control" @onchange="FilterChanged">
+        <option value="Öppen">Öppna </option>
+        <option value="Betald">Betalda </option>
+        <option value="Alla">Alla </option>
+    </select>
+</div>
+<br />
+@if (Loading)
+{
+    <span>@LoadingText</span>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Datum</th>
+                <th>Förfaller</th>
+                <th>Skriv ut</th>
+                <th>Status</th>
+                <th>Betald</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in InvoicesList)
+            {
+                <tr>
+                    <td>@entry.InvoiceNo</td>
+                    <td>@entry.InvoiceDate.ToString("yyyy-MM-dd")</td>
+                    <td>@entry.InvoiceDate.AddDays(30).ToString("yyyy-MM-dd")</td>
+                    <td><button class="btn btn-primary" @onclick="@(() => Print(entry))">Skriv ut</button></td>
+                    <td>@entry.Status</td>
+                    @if (!entry.Paid)
+                    {
+                        <td><button class="btn btn-info" @onclick="@(() => ShowModalView(entry))">Markera som betald</button></td>
+                    }
+                    else
+                    {
+                        <td>Betald @entry.MarkedAsPaid.ToString("yyyy-MM-dd")</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (ShowModal)
+    {
+        <div class="modal fade show d-block" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleLabel">@Title</h5>
+                        <button type="button" class="close" @onclick="@Close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                            <EditForm Model="selectedInvoice" OnValidSubmit="HandleSubmit">
+                                <div class="form-group">
+                                    <label for="markedAsPaid">Betalt datum: </label>
+                                    <InputDate id="markedAsPaid" @bind-Value="selectedInvoice.MarkedAsPaid" class="form-control"></InputDate>
+                                </div>
+                                <button type="submit" class="btn btn-success">Markera som betald</button>
+                            </EditForm>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" @onclick="@Close">Avbryt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    }
+
+}
+
+@code {
+    string Title { get; set; } = "";
+    bool Loading { get; set; } = true;
+    string LoadingText { get; set; } = "Hämtar fakturor...";
+    bool ShowModal { get; set; } = false;
+    bool GenerateModal { get; set; } = false;
+    Invoice generateInvoice { get; set; } = new Invoice();
+
+    List<Invoice> InvoicesList { get; set; }
+    Invoice selectedInvoice { get; set; }
+    string filter { get; set; } = "Öppen";
+
+    protected override async Task OnInitializedAsync()
+    {
+        FilterBy();
+    }
+
+    protected void FilterChanged(ChangeEventArgs e)
+    {
+        filter = e.Value.ToString();
+        FilterBy();
+    }
+
+    protected async void FilterBy()
+    {
+        Loading = true;
+        LoadingText = "Hämtar fakturor med status " + filter + "...";
+        InvoicesList = await InvoiceService.GetInvoicesWithParameter(filter);
+        Loading = false;
+        this.StateHasChanged();
+    }
+
+    private void Close()
+    {
+        ShowModal = false;
+        GenerateModal = false;
+    }
+
+    private void ShowModalView(Invoice invoice)
+    {
+        selectedInvoice = invoice;
+        ShowModal = true;
+
+        Title = "Markera som betald";
+        selectedInvoice.MarkedAsPaid = DateTime.Now;
+    }
+
+    protected async Task Print(Invoice invoice)
+    {
+        await JS.InvokeAsync<object>("open", "/printinvoice/" + invoice.Id.ToString(), "_blank");
+    }
+
+    private void HandleSubmit()
+    {
+        Paid(selectedInvoice);
+    }
+
+    private async void Paid(Invoice invoice)
+    {
+        invoice.Paid = true;
+        invoice.Status = "Betald";
+        await InvoiceService.EditInvoice(invoice);
+        Close();
+        FilterBy();
+    }
+}

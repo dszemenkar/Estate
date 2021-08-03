@@ -1,6 +1,7 @@
 ﻿@page "/tenants"
 @inject ITenantService TenantService
 @inject IToastService ToastService
+@inject IAuthService AuthService
 @inject NavigationManager NavigationManager
 @attribute [Authorize]
 
@@ -9,6 +10,8 @@
 <div style="margin: 20px;">
     <NavLink href="@($"tenant/create")" class="btn btn-primary"> Lägg till hyresgäst </NavLink>
 </div>
+
+
 
 @if (TenantService.Tenants == null)
 {
@@ -23,7 +26,6 @@ else
                 <th>Efternamn</th>
                 <th>Epost</th>
                 <th>Lägenhet</th>
-                <th>AnvändarId</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -31,15 +33,21 @@ else
         <tbody>
             @foreach (var entry in TenantService.Tenants)
             {
-                <tr>
-                    <td>@entry.FirstName</td>
-                    <td>@entry.LastName</td>
-                    <td>@entry.Email</td>
-                    <td>@entry.ApartmentId</td>
-                    <td>@entry.AppUserId</td>
-                    <td><button class="btn btn-danger" @onclick="@(() => ShowModalView(entry))">Radera</button></td>
-                    <td><NavLink href="@($"tenant/edit/{entry.Id}")" class="btn btn-dark">Ändra</NavLink></td>
-                </tr>
+            <tr>
+                <td>@entry.FirstName</td>
+                <td>@entry.LastName</td>
+                <td>@entry.Email</td>
+                @if (!string.IsNullOrEmpty(entry.ApartmentId.ToString()))
+                {
+                    <td>Ja</td>
+ }
+                else
+                {
+                    <td>Nej</td>
+}
+                <td><NavLink href="@($"tenant/edit/{entry.Id}")" class="btn btn-dark">Ändra</NavLink></td>
+                <td><button class="btn btn-danger" @onclick="@(() => ShowModalView(entry))">Radera</button></td>
+            </tr>
             }
         </tbody>
     </table>

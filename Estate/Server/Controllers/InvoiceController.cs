@@ -30,10 +30,20 @@ namespace Estate.Server.Controllers
             return Ok(await _repo.GetInvoicesWithParam(param));
         }
 
+        [HttpGet("paramanduser/{param}")]
+        public async Task<IActionResult> GetInvoicesWithParamAndUser(string param, AppUser user)
+        {
+            return Ok(await _repo.GetInvoicesWithParamAndUser(param, user));
+        }
+
         [HttpPost("generate")]
         public async Task<IActionResult> GenerateAllInvoices(Invoice invoice)
         {
-            return Ok(await _repo.GenerateAllInvoices(invoice));
+            var response = await _repo.GenerateAllInvoices(invoice);
+            if (response.Data == 0)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpGet("line/{id}")]
@@ -46,10 +56,8 @@ namespace Estate.Server.Controllers
         public async Task<IActionResult> AddInvoice(Invoice invoice)
         {
             var response = await _repo.AddInvoice(invoice);
-            if (!response.Success)
-            {
+            if (response.Data == 0)
                 return BadRequest(response);
-            }
 
             return Ok(response);
         }
@@ -57,7 +65,11 @@ namespace Estate.Server.Controllers
         [HttpPut]
         public async Task<IActionResult> EditInvoice(Invoice invoice)
         {
-            return Ok(await _repo.EditInvoice(invoice));
+            var response = await _repo.EditInvoice(invoice);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpPost("line")]
@@ -65,9 +77,7 @@ namespace Estate.Server.Controllers
         {
             var response = await _repo.AddLine(line);
             if (!response.Success)
-            {
                 return BadRequest(response);
-            }
 
             return Ok(response);
         }
@@ -94,6 +104,12 @@ namespace Estate.Server.Controllers
         public async Task<IActionResult> GetInvoiceLineNo(int id)
         {
             return Ok(await _repo.GetInvoiceLineNo(id));
+        }
+
+        [HttpPost("sendeinvoice")]
+        public async Task<IActionResult> SendEInvoice(Invoice invoice)
+        {
+            return Ok(await _repo.SendEInvoice(invoice));
         }
     }
 }

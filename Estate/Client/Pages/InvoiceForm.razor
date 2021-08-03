@@ -25,9 +25,9 @@
                         <label for="tenant">Lägenhet</label>
                         <select class="form-control" @bind="selectedApartment">
                             <option selected disabled value="0">Lägenhet</option>
-                            @foreach (var apartment in ApartmentService.Apartments)
+                            @foreach (var apartment in ApartmentService.ApartmentsWithTenants)
                             {
-                                <option value="@apartment.Id">Lägenhet: @apartment.Number </option>
+                                <option value="@apartment.Id">Lägenhet: @apartment.Number</option>
                             }
                         </select>
                     </div>
@@ -118,7 +118,7 @@
         }
         else
         {
-            await ApartmentService.GetApartments();
+            await ApartmentService.GetApartmentsWithTenants();
         }
     }
 
@@ -135,14 +135,13 @@
 
             var result = await InvoiceService.AddInvoice(invoice);
 
-            if (result.Success)
+            if (result > 0)
             {
-                ToastService.ShowSuccess(result.Message);
-                NavigationManager.NavigateTo("/invoice/addline/" + result.Data.ToString());
+                NavigationManager.NavigateTo("/invoice/addline/" + result.ToString());
             }
             else
             {
-                ToastService.ShowError(result.Message);
+                NavigationManager.NavigateTo("/invoices");
             }
         }
         else

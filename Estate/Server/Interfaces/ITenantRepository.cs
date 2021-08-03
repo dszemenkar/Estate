@@ -14,5 +14,6 @@ namespace Estate.Server.Interfaces
         Task<ServiceResponse<int>> DeleteTenant(int id);
         Task<Tenant> GetTenant(int id);
         Task<Tenant> GetTenantForApartment(int apartmentId);
+        Task<ParkingSpace> GetParkingForTenant(int parkingId);
     }
 }

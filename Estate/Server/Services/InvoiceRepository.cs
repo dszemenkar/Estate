@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Threading.Tasks;
 
 namespace Estate.Server.Services
@@ -13,19 +15,34 @@ namespace Estate.Server.Services
     {
         private readonly DataContext _context;
         private readonly ITenantRepository _tenantRepository;
+        private readonly IApartmentsRepository _apartmentsRepository;
 
-        public InvoiceRepository(DataContext context, ITenantRepository tenantRepository)
+        public InvoiceRepository(DataContext context, ITenantRepository tenantRepository, IApartmentsRepository apartmentsRepository)
         {
             _context = context;
             _tenantRepository = tenantRepository;
+            _apartmentsRepository = apartmentsRepository;
         }
 
         public async Task<ServiceResponse<int>> AddInvoice(Invoice invoice)
         {
-            _context.Invoices.Add(invoice);
+            var tenant = await _tenantRepository.GetTenantForApartment(invoice.ApartmentId);
+            var alreadyCreated = await CheckIfInvoiceAlreadyCreated(tenant, invoice);
 
-            await _context.SaveChangesAsync();
+            if (!alreadyCreated)
+            {
+                var apartment = await _apartmentsRepository.GetApartment(invoice.ApartmentId);
+                apartment.BusinessMonth = apartment.BusinessMonth + 1;
+                invoice.BusinessMonth = apartment.BusinessMonth;
+                _context.Invoices.Add(invoice);
 
+                await _context.SaveChangesAsync();
+            }
+            else
+            {
+                var response = $"Faktura för {tenant.FirstName} {tenant.LastName} redan skapad för innevarande period. ";
+                return new ServiceResponse<int> { Data = 0, Message = $"Ingen faktura skapad. {response}" };
+            }
             return new ServiceResponse<int> { Data = invoice.Id, Message = "Faktura skapad" };
         }
 
@@ -73,6 +90,7 @@ namespace Estate.Server.Services
             db.MarkedAsPaid = invoice.MarkedAsPaid;
             db.Status = invoice.Status;
             db.Archieved = invoice.Archieved;
+            db.BusinessMonth = invoice.BusinessMonth;
 
             await _context.SaveChangesAsync();
 
@@ -82,25 +100,49 @@ namespace Estate.Server.Services
         public async Task<ServiceResponse<int>> GenerateAllInvoices(Invoice generate)
         {
             var apartments = await _context.Apartments.Where(x => x.IsAvailable == false).Include(x => x.Tenant).ToListAsync();
+            string response = "";
+            int count = 0;
 
             foreach (var i in apartments)
             {
                 var tenant = await _tenantRepository.GetTenantForApartment(i.Id);
-                Invoice invoice = new Invoice();
-                invoice.ApartmentId = i.Id;
-                invoice.InvoiceDate = generate.InvoiceDate;
-                invoice.InvoiceNo = await GetInvoiceNo();
-                var result = await AddInvoice(invoice);
-                InvoiceLine line = new InvoiceLine();
-                line.LineNo = await GetInvoiceLineNo(result.Data);
-                line.InvoiceId = result.Data;
-                line.Description = "Hyra för " + DateTime.Now.ToString("MMMM") + ".";
-                line.AmountInclTax = i.Price;
-                line.AmountExclTax = i.Price * Convert.ToDecimal(0.8);
-                await AddLine(line);
+                var alreadyCreated = await CheckIfInvoiceAlreadyCreated(tenant, generate);
+                if (!alreadyCreated)
+                {
+                    count++;
+                    Invoice invoice = new Invoice();
+                    invoice.ApartmentId = i.Id;
+                    invoice.InvoiceDate = generate.InvoiceDate;
+                    invoice.InvoiceNo = await GetInvoiceNo();
+                    i.BusinessMonth = i.BusinessMonth + 1;
+                    invoice.BusinessMonth = i.BusinessMonth;
+                    var result = await AddInvoice(invoice);
+                    InvoiceLine line = new InvoiceLine();
+                    line.LineNo = await GetInvoiceLineNo(result.Data);
+                    line.InvoiceId = result.Data;
+                    line.Description = "Hyra för " + generate.InvoiceDate.ToString("MMMM") + ".";
+                    line.AmountInclTax = i.Price;
+                    line.AmountExclTax = i.Price * Convert.ToDecimal(0.8);
+                    await AddLine(line);
+                    if (tenant.ParkingId.HasValue)
+                    {
+                        var parking = await _tenantRepository.GetParkingForTenant(tenant.ParkingId.Value);
+                        InvoiceLine line2 = new InvoiceLine();
+                        line2.LineNo = await GetInvoiceLineNo((line.LineNo = line.LineNo++));
+                        line2.InvoiceId = result.Data;
+                        line2.Description = "Parkeringsavgift " + DateTime.Now.ToString("MMMM") + ".";
+                        line2.AmountInclTax = parking.Price;
+                        line2.AmountExclTax = parking.Price * Convert.ToDecimal(0.8);
+                        await AddLine(line2);
+                    }
+                }
+                else
+                {
+                    response += $"Faktura för {tenant.FirstName} {tenant.LastName} redan skapad för innevarande period. ";
+                }
             }
             
-            return new ServiceResponse<int> { Data = apartments.Count, Message = "Fakturor uppskapade!" };
+            return new ServiceResponse<int> { Data = count, Message = $"Fakturor uppskapade. {response}" };
         }
 
         public async Task<Invoice> GetInvoice(int id)
@@ -157,6 +199,55 @@ namespace Estate.Server.Services
                 invoices = await _context.Invoices.Where(x => x.Status == param && x.Archieved == false).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
 
             return invoices;
+        }
+
+        public async Task<IList<Invoice>> GetInvoicesWithParamAndUser(string param, AppUser user)
+        {
+            List<Invoice> invoices = new List<Invoice>();
+
+
+            if (param == "Alla")
+                invoices = await _context.Invoices.Where(x => x.Archieved == false && x.Apartment.Tenant.Id == user.Id).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+            else if (param == "Arkiv")
+                invoices = await _context.Invoices.Where(x => x.Archieved == true && x.Apartment.Tenant.Id == user.Id).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+            else
+                invoices = await _context.Invoices.Where(x => x.Status == param && x.Archieved == false && x.Apartment.Tenant.Id == user.Id).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+
+            return invoices;
+        }
+
+        public async Task<ServiceResponse<int>> SendEInvoice(Invoice invoice)
+        {
+            var smtpClient = new SmtpClient("smtp.gmail.com")
+            {
+                Port = 587,
+                Credentials = new NetworkCredential("revsuddentemp@gmail.com", "4bjqpzazdkgq"),
+                EnableSsl = true,
+            };
+
+            var mailMessage = new MailMessage
+            {
+                From = new MailAddress("revsuddentemp@gmail.com"),
+                Subject = "Din faktura",
+                Body = "<h1>Hello</h1>",
+                IsBodyHtml = true,
+            };
+            mailMessage.To.Add("david.szemenkar@gmail.com");
+
+            smtpClient.Send(mailMessage);
+
+            return new ServiceResponse<int> { Data = 1, Message = $"Skickat epost!" };
+        }
+
+        private async Task<bool> CheckIfInvoiceAlreadyCreated(Tenant tenant, Invoice date)
+        {
+            List<Invoice> invoices = new List<Invoice>();
+            invoices = await _context.Invoices.Where(x => x.Archieved == false && x.ApartmentId == tenant.ApartmentId.Value && x.InvoiceDate.Month == date.InvoiceDate.Month && x.InvoiceDate.Year == date.InvoiceDate.Year).ToListAsync();
+
+            if (invoices.Count == 0)
+                return false;
+            else
+                return true;
         }
     }
 }

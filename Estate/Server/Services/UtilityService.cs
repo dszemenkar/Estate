@@ -22,7 +22,7 @@ namespace Estate.Server.Services
         public async Task<AppUser> GetUser()
         {
             var userId = int.Parse(_httpContextAccessor.HttpContext.User.FindFirstValue(ClaimTypes.NameIdentifier));
-            var user = await _context.AppUsers.FirstOrDefaultAsync(x => x.Id == userId);
+            var user = await _context.AppUsers.Include(x => x.AppUserRoles).FirstOrDefaultAsync(x => x.Id == userId);
             return user;
         }
     }

@@ -3,6 +3,7 @@
 @inject IInvoiceService InvoiceService
 @inject IApartmentService ApartmentService
 @inject ITenantService TenantService
+@inject IParkingService ParkingService
 @inject IToastService ToastService
 @inject NavigationManager NavigationManager
 
@@ -46,6 +47,7 @@
 
     private Invoice invoice { get; set; } = new Invoice();
     private InvoiceLine line { get; set; } = new InvoiceLine();
+    private List<InvoiceLine> lines { get; set; } = new List<InvoiceLine>();
     private Tenant tenant { get; set; } = new Tenant();
     private string Title { get; set; } = "Lägg till";
     private Apartment apartment { get; set; } = new Apartment();
@@ -55,14 +57,28 @@
         invoice = await InvoiceService.GetInvoice(Id);
         apartment = await ApartmentService.GetApartment(invoice.ApartmentId);
         tenant = await TenantService.GetTenantForApartment(apartment.Id);
+        lines = await InvoiceService.GetInvoiceLines(Id);
 
         SetValues();
     }
 
-    private void SetValues()
+    private async void SetValues()
     {
-        line.AmountInclTax = apartment.Price;
-        line.Description = "Hyra för " + invoice.InvoiceDate.ToString("MMMM");
+        if (lines.Count == 0)
+        {
+            line.AmountInclTax = apartment.Price;
+            line.Description = "Hyra för " + invoice.InvoiceDate.ToString("MMMM");
+        }
+        else
+        {
+            if (tenant.ParkingId.HasValue && lines.Count == 1)
+            {
+                var parking = await ParkingService.GetParkingSpace(tenant.ParkingId.Value);
+                line.AmountInclTax = parking.Price;
+                line.Description = "Parkeringsavgift för " + invoice.InvoiceDate.ToString("MMMM");
+            }
+        }
+        this.StateHasChanged();
     }
 
     private async void HandleSubmit()
@@ -73,5 +89,4 @@
 
         NavigationManager.NavigateTo("/invoice/edit/" + invoice.Id.ToString());
     }
-
 }

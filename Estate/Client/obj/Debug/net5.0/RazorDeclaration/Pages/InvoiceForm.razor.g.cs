@@ -182,7 +182,7 @@ using Append.Blazor.Printing;
         }
         else
         {
-            await ApartmentService.GetApartments();
+            await ApartmentService.GetApartmentsWithTenants();
         }
     }
 
@@ -199,14 +199,13 @@ using Append.Blazor.Printing;
 
             var result = await InvoiceService.AddInvoice(invoice);
 
-            if (result.Success)
+            if (result > 0)
             {
-                ToastService.ShowSuccess(result.Message);
-                NavigationManager.NavigateTo("/invoice/addline/" + result.Data.ToString());
+                NavigationManager.NavigateTo("/invoice/addline/" + result.ToString());
             }
             else
             {
-                ToastService.ShowError(result.Message);
+                NavigationManager.NavigateTo("/invoices");
             }
         }
         else

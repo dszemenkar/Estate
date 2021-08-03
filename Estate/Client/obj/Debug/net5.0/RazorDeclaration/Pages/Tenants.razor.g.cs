@@ -146,7 +146,7 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Tenants.razor"
+#line 6 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Tenants.razor"
            [Authorize]
 
 #line default
@@ -161,7 +161,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 71 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Tenants.razor"
+#line 79 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Tenants.razor"
        
 
     bool ShowModal { get; set; } = false;
@@ -200,6 +200,7 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IAuthService AuthService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITenantService TenantService { get; set; }
     }

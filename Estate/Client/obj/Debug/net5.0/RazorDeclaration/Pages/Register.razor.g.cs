@@ -154,7 +154,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 50 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Register.razor"
+#line 52 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\Register.razor"
        
     UserRegister user = new UserRegister();
 

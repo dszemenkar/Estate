@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ch90Uvghn7NKubTTwh30CWTqSPRhHbOsBOjVKbzIwbBvwCakQS+XTql3iRAM6X7Hrq6irfdPjCWQkQBZZRf9gw==",
+  "dgSpecHash": "k1cF+r2Q7Q6cbk1J/+MyIzMrjwNQsYm5fq1eqgHDyc79JLukB+UY7Jjq0EEe1nSIpucL5vEL8volrMxd9fCg9Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Server\\Estate.Server.csproj",
   "expectedPackageFiles": [
@@ -59,6 +59,8 @@
     "C:\\Users\\dszemenk\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
     "C:\\Users\\dszemenk\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
+    "C:\\Users\\dszemenk\\.nuget\\packages\\sendgrid\\9.24.1\\sendgrid.9.24.1.nupkg.sha512",
+    "C:\\Users\\dszemenk\\.nuget\\packages\\starkbank-ecdsa\\1.3.1\\starkbank-ecdsa.1.3.1.nupkg.sha512",
     "C:\\Users\\dszemenk\\.nuget\\packages\\syncfusion.blazor.buttons\\19.2.0.49\\syncfusion.blazor.buttons.19.2.0.49.nupkg.sha512",
     "C:\\Users\\dszemenk\\.nuget\\packages\\syncfusion.blazor.core\\19.2.0.49\\syncfusion.blazor.core.19.2.0.49.nupkg.sha512",
     "C:\\Users\\dszemenk\\.nuget\\packages\\syncfusion.blazor.data\\19.2.0.49\\syncfusion.blazor.data.19.2.0.49.nupkg.sha512",

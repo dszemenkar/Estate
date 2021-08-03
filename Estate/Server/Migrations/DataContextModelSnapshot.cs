@@ -29,6 +29,12 @@ namespace Estate.Server.Migrations
                     b.Property<bool>("Archieved")
                         .HasColumnType("bit");
 
+                    b.Property<int>("BusinessMonth")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("BusinessProperty")
+                        .HasColumnType("bit");
+
                     b.Property<int>("Floor")
                         .HasColumnType("int");
 
@@ -130,6 +136,9 @@ namespace Estate.Server.Migrations
                     b.Property<bool>("Archieved")
                         .HasColumnType("bit");
 
+                    b.Property<int>("BusinessMonth")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("InvoiceDate")
                         .HasColumnType("datetime2");
 
@@ -187,6 +196,30 @@ namespace Estate.Server.Migrations
                     b.ToTable("InvoiceLines");
                 });
 
+            modelBuilder.Entity("Estate.Shared.ParkingSpace", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<bool>("Archieved")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(9,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ParkingSpaces");
+                });
+
             modelBuilder.Entity("Estate.Shared.Tenant", b =>
                 {
                     b.Property<int>("Id")
@@ -221,6 +254,9 @@ namespace Estate.Server.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ParkingId")
+                        .HasColumnType("int");
+
                     b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
@@ -235,13 +271,17 @@ namespace Estate.Server.Migrations
 
                     b.HasIndex("AppUserId");
 
+                    b.HasIndex("ParkingId")
+                        .IsUnique()
+                        .HasFilter("[ParkingId] IS NOT NULL");
+
                     b.ToTable("Tenants");
                 });
 
             modelBuilder.Entity("Estate.Shared.AppUser", b =>
                 {
                     b.HasOne("Estate.Shared.AppUserRoles", "AppUserRoles")
-                        .WithMany("AppUsers")
+                        .WithMany()
                         .HasForeignKey("AppUserRolesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -281,9 +321,15 @@ namespace Estate.Server.Migrations
                         .WithMany()
                         .HasForeignKey("AppUserId");
 
+                    b.HasOne("Estate.Shared.ParkingSpace", "Parking")
+                        .WithOne("Tenant")
+                        .HasForeignKey("Estate.Shared.Tenant", "ParkingId");
+
                     b.Navigation("Apartment");
 
                     b.Navigation("AppUser");
+
+                    b.Navigation("Parking");
                 });
 
             modelBuilder.Entity("Estate.Shared.Apartment", b =>
@@ -291,14 +337,14 @@ namespace Estate.Server.Migrations
                     b.Navigation("Tenant");
                 });
 
-            modelBuilder.Entity("Estate.Shared.AppUserRoles", b =>
-                {
-                    b.Navigation("AppUsers");
-                });
-
             modelBuilder.Entity("Estate.Shared.Invoice", b =>
                 {
                     b.Navigation("InvoiceLines");
+                });
+
+            modelBuilder.Entity("Estate.Shared.ParkingSpace", b =>
+                {
+                    b.Navigation("Tenant");
                 });
 #pragma warning restore 612, 618
         }

@@ -26,6 +26,13 @@
                         <label for="floor">Våning</label>
                         <InputNumber id="floor" @bind-Value="apartment.Floor" class="form-control"></InputNumber>
                     </div>
+                    <div class="form-check">
+                        <span style="margin-right: 50px;">
+                            <label for="confirmed">Affärslokal</label>
+                        </span>
+                        <InputCheckbox id="businessProperty" @bind-Value="apartment.BusinessProperty" class="form-check-input"></InputCheckbox>
+                        <ValidationMessage For="@(() => apartment.BusinessProperty)" />
+                    </div>
                     <div class="form-group">
                         <label for="sqmeters">Kvadratmeter</label>
                         <InputNumber id="sqmeters" @bind-Value="apartment.SqMeters" class="form-control"></InputNumber>
@@ -36,18 +43,18 @@
                     </div>
                     @if (showTenants)
                     {
-                <div class="form-group">
-                    <label for="tenant">Hyresgäst</label>
-                    <select class="form-control" @bind="selectedTenant">
-                        <option selected disabled value="-1">Lägg till hyresgäst</option>
-                        @foreach (var tenant in TenantService.Tenants)
-                        {
-                            <option value="@tenant.Id">@tenant.FirstName @tenant.LastName</option>
-                        }
-                    </select>
-                </div>
+                        <div class="form-group">
+                            <label for="tenant">Hyresgäst</label>
+                            <select class="form-control" @bind="selectedTenant">
+                                <option selected disabled value="-1">Lägg till hyresgäst</option>
+                                @foreach (var tenant in TenantService.Tenants)
+                                {
+                                    <option value="@tenant.Id">@tenant.FirstName @tenant.LastName</option>
+                                }
+                            </select>
+                        </div>
                     }
-                    
+
                     <button type="submit" class="btn btn-success">Spara lägenhet</button>
                 </EditForm>
             </div>

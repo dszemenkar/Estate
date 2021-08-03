@@ -154,13 +154,14 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 43 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\InvoiceCreationForm.razor"
+#line 44 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\InvoiceCreationForm.razor"
        
     [Parameter]
     public int Id { get; set; }
 
     private Invoice invoice { get; set; } = new Invoice();
     private InvoiceLine line { get; set; } = new InvoiceLine();
+    private List<InvoiceLine> lines { get; set; } = new List<InvoiceLine>();
     private Tenant tenant { get; set; } = new Tenant();
     private string Title { get; set; } = "Lägg till";
     private Apartment apartment { get; set; } = new Apartment();
@@ -170,14 +171,28 @@ using Append.Blazor.Printing;
         invoice = await InvoiceService.GetInvoice(Id);
         apartment = await ApartmentService.GetApartment(invoice.ApartmentId);
         tenant = await TenantService.GetTenantForApartment(apartment.Id);
+        lines = await InvoiceService.GetInvoiceLines(Id);
 
         SetValues();
     }
 
-    private void SetValues()
+    private async void SetValues()
     {
-        line.AmountInclTax = apartment.Price;
-        line.Description = "Hyra för " + invoice.InvoiceDate.ToString("MMMM");
+        if (lines.Count == 0)
+        {
+            line.AmountInclTax = apartment.Price;
+            line.Description = "Hyra för " + invoice.InvoiceDate.ToString("MMMM");
+        }
+        else
+        {
+            if (tenant.ParkingId.HasValue && lines.Count == 1)
+            {
+                var parking = await ParkingService.GetParkingSpace(tenant.ParkingId.Value);
+                line.AmountInclTax = parking.Price;
+                line.Description = "Parkeringsavgift för " + invoice.InvoiceDate.ToString("MMMM");
+            }
+        }
+        this.StateHasChanged();
     }
 
     private async void HandleSubmit()
@@ -189,12 +204,12 @@ using Append.Blazor.Printing;
         NavigationManager.NavigateTo("/invoice/edit/" + invoice.Id.ToString());
     }
 
-
 #line default
 #line hidden
 #nullable disable
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private NavigationManager NavigationManager { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IToastService ToastService { get; set; }
+        [global::Microsoft.AspNetCore.Components.InjectAttribute] private IParkingService ParkingService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private ITenantService TenantService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IApartmentService ApartmentService { get; set; }
         [global::Microsoft.AspNetCore.Components.InjectAttribute] private IInvoiceService InvoiceService { get; set; }

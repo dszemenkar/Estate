@@ -1,0 +1,110 @@
+﻿@page "/parkingspaces"
+@inject IParkingService ParkingService
+@inject IToastService ToastService
+@inject IAuthService AuthService
+@inject NavigationManager NavigationManager
+@attribute [Authorize]
+
+<h3>Parkeringsplatser</h3>
+
+<div style="margin: 20px;">
+    <NavLink href="@($"parkingspaces/create")" class="btn btn-primary"> Lägg till parkeringsplats </NavLink>
+</div>
+
+
+
+@if (ParkingService.ParkingSpaces == null)
+{
+    <span>Hämtar parkeringsplatser..</span>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nummer</th>
+                <th>Tillgänglig</th>
+                <th>Pris</th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var entry in ParkingService.ParkingSpaces)
+            {
+            <tr>
+                <td>@entry.Number</td>
+                @if (entry.IsAvailable)
+                {
+                    <td>Ja</td>
+                }
+                else
+                {
+                    <td>Nej</td>
+                }
+                <td>@entry.Price</td>
+                <td><button class="btn btn-danger" @onclick="@(() => ShowModalView(entry))">Radera</button></td>
+                <td><NavLink href="@($"parkingspaces/edit/{entry.Id}")" class="btn btn-dark">Ändra</NavLink></td>
+            </tr>
+            }
+        </tbody>
+    </table>
+
+    @if (ShowModal)
+    {
+        <div class="modal fade show d-block" id="exampleModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="titleLabel">Radera</h5>
+                        <button type="button" class="close" @onclick="@Close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Är du säker på att du vill radera? Parkeringsplatsen kommer försvinna helt!</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-danger" @onclick="@(() => Delete(Selected.Id))">Radera</button>
+                        <button type="button" class="btn btn-secondary" @onclick="@Close">Avbryt</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@code {
+
+    bool ShowModal { get; set; } = false;
+    ParkingSpace Selected { get; set; }
+
+    protected override async Task OnInitializedAsync()
+    {
+        await ParkingService.GetParkingSpaces();
+    }
+
+    private void Close()
+    {
+        ShowModal = false;
+    }
+
+    private void ShowModalView(ParkingSpace parking)
+    {
+        Selected = parking;
+        ShowModal = true;
+    }
+
+    private async void Delete(int id)
+    {
+        await ParkingService.DeleteParkingSpace(id);
+        Close();
+        UpdateView();
+    }
+
+    private async void UpdateView()
+    {
+        await ParkingService.GetParkingSpaces();
+        this.StateHasChanged();
+    }
+}

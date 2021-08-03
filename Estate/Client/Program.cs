@@ -33,6 +33,7 @@ namespace Estate.Client
             builder.Services.AddScoped<IApartmentService, ApartmentService>();
             builder.Services.AddScoped<ITenantService, TenantService>();
             builder.Services.AddScoped<IInvoiceService, InvoiceService>();
+            builder.Services.AddScoped<IParkingService, ParkingService>();
             builder.Services.AddScoped<IPrintingService, PrintingService>();
             builder.Services.AddSingleton<PDFService>();
 

@@ -36,6 +36,7 @@ namespace Estate.Server.Services
             {
                 var apartment = await _context.Apartments.Where(x => x.Id == db.ApartmentId).FirstOrDefaultAsync();
                 apartment.IsAvailable = true;
+                apartment.BusinessMonth = 0;
                 await _context.SaveChangesAsync();
             }
 
@@ -53,11 +54,19 @@ namespace Estate.Server.Services
             if (db == null)
                 return new ServiceResponse<int> { Data = tenant.Id, Message = "Hittar inte hyresgästen." };
 
+            //If tenant is removed from apartemnt, the business month will be reset.
+            if (!string.IsNullOrEmpty(db.ApartmentId.ToString()) && string.IsNullOrEmpty(tenant.ApartmentId.ToString()))
+            {
+                var apartment = await _context.Apartments.Where(x => x.Id == db.ApartmentId).FirstOrDefaultAsync();
+                apartment.BusinessMonth = 0;
+            } 
+
             db.FirstName = tenant.FirstName;
             db.LastName = tenant.LastName;
             db.Email = tenant.Email;
             db.AppUserId = tenant.AppUserId;
             db.ApartmentId = tenant.ApartmentId;
+            db.ParkingId = tenant.ParkingId;
             db.Address = tenant.Address;
             db.ZipCode = tenant.ZipCode;
             db.Phone = tenant.Phone;
@@ -84,6 +93,14 @@ namespace Estate.Server.Services
             tenant = await _context.Tenants.Where(x => x.ApartmentId == apartmentId).FirstOrDefaultAsync();
 
             return tenant;
+        }
+
+        public async Task<ParkingSpace> GetParkingForTenant(int parkingId)
+        {
+            ParkingSpace parking = new ParkingSpace();
+            parking = await _context.ParkingSpaces.Where(x => x.Id == parkingId).FirstOrDefaultAsync();
+
+            return parking;
         }
 
         public async Task<IList<Tenant>> GetTenants()

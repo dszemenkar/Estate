@@ -23,13 +23,23 @@ namespace Estate.Client.Services
 
         //public IList<Invoice> Invoices { get; set; } = new List<Invoice>();
 
-        public async Task<ServiceResponse<int>> AddInvoice(Invoice invoice)
+        public async Task<int> AddInvoice(Invoice invoice)
         {
             var invNo = await GetInvoiceNo();
             invoice.InvoiceNo = invNo;
             var result = await _http.PostAsJsonAsync<Invoice>("api/invoice", invoice);
-
-            return await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
+            var resp = await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
+            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+            {
+                _toastService.ShowError(resp.Message);
+                return 0;
+            }
+            else
+            {
+                _toastService.ShowSuccess(resp.Message);
+                return resp.Data;
+            }
+                
         }
 
         public async Task AddLine(InvoiceLine line)
@@ -88,6 +98,12 @@ namespace Estate.Client.Services
             return invoices;
         }
 
+        public async Task<List<Invoice>> GetInvoicesWithParameterAndUser(string param, AppUser user)
+        {
+            var invoices = await _http.GetFromJsonAsync<List<Invoice>>("api/invoice/paramanduser/" + param);
+            return invoices;
+        }
+
         public async Task<int> GetInvoiceNo()
         {
             var result = await _http.GetFromJsonAsync<int>("api/invoice/invoiceno");
@@ -103,8 +119,25 @@ namespace Estate.Client.Services
         public async Task<ServiceResponse<int>> GenerateAllInvoices(Invoice invoice)
         {
             var result = await _http.PostAsJsonAsync<Invoice>("api/invoice/generate", invoice);
+            var resp = await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
+            if (result.StatusCode == System.Net.HttpStatusCode.OK)
+                _toastService.ShowInfo($"{resp.Data} {resp.Message}");
+            else
+                _toastService.ShowError($"{resp.Data} {resp.Message}");
 
-            return await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
+            return resp;
+        }
+
+        public async Task<ServiceResponse<int>> SendEInvoice(Invoice invoice)
+        {
+            var result = await _http.PostAsJsonAsync<Invoice>("api/invoice/sendeinvoice", invoice);
+            var resp = await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
+            if (result.StatusCode == System.Net.HttpStatusCode.OK)
+                _toastService.ShowInfo($"{resp.Data} {resp.Message}");
+            else
+                _toastService.ShowError($"{resp.Data} {resp.Message}");
+
+            return resp;
         }
     }
 }

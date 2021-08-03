@@ -13,6 +13,8 @@ namespace Estate.Shared
         public AppUser AppUser { get; set; }
         public int? ApartmentId { get; set; }
         public Apartment Apartment { get; set; }
+        public int? ParkingId { get; set; }
+        public ParkingSpace Parking { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }

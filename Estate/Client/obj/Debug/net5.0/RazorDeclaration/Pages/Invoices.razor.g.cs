@@ -233,7 +233,7 @@ using Append.Blazor.Printing;
 
     protected async Task Print(Invoice invoice)
     {
-        if (!invoice.Printed)
+        if (!invoice.Printed && !invoice.Paid)
         {
             invoice.Printed = true;
             invoice.Status = "Utskriven";
@@ -265,7 +265,7 @@ using Append.Blazor.Printing;
     private async void GenerateInvoices()
     {
         var result = await InvoiceService.GenerateAllInvoices(generateInvoice);
-        ToastService.ShowSuccess(result.Data.ToString() + " fakturor skapade.", "Fakturor för " + DateTime.Now.ToString("MMMM"));
+        //ToastService.ShowSuccess(result.Data.ToString() + " fakturor skapade.", "Fakturor för " + DateTime.Now.ToString("MMMM"));
         Close();
         FilterBy();
     }
@@ -274,7 +274,7 @@ using Append.Blazor.Printing;
     {
         invoice.Archieved = true;
         await InvoiceService.EditInvoice(invoice);
-        ToastService.ShowSuccess(invoice.InvoiceNo + " har arkiverats.", "Faktura arkiverad");
+        //ToastService.ShowSuccess(invoice.InvoiceNo + " har arkiverats.", "Faktura arkiverad");
 
         FilterBy();
     }

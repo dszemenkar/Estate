@@ -10,6 +10,7 @@ namespace Estate.Shared
     {
         public int Id { get; set; }
         public int InvoiceNo { get; set; }
+        public int BusinessMonth { get; set; }
         public DateTime InvoiceDate { get; set; } = DateTime.Now;
         public int ApartmentId { get; set; }
         public Apartment Apartment { get; set; }

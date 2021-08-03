@@ -10,6 +10,7 @@ namespace Estate.Server.Interfaces
     {
         Task<IList<Invoice>> GetInvoices();
         Task<IList<Invoice>> GetInvoicesWithParam(string param);
+        Task<IList<Invoice>> GetInvoicesWithParamAndUser(string param, AppUser user);
         Task<ServiceResponse<int>> AddInvoice(Invoice invoice);
         Task<ServiceResponse<int>> AddLine(InvoiceLine line);
         Task<ServiceResponse<int>> EditInvoice(Invoice invoice);
@@ -19,5 +20,6 @@ namespace Estate.Server.Interfaces
         Task<List<InvoiceLine>> GetInvoiceLines(int id);
         Task<int> GetInvoiceNo();
         Task<int> GetInvoiceLineNo(int id);
+        Task<ServiceResponse<int>> SendEInvoice(Invoice invoice); 
     }
 }

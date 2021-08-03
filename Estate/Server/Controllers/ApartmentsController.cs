@@ -25,6 +25,12 @@ namespace Estate.Server.Controllers
             return Ok(await _context.GetApartments());
         }
 
+        [HttpGet("occupied")]
+        public async Task<IActionResult> GetApartmentsWithTenants()
+        {
+            return Ok(await _context.GetApartmentsWithTenants());
+        }
+
         [HttpPost]
         public async Task<IActionResult> AddApartment(Apartment apartment)
         {

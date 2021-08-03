@@ -48,31 +48,31 @@ else
         <tbody>
             @foreach (var entry in InvoicesList)
             {
-            <tr>
-                <td>@entry.InvoiceNo</td>
-                <td>@entry.InvoiceDate.ToString("yyyy-MM-dd")</td>
-                <td>@entry.InvoiceDate.AddDays(30).ToString("yyyy-MM-dd")</td>
-                <td>@entry.Apartment.Number</td>
-                <td><button class="btn btn-primary" @onclick="@(() => Print(entry))">Skriv ut</button></td>
-                <td>@entry.Status</td>
-                @if (!entry.Paid)
-                {
-                    <td><button class="btn btn-info" @onclick="@(() => ShowModalView("Paid", entry))">Markera som betald</button></td>
-                }
-                else
-                {
-                    <td>Betald @entry.MarkedAsPaid.ToString("yyyy-MM-dd")</td>
-                }
-                @if (!entry.Paid)
-                {
-                    <td><NavLink href="@($"invoice/edit/{entry.Id}")" class="btn btn-dark">Ändra</NavLink></td>
-                    <td><button class="btn btn-danger" @onclick="@(() => ShowModalView("Delete", entry))">Radera</button></td>
-                }
-                else
-                {
-                    <td><button class="btn btn-outline-dark" @onclick="@(() => Archive(entry))">Arkivera</button></td>
-                }
-            </tr>
+                <tr>
+                    <td>@entry.InvoiceNo</td>
+                    <td>@entry.InvoiceDate.ToString("yyyy-MM-dd")</td>
+                    <td>@entry.InvoiceDate.AddDays(30).ToString("yyyy-MM-dd")</td>
+                    <td>@entry.Apartment.Number</td>
+                    <td><button class="btn btn-primary" @onclick="@(() => Print(entry))">Skriv ut</button></td>
+                    <td>@entry.Status</td>
+                    @if (!entry.Paid)
+                    {
+                        <td><button class="btn btn-info" @onclick="@(() => ShowModalView("Paid", entry))">Markera som betald</button></td>
+                    }
+                    else
+                    {
+                        <td>Betald @entry.MarkedAsPaid.ToString("yyyy-MM-dd")</td>
+                    }
+                    @if (!entry.Paid)
+                    {
+                        <td><NavLink href="@($"invoice/edit/{entry.Id}")" class="btn btn-dark">Ändra</NavLink></td>
+
+                    }
+                    else
+                    {
+                        <td><button class="btn btn-outline-dark" @onclick="@(() => Archive(entry))">Arkivera</button></td>
+                    }
+                </tr>
             }
         </tbody>
     </table>
@@ -217,7 +217,7 @@ else
 
     protected async Task Print(Invoice invoice)
     {
-        if (!invoice.Printed)
+        if (!invoice.Printed && !invoice.Paid)
         {
             invoice.Printed = true;
             invoice.Status = "Utskriven";
@@ -249,7 +249,7 @@ else
     private async void GenerateInvoices()
     {
         var result = await InvoiceService.GenerateAllInvoices(generateInvoice);
-        ToastService.ShowSuccess(result.Data.ToString() + " fakturor skapade.", "Fakturor för " + DateTime.Now.ToString("MMMM"));
+        //ToastService.ShowSuccess(result.Data.ToString() + " fakturor skapade.", "Fakturor för " + DateTime.Now.ToString("MMMM"));
         Close();
         FilterBy();
     }
@@ -258,7 +258,7 @@ else
     {
         invoice.Archieved = true;
         await InvoiceService.EditInvoice(invoice);
-        ToastService.ShowSuccess(invoice.InvoiceNo + " har arkiverats.", "Faktura arkiverad");
+        //ToastService.ShowSuccess(invoice.InvoiceNo + " har arkiverats.", "Faktura arkiverad");
 
         FilterBy();
     }

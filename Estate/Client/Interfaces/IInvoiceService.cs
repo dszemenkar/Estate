@@ -10,15 +10,17 @@ namespace Estate.Client.Interfaces
     {
         //IList<Invoice> Invoices { get; set; }
         Task<Invoice> GetInvoice(int id);
-        Task<ServiceResponse<int>> AddInvoice(Invoice invoice);
+        Task<int> AddInvoice(Invoice invoice);
         Task AddLine(InvoiceLine line);
         Task EditInvoice(Invoice invoice);
         Task DeleteInvoice(int id);
         Task<List<Invoice>> GetInvoices();
         Task<List<Invoice>> GetInvoicesWithParameter(string param);
+        Task<List<Invoice>> GetInvoicesWithParameterAndUser(string param, AppUser user);
         Task<List<InvoiceLine>> GetInvoiceLines(int id);
         Task<int> GetInvoiceNo();
         Task<int> GetInvoiceLineNo(int id);
         Task<ServiceResponse<int>> GenerateAllInvoices(Invoice invoice);
+        Task<ServiceResponse<int>> SendEInvoice(Invoice invoice);
     }
 }

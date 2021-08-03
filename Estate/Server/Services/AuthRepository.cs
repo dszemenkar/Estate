@@ -28,7 +28,7 @@ namespace Estate.Server.Services
         public async Task<ServiceResponse<string>> Login(string email, string password)
         {
             var response = new ServiceResponse<string>();
-            var user = await _context.AppUsers.FirstOrDefaultAsync(x => x.Email.ToLower().Equals(email.ToLower()));
+            var user = await _context.AppUsers.Include(x => x.AppUserRoles).FirstOrDefaultAsync(x => x.Email.ToLower().Equals(email.ToLower()));
             if (user == null)
             {
                 response.Success = false;
@@ -105,7 +105,8 @@ namespace Estate.Server.Services
             List<Claim> claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, appUser.Id.ToString()),
-                new Claim(ClaimTypes.Name, appUser.FirstName + " " + appUser.LastName)
+                new Claim(ClaimTypes.Name, appUser.FirstName + " " + appUser.LastName),
+                new Claim(ClaimTypes.Role, appUser.AppUserRoles.Role)
             };
 
             var key = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(

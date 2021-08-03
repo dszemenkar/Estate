@@ -213,13 +213,13 @@
       "mscorlib.dll": "sha256-jU85t8bOVm2PPQRkPJ1kS0nCJIyBjjlet2IR1d9m+RI=",
       "netstandard.dll": "sha256-B6gmXEMfYgOuaOR1g1cGHLn2kDlZYAah4K2XNUZbTs4=",
       "System.Private.CoreLib.dll": "sha256-XY0bl1U8F\/iSbQzkmIHM8UtE\/R9VntZoy\/kMbvuMjTA=",
-      "Estate.Shared.dll": "sha256-f2I\/CohNA3uHYb0GiZjWbE4RQVJdGGa4+BaOTEnpHg4=",
-      "Estate.Client.dll": "sha256-pQ3viwspNPBuN4Dpkis\/RApbzFtUBUFDEr5RoS+6sZI="
+      "Estate.Shared.dll": "sha256-XFaW16Nrkzx4l1W3+azYpCbyUw6rR8DW5ACvWiU+WI0=",
+      "Estate.Client.dll": "sha256-LEGnSevS5MIeMo2llosRRLvNGHfIKmwNc9KpXB\/tbQk="
     },
     "lazyAssembly": null,
     "pdb": {
-      "Estate.Shared.pdb": "sha256-3XwZuFby2yFI\/WprblibX1nLKcNv5h6PHgh4JhDzVh8=",
-      "Estate.Client.pdb": "sha256-g1SiZaGrewzYpimRm16iPCTp9FLDIMoSmrYAvm+\/PEE="
+      "Estate.Shared.pdb": "sha256-uHzUAXwnO5eq6p6b1KYGJRSzX8fG1rah+cuXhWAqS30=",
+      "Estate.Client.pdb": "sha256-UhaQ+HTHIbcPtaN42ThQe9l0CyLKiFp3R6JtNnkVqBo="
     },
     "runtime": {
       "dotnet.timezones.blat": "sha256-OEDZp6noMH3AdT8qd0zd7ZXzy2CsPQ+CZeQnYmRoVWo=",
