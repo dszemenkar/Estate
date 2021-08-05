@@ -1,5 +1,6 @@
 ﻿using Estate.Server.Interfaces;
 using Estate.Shared;
+using Estate.Shared.Helpers;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -94,6 +95,22 @@ namespace Estate.Server.Controllers
             return Ok(await _repo.GetInvoice(id));
         }
 
+        [HttpGet("tenant/{guid}")]
+        public async Task<IActionResult> GetInvoiceWithGuid(Guid guid)
+        {
+            return Ok(await _repo.GetInvoiceWithGuid(guid));
+        }
+
+        [HttpPut("tenant")]
+        public async Task<IActionResult> TenantOpenedInvoice(Invoice invoice)
+        {
+            var response = await _repo.EditInvoice(invoice);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
+        }
+
         [HttpGet("invoiceno")]
         public async Task<IActionResult> GetInvoiceNo()
         {
@@ -107,9 +124,9 @@ namespace Estate.Server.Controllers
         }
 
         [HttpPost("sendeinvoice")]
-        public async Task<IActionResult> SendEInvoice(Invoice invoice)
+        public async Task<IActionResult> SendEInvoice(InvoiceMailDto mailDto)
         {
-            return Ok(await _repo.SendEInvoice(invoice));
+            return Ok(await _repo.SendEInvoice(mailDto));
         }
     }
 }

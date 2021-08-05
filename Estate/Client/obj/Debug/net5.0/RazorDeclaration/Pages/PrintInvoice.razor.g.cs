@@ -13,133 +13,140 @@ namespace Estate.Client.Pages
     using System.Threading.Tasks;
     using Microsoft.AspNetCore.Components;
 #nullable restore
-#line 1 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 1 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using System.Net.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 2 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 2 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using System.Net.Http.Json;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 3 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 3 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Forms;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 4 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 4 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Routing;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 5 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 5 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 6 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 6 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Web.Virtualization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 7 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 7 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.WebAssembly.Http;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 8 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 8 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Microsoft.JSInterop;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 9 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 9 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Estate.Client;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 10 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 10 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Estate.Client.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 11 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 11 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Estate.Client.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 12 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 12 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Estate.Client.Interfaces;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 13 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 13 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Estate.Shared;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 14 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 14 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
+using Estate.Shared.Helpers;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 15 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Blazored.Toast;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 15 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 16 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Blazored.Toast.Services;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 16 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 17 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Microsoft.AspNetCore.Components.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 17 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 18 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Microsoft.AspNetCore.Authorization;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 18 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 19 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Blazored.LocalStorage;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
-#line 19 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\_Imports.razor"
+#line 20 "C:\Users\dszem\source\repos\Estate\Estate\Client\_Imports.razor"
 using Append.Blazor.Printing;
 
 #line default
@@ -155,7 +162,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 167 "C:\Users\dszemenk\source\repos\Estate\Estate\Client\Pages\PrintInvoice.razor"
+#line 167 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\PrintInvoice.razor"
        
     [Parameter]
     public int Id { get; set; }
@@ -189,14 +196,29 @@ using Append.Blazor.Printing;
         Loading = false;
         this.StateHasChanged();
 
-        await InvoiceService.SendEInvoice(invoice);
+        if (!tenant.EInvoice)
+        {
+            Print();
+        }
+        else
+        {
+            EmailInvoice();
+        }
 
-        Print();
+    }
+
+    protected async void EmailInvoice()
+    {
+        InvoiceMailDto mailDto = new InvoiceMailDto();
+        mailDto.Invoice = invoice;
+        mailDto.Tenant = tenant;
+        await InvoiceService.SendEInvoice(mailDto);
+        ToastService.ShowSuccess($"Hyresavi skickad till epost: {tenant.Email}.", "Epost skickad");
     }
 
     protected async void Print()
     {
-        await Task.Delay(3000);
+        await Task.Delay(5000);
         await JS.InvokeVoidAsync("printInvoice");
     }
 

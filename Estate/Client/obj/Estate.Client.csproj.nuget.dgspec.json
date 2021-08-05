@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Client\\Estate.Client.csproj": {}
+    "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Client\\Estate.Client.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Client\\Estate.Client.csproj": {
+    "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Client\\Estate.Client.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Client\\Estate.Client.csproj",
+        "projectUniqueName": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Client\\Estate.Client.csproj",
         "projectName": "Estate.Client",
-        "projectPath": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Client\\Estate.Client.csproj",
-        "packagesPath": "C:\\Users\\dszemenk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Client\\obj\\",
+        "projectPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Client\\Estate.Client.csproj",
+        "packagesPath": "C:\\Users\\dszem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Client\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\dszemenk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dszem\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -33,8 +32,8 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {
-                "projectPath": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj"
+              "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {
+                "projectPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj"
               }
             }
           }
@@ -74,10 +73,6 @@
               "target": "Package",
               "version": "[19.2.0.49, )"
             },
-            "Syncfusion.Pdf.Net.Core": {
-              "target": "Package",
-              "version": "[19.2.0.49, )"
-            },
             "System.Net.Http.Json": {
               "target": "Package",
               "version": "[5.0.0, )"
@@ -96,7 +91,7 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.NETCore.App.Runtime.browser-wasm",
-              "version": "[5.0.6, 5.0.6]"
+              "version": "[5.0.8, 5.0.8]"
             }
           ],
           "frameworkReferences": {
@@ -104,7 +99,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -113,21 +108,20 @@
         }
       }
     },
-    "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {
+    "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
         "projectName": "Estate.Shared",
-        "projectPath": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
-        "packagesPath": "C:\\Users\\dszemenk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\obj\\",
+        "projectPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
+        "packagesPath": "C:\\Users\\dszem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\dszemenk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dszem\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -168,7 +162,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

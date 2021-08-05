@@ -139,6 +139,9 @@ namespace Estate.Server.Migrations
                     b.Property<int>("BusinessMonth")
                         .HasColumnType("int");
 
+                    b.Property<Guid>("Guid")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<DateTime>("InvoiceDate")
                         .HasColumnType("datetime2");
 
@@ -147,6 +150,9 @@ namespace Estate.Server.Migrations
 
                     b.Property<DateTime>("MarkedAsPaid")
                         .HasColumnType("datetime2");
+
+                    b.Property<bool>("OpenedByTenant")
+                        .HasColumnType("bit");
 
                     b.Property<bool>("Paid")
                         .HasColumnType("bit");

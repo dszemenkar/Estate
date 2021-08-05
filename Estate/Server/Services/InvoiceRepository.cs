@@ -1,6 +1,7 @@
 ﻿using Estate.Server.Data;
 using Estate.Server.Interfaces;
 using Estate.Shared;
+using Estate.Shared.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -34,6 +35,7 @@ namespace Estate.Server.Services
                 var apartment = await _apartmentsRepository.GetApartment(invoice.ApartmentId);
                 apartment.BusinessMonth = apartment.BusinessMonth + 1;
                 invoice.BusinessMonth = apartment.BusinessMonth;
+                invoice.Guid = Guid.NewGuid();
                 _context.Invoices.Add(invoice);
 
                 await _context.SaveChangesAsync();
@@ -91,6 +93,7 @@ namespace Estate.Server.Services
             db.Status = invoice.Status;
             db.Archieved = invoice.Archieved;
             db.BusinessMonth = invoice.BusinessMonth;
+            db.OpenedByTenant = invoice.OpenedByTenant;
 
             await _context.SaveChangesAsync();
 
@@ -116,6 +119,7 @@ namespace Estate.Server.Services
                     invoice.InvoiceNo = await GetInvoiceNo();
                     i.BusinessMonth = i.BusinessMonth + 1;
                     invoice.BusinessMonth = i.BusinessMonth;
+                    invoice.Guid = Guid.NewGuid();
                     var result = await AddInvoice(invoice);
                     InvoiceLine line = new InvoiceLine();
                     line.LineNo = await GetInvoiceLineNo(result.Data);
@@ -216,23 +220,31 @@ namespace Estate.Server.Services
             return invoices;
         }
 
-        public async Task<ServiceResponse<int>> SendEInvoice(Invoice invoice)
+        public async Task<Invoice> GetInvoiceWithGuid(Guid guid)
+        {
+            Invoice db = new Invoice();
+            db = await _context.Invoices.Include(x => x.Apartment).FirstOrDefaultAsync(x => x.Guid == guid);
+
+            return db;
+        }
+
+        public async Task<ServiceResponse<int>> SendEInvoice(InvoiceMailDto mailDto)
         {
             var smtpClient = new SmtpClient("smtp.gmail.com")
             {
                 Port = 587,
-                Credentials = new NetworkCredential("revsuddentemp@gmail.com", "4bjqpzazdkgq"),
+                Credentials = new NetworkCredential("david.szemenkar@gmail.com", "4bjqpzazdkgq"),
                 EnableSsl = true,
             };
 
             var mailMessage = new MailMessage
             {
-                From = new MailAddress("revsuddentemp@gmail.com"),
-                Subject = "Din faktura",
-                Body = "<h1>Hello</h1>",
+                From = new MailAddress("david.szemenkar@gmail.com"),
+                Subject = $"Din hyresavi för {mailDto.Invoice.InvoiceDate.ToString("MMMM")}.",
+                Body = $"<h4>Hej {mailDto.Tenant.FirstName}!</h4><br><p>Nu finns din hyresavi för {mailDto.Invoice.InvoiceDate.ToString("MMMM")} månad. <a href='http://90.231.3.238:29198/tenant/invoice/{mailDto.Invoice.Guid}'>Klicka här för att öppna din hyresavi.</a><br><br><br>Mvh,<br>Monica Fransson",
                 IsBodyHtml = true,
             };
-            mailMessage.To.Add("david.szemenkar@gmail.com");
+            mailMessage.To.Add(mailDto.Tenant.Email);
 
             smtpClient.Send(mailMessage);
 
@@ -249,5 +261,7 @@ namespace Estate.Server.Services
             else
                 return true;
         }
+
+       
     }
 }

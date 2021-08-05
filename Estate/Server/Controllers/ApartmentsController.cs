@@ -40,13 +40,21 @@ namespace Estate.Server.Controllers
         [HttpPut]
         public async Task<IActionResult> EditApartment(Apartment apartment)
         {
-            return Ok(await _context.EditApartment(apartment));
+            var response = await _context.EditApartment(apartment);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteApartment(int id)
         {
-            return Ok(await _context.DeleteApartment(id));
+            var response = await _context.DeleteApartment(id);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpGet("{id}")]

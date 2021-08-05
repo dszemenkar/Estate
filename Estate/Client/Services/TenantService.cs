@@ -27,39 +27,27 @@ namespace Estate.Client.Services
         {
             var result = await _http.PostAsJsonAsync<Tenant>("api/tenant", tenant);
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
-            {
                 _toastService.ShowError(await result.Content.ReadAsStringAsync());
-            }
             else
-            {
                 _toastService.ShowSuccess($"{tenant.FirstName} har lagts till i listan över hyresgäster.", "Ny hyresgäst");
-            }
         }
 
         public async Task DeleteTenant(int id)
         {
             var result = await _http.DeleteAsync("api/tenant/" + id.ToString());
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
-            {
                 _toastService.ShowError(await result.Content.ReadAsStringAsync());
-            }
             else
-            {
                 _toastService.ShowSuccess($"Hyresgästen har tagits bort.", "Hyresgästen raderad");
-            }
         }
 
         public async Task EditTenant(Tenant tenant)
         {
             var result = await _http.PutAsJsonAsync<Tenant>("api/tenant", tenant);
             if (result.StatusCode != System.Net.HttpStatusCode.OK)
-            {
                 _toastService.ShowError(await result.Content.ReadAsStringAsync());
-            }
             else
-            {
                 _toastService.ShowSuccess($"{tenant.FirstName} har uppdaterats.", "Hyresgästen uppdaterad");
-            }
         }
 
         public async Task<Tenant> GetTenant(int id)

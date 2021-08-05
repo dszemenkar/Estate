@@ -72,6 +72,7 @@ namespace Estate.Server.Services
             db.Phone = tenant.Phone;
             db.City = tenant.City;
             db.Archieved = tenant.Archieved;
+            db.EInvoice = tenant.EInvoice;
 
             await _context.SaveChangesAsync();
 
@@ -105,9 +106,9 @@ namespace Estate.Server.Services
 
         public async Task<IList<Tenant>> GetTenants()
         {
-            var tenants = await _context.Tenants.Where(x => x.Archieved == false).ToListAsync();
-            if (tenants.Count == 0)
-                return null;
+            List<Tenant> tenants = new List<Tenant>();
+            tenants = await _context.Tenants.Where(x => x.Archieved == false).ToListAsync();
+
             return tenants;
         }
     }

@@ -40,7 +40,6 @@
           "Microsoft.EntityFrameworkCore": "5.0.8",
           "Microsoft.EntityFrameworkCore.Design": "5.0.8",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.8",
-          "SendGrid": "9.24.1",
           "System.IdentityModel.Tokens.Jwt": "6.12.0",
           "Microsoft.AspNetCore.Antiforgery": "5.0.0.0",
           "Microsoft.AspNetCore.Authentication.Abstractions": "5.0.0.0",
@@ -897,11 +896,6 @@
           "Microsoft.NETCore.Platforms": "3.1.0"
         }
       },
-      "NETStandard.Library/2.0.0": {
-        "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.0"
-        }
-      },
       "Newtonsoft.Json/12.0.3": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -917,32 +911,6 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "3.1.0",
           "Microsoft.NETCore.Targets": "1.1.3"
-        }
-      },
-      "SendGrid/9.24.1": {
-        "dependencies": {
-          "Newtonsoft.Json": "12.0.3",
-          "starkbank-ecdsa": "1.3.1"
-        },
-        "runtime": {
-          "lib/netstandard2.0/SendGrid.dll": {
-            "assemblyVersion": "9.24.1.0",
-            "fileVersion": "9.24.1.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/SendGrid.dll": {}
-        }
-      },
-      "starkbank-ecdsa/1.3.1": {
-        "runtime": {
-          "lib/netstandard2.1/StarkbankEcdsa.dll": {
-            "assemblyVersion": "1.0.0.0",
-            "fileVersion": "1.0.0.0"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.1/StarkbankEcdsa.dll": {}
         }
       },
       "Syncfusion.Blazor.Buttons/19.2.0.49": {
@@ -1084,20 +1052,6 @@
           "lib/net5.0/Syncfusion.Blazor.Themes.dll": {}
         }
       },
-      "Syncfusion.Compression.Net.Core/19.2.0.49": {
-        "dependencies": {
-          "NETStandard.Library": "2.0.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {
-            "assemblyVersion": "19.2200.0.49",
-            "fileVersion": "19.2200.0.49"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Syncfusion.Compression.Portable.dll": {}
-        }
-      },
       "Syncfusion.Licensing/19.2.0.49": {
         "runtime": {
           "lib/net5.0/Syncfusion.Licensing.dll": {
@@ -1107,23 +1061,6 @@
         },
         "compile": {
           "lib/net5.0/Syncfusion.Licensing.dll": {}
-        }
-      },
-      "Syncfusion.Pdf.Net.Core/19.2.0.49": {
-        "dependencies": {
-          "NETStandard.Library": "2.0.0",
-          "Syncfusion.Compression.Net.Core": "19.2.0.49",
-          "Syncfusion.Licensing": "19.2.0.49",
-          "System.Text.Encoding.CodePages": "4.7.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {
-            "assemblyVersion": "19.2200.0.49",
-            "fileVersion": "19.2200.0.49"
-          }
-        },
-        "compile": {
-          "lib/netstandard2.0/Syncfusion.Pdf.Portable.dll": {}
         }
       },
       "System.Collections/4.3.0": {
@@ -1718,7 +1655,6 @@
           "Estate.Shared": "1.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly": "5.0.6",
           "Syncfusion.Blazor.DropDowns": "19.2.0.49",
-          "Syncfusion.Pdf.Net.Core": "19.2.0.49",
           "System.Net.Http.Json": "5.0.0"
         },
         "runtime": {
@@ -3752,13 +3688,6 @@
       "path": "microsoft.win32.systemevents/4.7.0",
       "hashPath": "microsoft.win32.systemevents.4.7.0.nupkg.sha512"
     },
-    "NETStandard.Library/2.0.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-7jnbRU+L08FXKMxqUflxEXtVymWvNOrS8yHgu9s6EM8Anr6T/wIX4nZ08j/u3Asz+tCufp3YVwFSEvFTPYmBPA==",
-      "path": "netstandard.library/2.0.0",
-      "hashPath": "netstandard.library.2.0.0.nupkg.sha512"
-    },
     "Newtonsoft.Json/12.0.3": {
       "type": "package",
       "serviceable": true,
@@ -3772,20 +3701,6 @@
       "sha512": "sha512-c/qWt2LieNZIj1jGnVNsE2Kl23Ya2aSTBuXMD6V7k9KWr6l16Tqdwq+hJScEpWER9753NWC8h96PaVNY5Ld7Jw==",
       "path": "runtime.native.system/4.3.0",
       "hashPath": "runtime.native.system.4.3.0.nupkg.sha512"
-    },
-    "SendGrid/9.24.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-381S6vABlaA12T7MeoaqErx4kHlX/d/rvOJPxjWYePCPEFfP2rmmWfGd51KEkjKMHIBGNxzgUV+DnI9LWJT3aA==",
-      "path": "sendgrid/9.24.1",
-      "hashPath": "sendgrid.9.24.1.nupkg.sha512"
-    },
-    "starkbank-ecdsa/1.3.1": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-YV20cpN7WgEiaIuIv8ZQPgkDVximP6gHCMCTgy6+IwArDHmuDVQLJ15Qwwmgd5woETnogquD+gu4SXDZW/ffog==",
-      "path": "starkbank-ecdsa/1.3.1",
-      "hashPath": "starkbank-ecdsa.1.3.1.nupkg.sha512"
     },
     "Syncfusion.Blazor.Buttons/19.2.0.49": {
       "type": "package",
@@ -3850,26 +3765,12 @@
       "path": "syncfusion.blazor.themes/19.2.0.49",
       "hashPath": "syncfusion.blazor.themes.19.2.0.49.nupkg.sha512"
     },
-    "Syncfusion.Compression.Net.Core/19.2.0.49": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-medcRsmOto19d9f+kQygUM+CIB4SfCZCppJwm+MhJIjLxa4wMmW/dIRpy4xmKI6jrqK9E+1Whf3AH3ZNeFwofA==",
-      "path": "syncfusion.compression.net.core/19.2.0.49",
-      "hashPath": "syncfusion.compression.net.core.19.2.0.49.nupkg.sha512"
-    },
     "Syncfusion.Licensing/19.2.0.49": {
       "type": "package",
       "serviceable": true,
       "sha512": "sha512-HN0+d2ukdhS9MDZwHFyX5IkLNQszf4mPpCxVZh+CMGzfXcbrGnps91Pnkr6XP2t89jb3kxbJIg41PIM5/ZEX5w==",
       "path": "syncfusion.licensing/19.2.0.49",
       "hashPath": "syncfusion.licensing.19.2.0.49.nupkg.sha512"
-    },
-    "Syncfusion.Pdf.Net.Core/19.2.0.49": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-Sp+hDtU+77vCla4HMrKXqFhovarFiuuDhXaVobUXwH9dfe/2cMyItgJl71CuiNIEFemW6QVxHV1HLNnkg8QZvQ==",
-      "path": "syncfusion.pdf.net.core/19.2.0.49",
-      "hashPath": "syncfusion.pdf.net.core.19.2.0.49.nupkg.sha512"
     },
     "System.Collections/4.3.0": {
       "type": "package",

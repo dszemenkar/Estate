@@ -23,19 +23,31 @@ namespace Estate.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> AddParkingSpace(ParkingSpace parking)
         {
-            return Ok(await _repo.AddParkingSpace(parking));
+            var response = await _repo.AddParkingSpace(parking);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpPut]
         public async Task<IActionResult> EditParkingSpace(ParkingSpace parking)
         {
-            return Ok(await _repo.EditParkingSpace(parking));
+            var response = await _repo.EditParkingSpace(parking);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteParkingSpace(int id)
         {
-            return Ok(await _repo.DeleteParkingSpace(id));
+            var response = await _repo.DeleteParkingSpace(id);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpGet("{id}")]

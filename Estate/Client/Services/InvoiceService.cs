@@ -1,6 +1,7 @@
 ﻿using Blazored.Toast.Services;
 using Estate.Client.Interfaces;
 using Estate.Shared;
+using Estate.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -128,9 +129,9 @@ namespace Estate.Client.Services
             return resp;
         }
 
-        public async Task<ServiceResponse<int>> SendEInvoice(Invoice invoice)
+        public async Task<ServiceResponse<int>> SendEInvoice(InvoiceMailDto mailDto)
         {
-            var result = await _http.PostAsJsonAsync<Invoice>("api/invoice/sendeinvoice", invoice);
+            var result = await _http.PostAsJsonAsync<InvoiceMailDto>("api/invoice/sendeinvoice", mailDto);
             var resp = await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
             if (result.StatusCode == System.Net.HttpStatusCode.OK)
                 _toastService.ShowInfo($"{resp.Data} {resp.Message}");
@@ -138,6 +139,22 @@ namespace Estate.Client.Services
                 _toastService.ShowError($"{resp.Data} {resp.Message}");
 
             return resp;
+        }
+
+        public async Task<Invoice> GetInvoiceWithGuid(Guid guid)
+        {
+            var result = await _http.GetFromJsonAsync<Invoice>("api/invoice/tenant/" + guid);
+            return result;
+        }
+
+        public async Task TenantOpenedInvoice(Invoice invoice)
+        {
+            var result = await _http.PutAsJsonAsync<Invoice>("api/invoice/tenant/", invoice);
+            var resp = await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
+            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+                _toastService.ShowError(resp.Message);
+            else
+                _toastService.ShowInfo(resp.Message);
         }
     }
 }

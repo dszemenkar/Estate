@@ -1,24 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {}
+    "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {
+    "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
         "projectName": "Estate.Shared",
-        "projectPath": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
-        "packagesPath": "C:\\Users\\dszemenk\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dszemenk\\source\\repos\\Estate\\Estate\\Shared\\obj\\",
+        "projectPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
+        "packagesPath": "C:\\Users\\dszem\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
         ],
         "configFilePaths": [
-          "C:\\Users\\dszemenk\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\dszem\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
         ],
@@ -59,7 +58,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.302\\RuntimeIdentifierGraph.json"
         }
       }
     }

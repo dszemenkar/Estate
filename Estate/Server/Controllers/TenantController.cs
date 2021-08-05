@@ -27,19 +27,31 @@ namespace Estate.Server.Controllers
         [HttpPost]
         public async Task<IActionResult> AddTenant(Tenant tenant)
         {
-            return Ok(await _repo.AddTenant(tenant));
+            var response = await _repo.AddTenant(tenant);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpPut]
         public async Task<IActionResult> EditTenant(Tenant tenant)
         {
-            return Ok(await _repo.EditTenant(tenant));
+            var response = await _repo.EditTenant(tenant);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteTenant(int id)
         {
-            return Ok(await _repo.DeleteTenant(id));
+            var response = await _repo.DeleteTenant(id);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
         }
 
         [HttpGet("{id}")]

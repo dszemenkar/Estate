@@ -197,14 +197,29 @@ else
         Loading = false;
         this.StateHasChanged();
 
-        await InvoiceService.SendEInvoice(invoice);
+        if (!tenant.EInvoice)
+        {
+            Print();
+        }
+        else
+        {
+            EmailInvoice();
+        }
 
-        Print();
+    }
+
+    protected async void EmailInvoice()
+    {
+        InvoiceMailDto mailDto = new InvoiceMailDto();
+        mailDto.Invoice = invoice;
+        mailDto.Tenant = tenant;
+        await InvoiceService.SendEInvoice(mailDto);
+        ToastService.ShowSuccess($"Hyresavi skickad till epost: {tenant.Email}.", "Epost skickad");
     }
 
     protected async void Print()
     {
-        await Task.Delay(3000);
+        await Task.Delay(5000);
         await JS.InvokeVoidAsync("printInvoice");
     }
 

@@ -35,7 +35,6 @@ namespace Estate.Client
             builder.Services.AddScoped<IInvoiceService, InvoiceService>();
             builder.Services.AddScoped<IParkingService, ParkingService>();
             builder.Services.AddScoped<IPrintingService, PrintingService>();
-            builder.Services.AddSingleton<PDFService>();
 
             await builder.Build().RunAsync();
         }

@@ -1,4 +1,5 @@
 ﻿using Estate.Shared;
+using Estate.Shared.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,9 +18,10 @@ namespace Estate.Server.Interfaces
         Task<ServiceResponse<int>> DeleteInvoice(int id);
         Task<ServiceResponse<int>> GenerateAllInvoices(Invoice generate);
         Task<Invoice> GetInvoice(int id);
+        Task<Invoice> GetInvoiceWithGuid(Guid guid);
         Task<List<InvoiceLine>> GetInvoiceLines(int id);
         Task<int> GetInvoiceNo();
         Task<int> GetInvoiceLineNo(int id);
-        Task<ServiceResponse<int>> SendEInvoice(Invoice invoice); 
+        Task<ServiceResponse<int>> SendEInvoice(InvoiceMailDto mailDto);
     }
 }
