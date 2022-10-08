@@ -40,6 +40,14 @@ namespace Estate.Server.Services
                 await _context.SaveChangesAsync();
             }
 
+            if (db.ParkingId.HasValue)
+            {
+                var space = await _context.ParkingSpaces.Where(x => x.Id == db.ParkingId).FirstOrDefaultAsync();
+                space.IsAvailable = true;
+                await _context.SaveChangesAsync();
+            }
+
+            db.ParkingId = null;
             db.ApartmentId = null;
             db.Archieved = true;
             //_context.Tenants.Remove(db);
