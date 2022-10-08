@@ -22,8 +22,6 @@ namespace Estate.Client.Services
             _http = http;
         }
 
-        //public IList<Invoice> Invoices { get; set; } = new List<Invoice>();
-
         public async Task<int> AddInvoice(Invoice invoice)
         {
             var invNo = await GetInvoiceNo();

@@ -37,12 +37,12 @@ else
                 <th>#</th>
                 <th>Datum</th>
                 <th>Förfaller</th>
-                <th>Lägenhet</th>
+                <th>Hyresgäst</th>
                 <th>Skriv ut</th>
                 <th>Status</th>
                 <th>Betald</th>
                 <th>Ändra</th>
-                <th></th>
+                <th>Radera</th>
             </tr>
         </thead>
         <tbody>
@@ -51,7 +51,7 @@ else
                 <tr>
                     <td>@entry.InvoiceNo</td>
                     <td>@entry.InvoiceDate.ToString("yyyy-MM-dd")</td>
-                    <td>@entry.InvoiceDate.AddDays(30).ToString("yyyy-MM-dd")</td>
+                    <td>@entry.PaymentDate.ToString("yyyy-MM-dd")</td>
                     <td>@entry.Tenant.FirstName @entry.Tenant.LastName</td>
                     <td><button class="btn btn-primary" @onclick="@(() => Print(entry))">Skriv ut</button></td>
                     <td>@entry.Status</td>
@@ -72,6 +72,7 @@ else
                     {
                         <td><button class="btn btn-outline-dark" @onclick="@(() => Archive(entry))">Arkivera</button></td>
                     }
+                    <td><button class="btn btn-danger" @onclick="@(() => ShowModalView("Delete", entry))">Radera</button></td>
                 </tr>
             }
         </tbody>
@@ -132,6 +133,11 @@ else
                             <div class="form-group">
                                 <label for="invoiceDate">Fakturadatum: </label>
                                 <InputDate id="invoiceDate" @bind-Value="generateInvoice.InvoiceDate" class="form-control"></InputDate>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="paymentDate">Betalningsdag: </label>
+                                <InputDate id="paymentDate" @bind-Value="generateInvoice.PaymentDate" class="form-control"></InputDate>
                             </div>
                             <button type="submit" class="btn btn-success">Skapa fakturor</button>
                         </EditForm>
@@ -243,6 +249,8 @@ else
 
     private void Generate()
     {
+        var day = DateTime.DaysInMonth(generateInvoice.InvoiceDate.Year, generateInvoice.InvoiceDate.Month);
+        generateInvoice.PaymentDate = new DateTime(generateInvoice.InvoiceDate.Year, generateInvoice.InvoiceDate.Month, day);
         GenerateModal = true;
     }
 

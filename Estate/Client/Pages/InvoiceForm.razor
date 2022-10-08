@@ -22,12 +22,16 @@
                         <InputDate id="invoiceDate" @bind-Value="invoice.InvoiceDate" class="form-control"></InputDate>
                     </div>
                     <div class="form-group">
+                        <label for="paymentDate">Betalningsdatum</label>
+                        <InputDate id="paymentDate" @bind-Value="invoice.PaymentDate" class="form-control"></InputDate>
+                    </div>
+                    <div class="form-group">
                         <label for="tenant">Lägenhet</label>
-                        <select class="form-control" @bind="selectedApartment">
-                            <option selected disabled value="0">Lägenhet</option>
-                            @foreach (var apartment in ApartmentService.ApartmentsWithTenants)
+                        <select class="form-control" @bind="selectedTenant">
+                            <option selected disabled value="0">Hyresgäst</option>
+                            @foreach (var tenant in TenantService.Tenants)
                             {
-                                <option value="@apartment.Id">Lägenhet: @apartment.Number</option>
+                                <option value="@tenant.Id">@tenant.FirstName @tenant.LastName</option>
                             }
                         </select>
                     </div>
@@ -50,7 +54,6 @@
                                             <tr>
                                                 <th>#</th>
                                                 <th>Beskrivning</th>
-                                                <th>Exkl. moms</th>
                                                 <th>Inkl. moms</th>
                                                 <th></th>
                                             </tr>
@@ -61,7 +64,6 @@
                                                 <tr>
                                                     <td>@line.LineNo</td>
                                                     <td>@line.Description</td>
-                                                    <td>@line.AmountExclTax</td>
                                                     <td>@line.AmountInclTax</td>
                                                     <td><button class="btn btn-danger" @onclick="@(() => Delete(line.Id))">Radera</button></td>
                                                 </tr>
@@ -69,7 +71,6 @@
                                         <tr>
                                             <td></td>
                                             <td>Summa:</td>
-                                            <td>@lines.Sum(x => x.AmountExclTax)</td>
                                             <td>@lines.Sum(x => x.AmountInclTax)</td>
                                             <td></td>
                                             <td></td>
@@ -101,7 +102,7 @@
     private Tenant tenant { get; set; } = new Tenant();
     private List<InvoiceLine> lines { get; set; } = new List<InvoiceLine>();
     private string Title { get; set; } = "Skapa";
-    int selectedApartment = 0;
+    int selectedTenant = 0;
     bool showForm = true;
 
     protected override async Task OnInitializedAsync()
@@ -118,7 +119,9 @@
         }
         else
         {
-            await ApartmentService.GetApartmentsWithTenants();
+            var day = DateTime.DaysInMonth(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month);
+            invoice.PaymentDate = new DateTime(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month, day);
+            await TenantService.GetTenants();
         }
     }
 
@@ -126,13 +129,14 @@
     {
         await InvoiceService.DeleteInvoiceLine(id);
         lines = await InvoiceService.GetInvoiceLines(Id.Value);
+        this.StateHasChanged();
     }
 
     private async void HandleSubmit()
     {
         if (!string.IsNullOrEmpty(invoice.TenantId.ToString()))
         {
-            var tenant = await TenantService.GetTenantForApartment(selectedApartment);
+            var tenant = await TenantService.GetTenant(selectedTenant);
             invoice.TenantId = tenant.Id;
 
             var result = await InvoiceService.AddInvoice(invoice);

@@ -176,7 +176,7 @@ using Append.Blazor.Printing;
     decimal ExklMoms { get; set; }
     decimal InklMoms { get; set; }
     decimal MomsAmount { get; set; }
-    DateTime PaymentDateTime { get; set; }
+    //DateTime PaymentDateTime { get; set; }
 
     bool Loading { get; set; } = true;
 
@@ -195,7 +195,7 @@ using Append.Blazor.Printing;
         InklMoms = lines.Sum(x => x.AmountInclTax);
         MomsAmount = InklMoms - ExklMoms;
 
-        PaymentDate();
+        //PaymentDate();
 
         Loading = false;
         this.StateHasChanged();
@@ -226,11 +226,12 @@ using Append.Blazor.Printing;
         await JS.InvokeVoidAsync("printInvoice");
     }
 
+    /*
     private void PaymentDate()
     {
         var lastDayOfMonth = DateTime.DaysInMonth(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month);
         PaymentDateTime = new DateTime(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month, lastDayOfMonth);
-    }
+    }*/
 
 #line default
 #line hidden

@@ -168,7 +168,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 149 "C:\Users\dszem\Source\Repos\Estate\Estate\Client\Pages\Invoices.razor"
+#line 155 "C:\Users\dszem\Source\Repos\Estate\Estate\Client\Pages\Invoices.razor"
        
     string Title { get; set; } = "";
     bool Loading { get; set; } = true;
@@ -266,6 +266,8 @@ using Append.Blazor.Printing;
 
     private void Generate()
     {
+        var day = DateTime.DaysInMonth(generateInvoice.InvoiceDate.Year, generateInvoice.InvoiceDate.Month);
+        generateInvoice.PaymentDate = new DateTime(generateInvoice.InvoiceDate.Year, generateInvoice.InvoiceDate.Month, day);
         GenerateModal = true;
     }
 

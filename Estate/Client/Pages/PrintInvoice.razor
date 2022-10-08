@@ -79,7 +79,7 @@ else
 
                                 <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Fakturadatum:</span> @invoice.InvoiceDate.ToString("yyyy-MM-dd")</div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Betalas senast:</span> @PaymentDateTime.ToString("yyyy-MM-dd")</div>
+                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Betalas senast:</span> @invoice.PaymentDate.ToString("yyyy-MM-dd")</div>
 
                                 <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">BG:</span> 2830-1450<span class="badge badge-warning badge-pill px-25"></span></div>
                             </div>
@@ -146,7 +146,7 @@ else
                                 -->
                                 <div class="row my-2 align-items-center bgc-primary-l3 p-2">
                                     <div class="col-7 text-right">
-                                        Totalt
+                                        <b>Totalt:</b>
                                     </div>
                                     <div class="col-5">
                                         <span class="text-150 text-success-d3 opacity-2">@InklMoms kr</span>
@@ -180,7 +180,7 @@ else
     decimal ExklMoms { get; set; }
     decimal InklMoms { get; set; }
     decimal MomsAmount { get; set; }
-    DateTime PaymentDateTime { get; set; }
+    //DateTime PaymentDateTime { get; set; }
 
     bool Loading { get; set; } = true;
 
@@ -199,7 +199,7 @@ else
         InklMoms = lines.Sum(x => x.AmountInclTax);
         MomsAmount = InklMoms - ExklMoms;
 
-        PaymentDate();
+        //PaymentDate();
 
         Loading = false;
         this.StateHasChanged();
@@ -230,9 +230,10 @@ else
         await JS.InvokeVoidAsync("printInvoice");
     }
 
+    /*
     private void PaymentDate()
     {
         var lastDayOfMonth = DateTime.DaysInMonth(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month);
         PaymentDateTime = new DateTime(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month, lastDayOfMonth);
-    }
+    }*/
 }

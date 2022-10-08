@@ -152,6 +152,13 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 2 "C:\Users\dszem\Source\Repos\Estate\Estate\Client\Pages\InvoiceCreationForm.razor"
+using System.Globalization;
+
+#line default
+#line hidden
+#nullable disable
     [Microsoft.AspNetCore.Components.RouteAttribute("/invoice/addline/{Id:int}")]
     public partial class InvoiceCreationForm : Microsoft.AspNetCore.Components.ComponentBase
     {
@@ -161,7 +168,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 44 "C:\Users\dszem\Source\Repos\Estate\Estate\Client\Pages\InvoiceCreationForm.razor"
+#line 49 "C:\Users\dszem\Source\Repos\Estate\Estate\Client\Pages\InvoiceCreationForm.razor"
        
     [Parameter]
     public int Id { get; set; }
@@ -188,7 +195,7 @@ using Append.Blazor.Printing;
         if (lines.Count == 0)
         {
             line.AmountInclTax = apartment.Price;
-            line.Description = "Hyra för " + invoice.InvoiceDate.ToString("MMMM");
+            line.Description = "Hyra för " + invoice.PaymentDate.AddMonths(1).ToString("MMMM", CultureInfo.CreateSpecificCulture("sv-SE"));
         }
         else
         {
@@ -196,7 +203,7 @@ using Append.Blazor.Printing;
             {
                 var parking = await ParkingService.GetParkingSpace(tenant.ParkingId.Value);
                 line.AmountInclTax = parking.Price;
-                line.Description = "Parkeringsavgift för " + invoice.InvoiceDate.ToString("MMMM");
+                line.Description = "Parkeringsavgift " + invoice.PaymentDate.AddMonths(1).ToString("MMMM", CultureInfo.CreateSpecificCulture("sv-SE"));
             }
         }
         this.StateHasChanged();

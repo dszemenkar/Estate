@@ -162,7 +162,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 95 "C:\Users\dszem\Source\Repos\Estate\Estate\Client\Pages\InvoiceForm.razor"
+#line 96 "C:\Users\dszem\Source\Repos\Estate\Estate\Client\Pages\InvoiceForm.razor"
        
     [Parameter]
     public int? Id { get; set; }
@@ -172,7 +172,7 @@ using Append.Blazor.Printing;
     private Tenant tenant { get; set; } = new Tenant();
     private List<InvoiceLine> lines { get; set; } = new List<InvoiceLine>();
     private string Title { get; set; } = "Skapa";
-    int selectedApartment = 0;
+    int selectedTenant = 0;
     bool showForm = true;
 
     protected override async Task OnInitializedAsync()
@@ -189,13 +189,16 @@ using Append.Blazor.Printing;
         }
         else
         {
-            await ApartmentService.GetApartmentsWithTenants();
+            var day = DateTime.DaysInMonth(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month);
+            invoice.PaymentDate = new DateTime(invoice.InvoiceDate.Year, invoice.InvoiceDate.Month, day);
+            await TenantService.GetTenants();
         }
     }
 
     private async void Delete(int id)
     {
         await InvoiceService.DeleteInvoiceLine(id);
+        lines = await InvoiceService.GetInvoiceLines(Id.Value);
         this.StateHasChanged();
     }
 
@@ -203,7 +206,7 @@ using Append.Blazor.Printing;
     {
         if (!string.IsNullOrEmpty(invoice.TenantId.ToString()))
         {
-            var tenant = await TenantService.GetTenantForApartment(selectedApartment);
+            var tenant = await TenantService.GetTenant(selectedTenant);
             invoice.TenantId = tenant.Id;
 
             var result = await InvoiceService.AddInvoice(invoice);

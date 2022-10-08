@@ -1,4 +1,5 @@
 ﻿@page "/invoice/addline/{Id:int}"
+@using System.Globalization
 
 @inject IInvoiceService InvoiceService
 @inject IApartmentService ApartmentService
@@ -16,6 +17,10 @@
                 <div class="form-group">
                     <label for="invoiceDate">Fakturadatum</label>
                     <p>@invoice.InvoiceDate.ToString("yyyy-MM-dd")</p>
+                </div>
+                <div class="form-group">
+                    <label for="payment">Betalningsdatum</label>
+                    <p>@invoice.PaymentDate.ToString("yyyy-MM-dd")</p>
                 </div>
                 <div class="form-group">
                     <p>Hyresgäst</p>
@@ -67,7 +72,7 @@
         if (lines.Count == 0)
         {
             line.AmountInclTax = apartment.Price;
-            line.Description = "Hyra för " + invoice.InvoiceDate.ToString("MMMM");
+            line.Description = "Hyra för " + invoice.PaymentDate.AddMonths(1).ToString("MMMM", CultureInfo.CreateSpecificCulture("sv-SE"));
         }
         else
         {
@@ -75,7 +80,7 @@
             {
                 var parking = await ParkingService.GetParkingSpace(tenant.ParkingId.Value);
                 line.AmountInclTax = parking.Price;
-                line.Description = "Parkeringsavgift för " + invoice.InvoiceDate.ToString("MMMM");
+                line.Description = "Parkeringsavgift " + invoice.PaymentDate.AddMonths(1).ToString("MMMM", CultureInfo.CreateSpecificCulture("sv-SE"));
             }
         }
         this.StateHasChanged();

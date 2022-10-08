@@ -5,6 +5,7 @@ using Estate.Shared.Helpers;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net;
 using System.Net.Mail;
@@ -110,6 +111,8 @@ namespace Estate.Server.Services
             db.Archieved = invoice.Archieved;
             db.BusinessMonth = invoice.BusinessMonth;
             db.OpenedByTenant = invoice.OpenedByTenant;
+            db.PaymentDate = invoice.PaymentDate;
+            db.InvoiceDate = invoice.InvoiceDate;
 
             await _context.SaveChangesAsync();
 
@@ -132,12 +135,13 @@ namespace Estate.Server.Services
                     Invoice invoice = new Invoice();
                     invoice.TenantId = i.Id;
                     invoice.InvoiceDate = generate.InvoiceDate;
+                    invoice.PaymentDate = generate.PaymentDate;
                     invoice.InvoiceNo = await GetInvoiceNo();
                     var result = await AddInvoice(invoice);
                     InvoiceLine line = new InvoiceLine();
                     line.LineNo = await GetInvoiceLineNo(result.Data);
                     line.InvoiceId = result.Data;
-                    line.Description = "Hyra för " + generate.InvoiceDate.ToString("MMMM") + ".";
+                    line.Description = "Hyra för " + generate.PaymentDate.AddMonths(1).ToString("MMMM", CultureInfo.CreateSpecificCulture("sv-SE")) + ".";
                     line.AmountInclTax = i.Price;
                     line.AmountExclTax = i.Price * Convert.ToDecimal(0.8);
                     await AddLine(line);
@@ -145,9 +149,9 @@ namespace Estate.Server.Services
                     {
                         var parking = await _tenantRepository.GetParkingForTenant(tenant.ParkingId.Value);
                         InvoiceLine line2 = new InvoiceLine();
-                        line2.LineNo = await GetInvoiceLineNo((line.LineNo = line.LineNo++));
+                        line2.LineNo = await GetInvoiceLineNo(result.Data);
                         line2.InvoiceId = result.Data;
-                        line2.Description = "Parkeringsavgift " + DateTime.Now.ToString("MMMM") + ".";
+                        line2.Description = "Parkeringsavgift " + generate.PaymentDate.AddMonths(1).ToString("MMMM", CultureInfo.CreateSpecificCulture("sv-SE")) + ".";
                         line2.AmountInclTax = parking.Price;
                         line2.AmountExclTax = parking.Price * Convert.ToDecimal(0.8);
                         await AddLine(line2);
@@ -171,12 +175,13 @@ namespace Estate.Server.Services
                         Invoice invoice = new Invoice();
                         invoice.TenantId = space.Tenant.Id;
                         invoice.InvoiceDate = generate.InvoiceDate;
+                        invoice.PaymentDate = generate.PaymentDate;
                         invoice.InvoiceNo = await GetInvoiceNo();
                         var result = await AddInvoice(invoice);
                         InvoiceLine line = new InvoiceLine();
                         line.LineNo = await GetInvoiceLineNo(result.Data);
                         line.InvoiceId = result.Data;
-                        line.Description = "Parkeringsavgift för " + generate.InvoiceDate.ToString("MMMM") + ".";
+                        line.Description = "Parkeringsavgift " + generate.PaymentDate.AddMonths(1).ToString("MMMM", CultureInfo.CreateSpecificCulture("sv-SE")) + ".";
                         line.AmountInclTax = space.Price;
                         line.AmountExclTax = space.Price * Convert.ToDecimal(0.8);
                         await AddLine(line);
@@ -278,8 +283,8 @@ namespace Estate.Server.Services
             var mailMessage = new MailMessage
             {
                 From = new MailAddress("david.szemenkar@gmail.com"),
-                Subject = $"Din hyresavi för {mailDto.Invoice.InvoiceDate.ToString("MMMM")}.",
-                Body = $"<h4>Hej {mailDto.Tenant.FirstName}!</h4><br><p>Nu finns din hyresavi för {mailDto.Invoice.InvoiceDate.ToString("MMMM")} månad. <a href='http://90.231.3.238:29198/tenant/invoice/{mailDto.Invoice.Guid}'>Klicka här för att öppna din hyresavi.</a><br><br><br>Mvh,<br>Monica Fransson",
+                Subject = $"Din hyresavi för {mailDto.Invoice.PaymentDate.AddMonths(1).ToString("MMMM", CultureInfo.CreateSpecificCulture("sv-SE"))}.",
+                Body = $"<h4>Hej {mailDto.Tenant.FirstName}!</h4><br><p>Nu finns din hyresavi för {mailDto.Invoice.InvoiceDate.ToString("MMMM", CultureInfo.CreateSpecificCulture("sv-SE"))} månad. <a href='http://90.231.3.238:29198/tenant/invoice/{mailDto.Invoice.Guid}'>Klicka här för att öppna din hyresavi.</a><br><br><br>Mvh,<br>Monica Fransson",
                 IsBodyHtml = true,
             };
             mailMessage.To.Add(mailDto.Tenant.Email);
@@ -292,7 +297,7 @@ namespace Estate.Server.Services
         private async Task<bool> CheckIfInvoiceAlreadyCreated(Tenant tenant, Invoice date)
         {
             List<Invoice> invoices = new List<Invoice>();
-            invoices = await _context.Invoices.Where(x => x.Archieved == false && x.TenantId == tenant.Id && x.InvoiceDate.Month == date.InvoiceDate.Month && x.InvoiceDate.Year == date.InvoiceDate.Year).ToListAsync();
+            invoices = await _context.Invoices.Where(x => x.Archieved == false && x.TenantId == tenant.Id && x.PaymentDate.Month == date.PaymentDate.Month && x.PaymentDate.Year == date.PaymentDate.Year).ToListAsync();
 
             if (invoices.Count == 0)
                 return false;
