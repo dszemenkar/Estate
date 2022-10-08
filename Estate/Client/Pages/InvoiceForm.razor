@@ -122,9 +122,10 @@
         }
     }
 
-    private void Delete(int id)
+    private async void Delete(int id)
     {
-        Console.WriteLine("Deleting...");
+        await InvoiceService.DeleteInvoiceLine(id);
+        lines = await InvoiceService.GetInvoiceLines(Id.Value);
     }
 
     private async void HandleSubmit()

@@ -14,6 +14,7 @@ namespace Estate.Server.Interfaces
         Task<IList<Invoice>> GetInvoicesWithParamAndUser(string param, AppUser user);
         Task<ServiceResponse<int>> AddInvoice(Invoice invoice);
         Task<ServiceResponse<int>> AddLine(InvoiceLine line);
+        Task<ServiceResponse<int>> DeleteInvoiceLine(int id);
         Task<ServiceResponse<int>> EditInvoice(Invoice invoice);
         Task<ServiceResponse<int>> DeleteInvoice(int id);
         Task<ServiceResponse<int>> GenerateAllInvoices(Invoice generate);

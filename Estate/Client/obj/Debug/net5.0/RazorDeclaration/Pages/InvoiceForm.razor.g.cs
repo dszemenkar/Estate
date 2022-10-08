@@ -193,9 +193,10 @@ using Append.Blazor.Printing;
         }
     }
 
-    private void Delete(int id)
+    private async void Delete(int id)
     {
-        Console.WriteLine("Deleting...");
+        await InvoiceService.DeleteInvoiceLine(id);
+        this.StateHasChanged();
     }
 
     private async void HandleSubmit()

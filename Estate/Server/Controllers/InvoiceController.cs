@@ -83,6 +83,16 @@ namespace Estate.Server.Controllers
             return Ok(response);
         }
 
+        [HttpDelete("line/{id}")]
+        public async Task<IActionResult> DeleteInvoiceLine(int id)
+        {
+            var response = await _repo.DeleteInvoiceLine(id);
+            if (!response.Success)
+                return BadRequest(response);
+
+            return Ok(response);
+        }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteInvoice(int id)
         {

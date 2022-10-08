@@ -14,6 +14,7 @@ namespace Estate.Client.Interfaces
         Task<Invoice> GetInvoiceWithGuid(Guid guid);
         Task<int> AddInvoice(Invoice invoice);
         Task AddLine(InvoiceLine line);
+        Task DeleteInvoiceLine(int id);
         Task EditInvoice(Invoice invoice);
         Task DeleteInvoice(int id);
         Task<List<Invoice>> GetInvoices();

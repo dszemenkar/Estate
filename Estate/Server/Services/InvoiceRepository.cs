@@ -32,9 +32,13 @@ namespace Estate.Server.Services
 
             if (!alreadyCreated)
             {
-                var apartment = await _apartmentsRepository.GetApartment(tenant.ApartmentId.Value);
-                apartment.BusinessMonth = apartment.BusinessMonth + 1;
-                invoice.BusinessMonth = apartment.BusinessMonth;
+                if (tenant.ApartmentId.HasValue)
+                {
+                    var apartment = await _apartmentsRepository.GetApartment(tenant.ApartmentId.Value);
+                    apartment.BusinessMonth = apartment.BusinessMonth + 1;
+                    invoice.BusinessMonth = apartment.BusinessMonth;
+                }
+                
                 invoice.Guid = Guid.NewGuid();
                 _context.Invoices.Add(invoice);
 
@@ -56,14 +60,26 @@ namespace Estate.Server.Services
             return new ServiceResponse<int> { Data = line.InvoiceId, Message = "Rad tillagd" };
         }
 
+        public async Task<ServiceResponse<int>> DeleteInvoiceLine(int id)
+        {
+            var db = await _context.InvoiceLines.FirstOrDefaultAsync(x => x.Id == id);
+            if (db == null)
+                return new ServiceResponse<int> { Data = db.Id, Message = "Hittar inte fakturan" };
+
+            _context.InvoiceLines.Remove(db);
+            await _context.SaveChangesAsync();
+
+            return new ServiceResponse<int> { Data = db.Id, Message = "Rad borttagen" };
+        }
+
         public async Task<ServiceResponse<int>> DeleteInvoice(int id)
         {
             var db = await _context.Invoices.Include(x => x.InvoiceLines).FirstOrDefaultAsync(x => x.Id == id);
             if (db == null)
                 return new ServiceResponse<int> { Data = db.Id, Message = "Hittar inte fakturan" };
 
-            if (db.Printed || db.Paid)
-                return new ServiceResponse<int> { Data = db.Id, Message = "Kan inte radera faktura som har skrivits ut eller redan är betald." };
+            if (db.Paid)
+                return new ServiceResponse<int> { Data = db.Id, Message = "Kan inte radera faktura som redan är betald." };
 
             if (db.InvoiceLines.Count > 0)
             {
@@ -117,9 +133,6 @@ namespace Estate.Server.Services
                     invoice.TenantId = i.Id;
                     invoice.InvoiceDate = generate.InvoiceDate;
                     invoice.InvoiceNo = await GetInvoiceNo();
-                    i.BusinessMonth = i.BusinessMonth + 1;
-                    invoice.BusinessMonth = i.BusinessMonth;
-                    invoice.Guid = Guid.NewGuid();
                     var result = await AddInvoice(invoice);
                     InvoiceLine line = new InvoiceLine();
                     line.LineNo = await GetInvoiceLineNo(result.Data);
@@ -145,7 +158,32 @@ namespace Estate.Server.Services
                     response += $"Faktura för {tenant.FirstName} {tenant.LastName} redan skapad för innevarande period. ";
                 }
             }
-            
+
+            var parkingSpaces = await _context.ParkingSpaces.Where(x => x.IsAvailable == false).Include(x => x.Tenant).ToListAsync();
+            foreach (var space in parkingSpaces)
+            {
+                if (!space.Tenant.ApartmentId.HasValue)
+                {
+                    var alreadyCreated = await CheckIfInvoiceAlreadyCreated(space.Tenant, generate);
+                    if (!alreadyCreated)
+                    {
+                        count++;
+                        Invoice invoice = new Invoice();
+                        invoice.TenantId = space.Tenant.Id;
+                        invoice.InvoiceDate = generate.InvoiceDate;
+                        invoice.InvoiceNo = await GetInvoiceNo();
+                        var result = await AddInvoice(invoice);
+                        InvoiceLine line = new InvoiceLine();
+                        line.LineNo = await GetInvoiceLineNo(result.Data);
+                        line.InvoiceId = result.Data;
+                        line.Description = "Parkeringsavgift för " + generate.InvoiceDate.ToString("MMMM") + ".";
+                        line.AmountInclTax = space.Price;
+                        line.AmountExclTax = space.Price * Convert.ToDecimal(0.8);
+                        await AddLine(line);
+                    }
+                }
+            }
+
             return new ServiceResponse<int> { Data = count, Message = $"Fakturor uppskapade. {response}" };
         }
 

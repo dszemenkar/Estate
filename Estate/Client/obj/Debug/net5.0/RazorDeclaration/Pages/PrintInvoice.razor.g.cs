@@ -162,7 +162,7 @@ using Append.Blazor.Printing;
         }
         #pragma warning restore 1998
 #nullable restore
-#line 167 "C:\Users\dszem\Source\Repos\Estate\Estate\Client\Pages\PrintInvoice.razor"
+#line 170 "C:\Users\dszem\Source\Repos\Estate\Estate\Client\Pages\PrintInvoice.razor"
        
     [Parameter]
     public int Id { get; set; }
@@ -185,7 +185,11 @@ using Append.Blazor.Printing;
         invoice = await InvoiceService.GetInvoice(Id);
         lines = await InvoiceService.GetInvoiceLines(Id);
         tenant = await TenantService.GetTenant(invoice.TenantId);
-        apartment = await ApartmentService.GetApartment(tenant.ApartmentId.Value);
+
+        if (tenant.ApartmentId.HasValue)
+        {
+            apartment = await ApartmentService.GetApartment(tenant.ApartmentId.Value);
+        }
 
         ExklMoms = lines.Sum(x => x.AmountExclTax);
         InklMoms = lines.Sum(x => x.AmountInclTax);
@@ -202,7 +206,7 @@ using Append.Blazor.Printing;
         }
         else
         {
-            EmailInvoice();
+            //EmailInvoice();
         }
 
     }
@@ -218,7 +222,7 @@ using Append.Blazor.Printing;
 
     protected async void Print()
     {
-        await Task.Delay(5000);
+        await Task.Delay(3000);
         await JS.InvokeVoidAsync("printInvoice");
     }
 

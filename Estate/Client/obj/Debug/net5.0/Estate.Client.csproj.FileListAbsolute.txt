@@ -1436,5 +1436,5 @@ C:\Users\dszem\Source\Repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\m30RC
 C:\Users\dszem\Source\Repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\rQqN7eqa.gz
 C:\Users\dszem\Source\Repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\2qWyhriF.gz
 C:\Users\dszem\Source\Repos\Estate\Estate\Client\obj\Debug\net5.0\refint\Estate.Client.dll
-C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\Ep+DZBOx.gz
-C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\VTeD2+Y1.gz
+C:\Users\dszem\Source\Repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\Goh8lmqO.gz
+C:\Users\dszem\Source\Repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\khxRI1Oj.gz

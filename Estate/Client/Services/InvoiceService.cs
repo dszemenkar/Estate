@@ -55,6 +55,16 @@ namespace Estate.Client.Services
                 _toastService.ShowSuccess(resp.Message);
         }
 
+        public async Task DeleteInvoiceLine(int id)
+        {
+            var result = await _http.DeleteAsync("api/invoice/line/" + id.ToString());
+            var resp = await result.Content.ReadFromJsonAsync<ServiceResponse<int>>();
+            if (result.StatusCode != System.Net.HttpStatusCode.OK)
+                _toastService.ShowError(resp.Message);
+            else
+                _toastService.ShowSuccess(resp.Message);
+        }
+
         public async Task DeleteInvoice(int id)
         {
             var result = await _http.DeleteAsync("api/invoice/" + id.ToString());
