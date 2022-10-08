@@ -27,7 +27,6 @@ namespace Estate.Server.Controllers
                     FirstName = request.FirstName,
                     LastName = request.LastName,
                     Email = request.Email,
-                    DateOfBirth = request.DateOfBirth,
                     IsConfirmed = request.IsConfirmed
                 },
                 request.Password);

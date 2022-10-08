@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "q6Vr2Ucn9eVcYNcfDKz2Hv9PU8dl2ByNToDqJNf9jwle551nHsnqLy5SDccg30ioIyGpHht6A3lhZuqqf95mWw==",
+  "dgSpecHash": "NiGu9PWuwdDs0jYbKwZ6kiAyMDOkJkZoF+xA4ZLINk0bW0FMJwC7SmxVWmYemSipglVHTL8oub/l1ccyHMatJg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Client\\Estate.Client.csproj",
+  "projectFilePath": "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Client\\Estate.Client.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dszem\\.nuget\\packages\\append.blazor.printing\\1.0.0\\append.blazor.printing.1.0.0.nupkg.sha512",
     "C:\\Users\\dszem\\.nuget\\packages\\blazored.localstorage\\4.1.2\\blazored.localstorage.4.1.2.nupkg.sha512",
@@ -47,7 +47,7 @@
     "C:\\Users\\dszem\\.nuget\\packages\\syncfusion.licensing\\19.2.0.49\\syncfusion.licensing.19.2.0.49.nupkg.sha512",
     "C:\\Users\\dszem\\.nuget\\packages\\system.io.pipelines\\5.0.1\\system.io.pipelines.5.0.1.nupkg.sha512",
     "C:\\Users\\dszem\\.nuget\\packages\\system.net.http.json\\5.0.0\\system.net.http.json.5.0.0.nupkg.sha512",
-    "C:\\Users\\dszem\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.8\\microsoft.netcore.app.runtime.browser-wasm.5.0.8.nupkg.sha512"
+    "C:\\Users\\dszem\\.nuget\\packages\\microsoft.netcore.app.runtime.browser-wasm\\5.0.17\\microsoft.netcore.app.runtime.browser-wasm.5.0.17.nupkg.sha512"
   ],
   "logs": []
 }

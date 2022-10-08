@@ -27,12 +27,12 @@ namespace Estate.Server.Services
 
         public async Task<ServiceResponse<int>> AddInvoice(Invoice invoice)
         {
-            var tenant = await _tenantRepository.GetTenantForApartment(invoice.ApartmentId);
+            var tenant = await _tenantRepository.GetTenant(invoice.TenantId);
             var alreadyCreated = await CheckIfInvoiceAlreadyCreated(tenant, invoice);
 
             if (!alreadyCreated)
             {
-                var apartment = await _apartmentsRepository.GetApartment(invoice.ApartmentId);
+                var apartment = await _apartmentsRepository.GetApartment(tenant.ApartmentId.Value);
                 apartment.BusinessMonth = apartment.BusinessMonth + 1;
                 invoice.BusinessMonth = apartment.BusinessMonth;
                 invoice.Guid = Guid.NewGuid();
@@ -114,7 +114,7 @@ namespace Estate.Server.Services
                 {
                     count++;
                     Invoice invoice = new Invoice();
-                    invoice.ApartmentId = i.Id;
+                    invoice.TenantId = i.Id;
                     invoice.InvoiceDate = generate.InvoiceDate;
                     invoice.InvoiceNo = await GetInvoiceNo();
                     i.BusinessMonth = i.BusinessMonth + 1;
@@ -152,7 +152,7 @@ namespace Estate.Server.Services
         public async Task<Invoice> GetInvoice(int id)
         {
             Invoice db = new Invoice();
-            db = await _context.Invoices.Include(x => x.Apartment).FirstOrDefaultAsync(x => x.Id == id);
+            db = await _context.Invoices.Include(x => x.Tenant).FirstOrDefaultAsync(x => x.Id == id);
 
             return db;
         }
@@ -186,7 +186,7 @@ namespace Estate.Server.Services
         public async Task<IList<Invoice>> GetInvoices()
         {
             List<Invoice> invoices = new List<Invoice>();
-            invoices = await _context.Invoices.Where(x => x.Archieved == false).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+            invoices = await _context.Invoices.Where(x => x.Archieved == false).Include(x => x.Tenant).OrderByDescending(x => x.InvoiceNo).ToListAsync();
 
             return invoices;
         }
@@ -196,11 +196,11 @@ namespace Estate.Server.Services
             List<Invoice> invoices = new List<Invoice>();
 
             if (param == "Alla")
-                invoices = await _context.Invoices.Where(x => x.Archieved == false).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+                invoices = await _context.Invoices.Where(x => x.Archieved == false).Include(x => x.Tenant).OrderByDescending(x => x.InvoiceNo).ToListAsync();
             else if (param == "Arkiv")
-                invoices = await _context.Invoices.Where(x => x.Archieved == true).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+                invoices = await _context.Invoices.Where(x => x.Archieved == true).Include(x => x.Tenant).OrderByDescending(x => x.InvoiceNo).ToListAsync();
             else
-                invoices = await _context.Invoices.Where(x => x.Status == param && x.Archieved == false).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+                invoices = await _context.Invoices.Where(x => x.Status == param && x.Archieved == false).Include(x => x.Tenant).OrderByDescending(x => x.InvoiceNo).ToListAsync();
 
             return invoices;
         }
@@ -211,11 +211,11 @@ namespace Estate.Server.Services
 
 
             if (param == "Alla")
-                invoices = await _context.Invoices.Where(x => x.Archieved == false && x.Apartment.Tenant.Id == user.Id).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+                invoices = await _context.Invoices.Where(x => x.Archieved == false && x.Tenant.Id == user.Id).Include(x => x.Tenant).OrderByDescending(x => x.InvoiceNo).ToListAsync();
             else if (param == "Arkiv")
-                invoices = await _context.Invoices.Where(x => x.Archieved == true && x.Apartment.Tenant.Id == user.Id).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+                invoices = await _context.Invoices.Where(x => x.Archieved == true && x.Tenant.Id == user.Id).Include(x => x.Tenant).OrderByDescending(x => x.InvoiceNo).ToListAsync();
             else
-                invoices = await _context.Invoices.Where(x => x.Status == param && x.Archieved == false && x.Apartment.Tenant.Id == user.Id).Include(x => x.Apartment).OrderByDescending(x => x.InvoiceNo).ToListAsync();
+                invoices = await _context.Invoices.Where(x => x.Status == param && x.Archieved == false && x.Tenant.Id == user.Id).Include(x => x.Tenant).OrderByDescending(x => x.InvoiceNo).ToListAsync();
 
             return invoices;
         }
@@ -223,7 +223,7 @@ namespace Estate.Server.Services
         public async Task<Invoice> GetInvoiceWithGuid(Guid guid)
         {
             Invoice db = new Invoice();
-            db = await _context.Invoices.Include(x => x.Apartment).FirstOrDefaultAsync(x => x.Guid == guid);
+            db = await _context.Invoices.Include(x => x.Tenant).FirstOrDefaultAsync(x => x.Guid == guid);
 
             return db;
         }
@@ -254,7 +254,7 @@ namespace Estate.Server.Services
         private async Task<bool> CheckIfInvoiceAlreadyCreated(Tenant tenant, Invoice date)
         {
             List<Invoice> invoices = new List<Invoice>();
-            invoices = await _context.Invoices.Where(x => x.Archieved == false && x.ApartmentId == tenant.ApartmentId.Value && x.InvoiceDate.Month == date.InvoiceDate.Month && x.InvoiceDate.Year == date.InvoiceDate.Year).ToListAsync();
+            invoices = await _context.Invoices.Where(x => x.Archieved == false && x.TenantId == tenant.Id && x.InvoiceDate.Month == date.InvoiceDate.Month && x.InvoiceDate.Year == date.InvoiceDate.Year).ToListAsync();
 
             if (invoices.Count == 0)
                 return false;

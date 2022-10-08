@@ -185,8 +185,9 @@ else
     {
         invoice = await InvoiceService.GetInvoiceWithGuid(text);
         lines = await InvoiceService.GetInvoiceLines(invoice.Id);
-        apartment = await ApartmentService.GetApartment(invoice.ApartmentId);
-        tenant = await TenantService.GetTenantForApartment(apartment.Id);
+        tenant = await TenantService.GetTenant(invoice.TenantId);
+        apartment = await ApartmentService.GetApartment(tenant.ApartmentId.Value);
+        
 
         ExklMoms = lines.Sum(x => x.AmountExclTax);
         InklMoms = lines.Sum(x => x.AmountInclTax);

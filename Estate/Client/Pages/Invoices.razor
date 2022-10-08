@@ -52,7 +52,7 @@ else
                     <td>@entry.InvoiceNo</td>
                     <td>@entry.InvoiceDate.ToString("yyyy-MM-dd")</td>
                     <td>@entry.InvoiceDate.AddDays(30).ToString("yyyy-MM-dd")</td>
-                    <td>@entry.Apartment.Number</td>
+                    <td>@entry.Tenant.FirstName @entry.Tenant.LastName</td>
                     <td><button class="btn btn-primary" @onclick="@(() => Print(entry))">Skriv ut</button></td>
                     <td>@entry.Status</td>
                     @if (!entry.Paid)

@@ -13,8 +13,10 @@ namespace Estate.Shared
         public int InvoiceNo { get; set; }
         public int BusinessMonth { get; set; }
         public DateTime InvoiceDate { get; set; } = DateTime.Now;
-        public int ApartmentId { get; set; }
-        public Apartment Apartment { get; set; }
+        public int TenantId { get; set; }
+        public Tenant Tenant { get; set; }
+        //public int ApartmentId { get; set; }
+        //public Apartment Apartment { get; set; }
         public IList<InvoiceLine> InvoiceLines { get; set; }
         public bool Printed { get; set; }
         public bool Paid { get; set; }

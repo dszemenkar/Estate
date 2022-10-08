@@ -108,7 +108,6 @@ C:\Users\dszemenk\source\repos\Estate\Estate\Server\bin\Debug\net5.0\Syncfusion.
 C:\Users\dszemenk\source\repos\Estate\Estate\Server\bin\Debug\net5.0\Syncfusion.Pdf.Portable.dll
 C:\Users\dszemenk\source\repos\Estate\Estate\Server\bin\Debug\net5.0\SendGrid.dll
 C:\Users\dszemenk\source\repos\Estate\Estate\Server\bin\Debug\net5.0\StarkbankEcdsa.dll
-C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\appsettings.Development.json
 C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\appsettings.json
 C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\BlazorDebugProxy\BrowserDebugHost.dll
 C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\BlazorDebugProxy\BrowserDebugHost.runtimeconfig.json
@@ -126,7 +125,6 @@ C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\Estate.Server.
 C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\Estate.Server.runtimeconfig.json
 C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\Estate.Server.runtimeconfig.dev.json
 C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\Estate.Server.dll
-C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\ref\Estate.Server.dll
 C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\Estate.Server.pdb
 C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\Estate.Server.Views.dll
 C:\Users\dszem\source\repos\Estate\Estate\Server\bin\Debug\net5.0\Estate.Server.Views.pdb
@@ -214,3 +212,4 @@ C:\Users\dszem\source\repos\Estate\Estate\Server\obj\Debug\net5.0\Estate.Server.
 C:\Users\dszem\source\repos\Estate\Estate\Server\obj\Debug\net5.0\ref\Estate.Server.dll
 C:\Users\dszem\source\repos\Estate\Estate\Server\obj\Debug\net5.0\Estate.Server.pdb
 C:\Users\dszem\source\repos\Estate\Estate\Server\obj\Debug\net5.0\Estate.Server.genruntimeconfig.cache
+C:\Users\dszem\Source\Repos\Estate\Estate\Server\obj\Debug\net5.0\refint\Estate.Server.dll

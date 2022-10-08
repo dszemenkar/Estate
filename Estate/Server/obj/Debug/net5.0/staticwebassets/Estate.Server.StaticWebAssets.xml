@@ -1,7 +1,7 @@
 ﻿<StaticWebAssets Version="1.0">
-  <ContentRoot BasePath="/" Path="C:\Users\dszem\source\repos\Estate\Estate\Client\bin\Debug\net5.0\wwwroot\" />
-  <ContentRoot BasePath="/" Path="C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\scopedcss\bundle\" />
-  <ContentRoot BasePath="/" Path="C:\Users\dszem\source\repos\Estate\Estate\Client\wwwroot\" />
+  <ContentRoot BasePath="/" Path="C:\Users\dszem\Source\Repos\Estate\Estate\Client\bin\Debug\net5.0\wwwroot\" />
+  <ContentRoot BasePath="/" Path="C:\Users\dszem\Source\Repos\Estate\Estate\Client\obj\Debug\net5.0\scopedcss\bundle\" />
+  <ContentRoot BasePath="/" Path="C:\Users\dszem\Source\Repos\Estate\Estate\Client\wwwroot\" />
   <ContentRoot BasePath="_content/Append.Blazor.Printing" Path="C:\Users\dszem\.nuget\packages\append.blazor.printing\1.0.0\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Blazored.Toast" Path="C:\Users\dszem\.nuget\packages\blazored.toast\3.1.2\build\..\staticwebassets\" />
   <ContentRoot BasePath="_content/Syncfusion.Blazor.Buttons" Path="C:\Users\dszem\.nuget\packages\syncfusion.blazor.buttons\19.2.0.49\build\..\staticwebassets\" />

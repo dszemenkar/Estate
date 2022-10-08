@@ -71,9 +71,6 @@ namespace Estate.Server.Migrations
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
 
@@ -130,9 +127,6 @@ namespace Estate.Server.Migrations
                     b.Property<decimal>("AmountInclTax")
                         .HasColumnType("decimal(9,2)");
 
-                    b.Property<int>("ApartmentId")
-                        .HasColumnType("int");
-
                     b.Property<bool>("Archieved")
                         .HasColumnType("bit");
 
@@ -163,9 +157,12 @@ namespace Estate.Server.Migrations
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int>("TenantId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id");
 
-                    b.HasIndex("ApartmentId");
+                    b.HasIndex("TenantId");
 
                     b.ToTable("Invoices");
                 });
@@ -297,13 +294,13 @@ namespace Estate.Server.Migrations
 
             modelBuilder.Entity("Estate.Shared.Invoice", b =>
                 {
-                    b.HasOne("Estate.Shared.Apartment", "Apartment")
+                    b.HasOne("Estate.Shared.Tenant", "Tenant")
                         .WithMany()
-                        .HasForeignKey("ApartmentId")
+                        .HasForeignKey("TenantId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Apartment");
+                    b.Navigation("Tenant");
                 });
 
             modelBuilder.Entity("Estate.Shared.InvoiceLine", b =>

@@ -20,8 +20,8 @@ namespace Estate.Shared
         public string Password { get; set; }
         [Display(Name = "Bekräfta lösenord"), Compare("Password", ErrorMessage = "Lösenorden stämmer inte överens.")]
         public string ConfirmPassword { get; set; }
-        [Display(Name = "Födelsedag")]
-        public DateTime DateOfBirth { get; set; } = DateTime.Now;
+        //[Display(Name = "Födelsedag")]
+        //public DateTime DateOfBirth { get; set; } = DateTime.Now;
         [Display(Name = "Allmänna villkor"), Range(typeof(bool), "true", "true", ErrorMessage = "Godkänn villkor.")]
         public bool IsConfirmed { get; set; } = true;
     }

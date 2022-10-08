@@ -113,8 +113,8 @@
 
             invoice = await InvoiceService.GetInvoice(Id.Value);
             lines = await InvoiceService.GetInvoiceLines(Id.Value);
-            apartment = await ApartmentService.GetApartment(invoice.ApartmentId);
-            tenant = await TenantService.GetTenantForApartment(apartment.Id);
+            tenant = await TenantService.GetTenant(invoice.TenantId);
+            apartment = await ApartmentService.GetApartment(tenant.ApartmentId.Value);
         }
         else
         {
@@ -129,9 +129,10 @@
 
     private async void HandleSubmit()
     {
-        if (!string.IsNullOrEmpty(invoice.ApartmentId.ToString()))
+        if (!string.IsNullOrEmpty(invoice.TenantId.ToString()))
         {
-            invoice.ApartmentId = selectedApartment;
+            var tenant = await TenantService.GetTenantForApartment(selectedApartment);
+            invoice.TenantId = tenant.Id;
 
             var result = await InvoiceService.AddInvoice(invoice);
 
