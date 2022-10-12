@@ -10,4 +10,4 @@ build_property.EnableSingleFileAnalyzer =
 build_property.EnableTrimAnalyzer = true
 build_property.IncludeAllContentForSelfExtract = 
 build_property.RootNamespace = Estate.Client
-build_property.ProjectDir = C:\Users\dszem\Source\Repos\Estate\Estate\Client\
+build_property.ProjectDir = C:\Users\dszem\source\repos\Estate\Estate\Client\

@@ -45,9 +45,25 @@ else
                     <hr class="row brc-default-l1 mx-n1 mb-4" />
 
                     <div class="row">
-                        <div class="col-sm-6">
+                        <div class="col-sm-3">
                             <div>
-                                <span class="text-sm text-grey-m2 align-middle">Till:</span>
+                                <span class="text-sm text-grey-m2 align-middle">Avsändare:</span><br>
+                                <span class="text-600 text-110 text-blue align-middle">Fastighet Godtemplaren</span><br>
+                                <span class="text-600 text-110 text-blue align-middle">Monica Fransson</span>
+                            </div>
+                            <div class="text-grey-m2">
+                                <div class="my-1">
+                                    Romelstorpsvägen 361
+                                </div>
+                                <div class="my-1">
+                                    291 98 Villands Vånga <br />
+                                </div>
+                                <div class="my-1"><i class="fa fa-phone fa-flip-horizontal text-secondary"></i> <b class="text-600">076 829 90 77</b></div>
+                            </div>
+                         </div>
+                        <div class="col-sm-3">
+                            <div>
+                                <span class="text-sm text-grey-m2 align-middle">Till:</span><br>
                                 <span class="text-600 text-110 text-blue align-middle">@tenant.FirstName @tenant.LastName</span>
                             </div>
                             <div class="text-grey-m2">
@@ -70,18 +86,18 @@ else
                                     Hyresavi
                                 </div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Referens:</span> #@invoice.InvoiceNo</div>
+                                <div class="my-2"><i class="text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Referens:</span> #@invoice.InvoiceNo</div>
 
                                 @if (apartment.BusinessProperty)
                                 {
-                                            <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Löpnr:</span> @invoice.BusinessMonth</div>
+                                            <div class="my-2"><i class="text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Löpnr:</span> @invoice.BusinessMonth</div>
                                 }
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Fakturadatum:</span> @invoice.InvoiceDate.ToString("yyyy-MM-dd")</div>
+                                <div class="my-2"><i class="text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Fakturadatum:</span> @invoice.InvoiceDate.ToString("yyyy-MM-dd")</div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Betalas senast:</span> @invoice.PaymentDate.ToString("yyyy-MM-dd")</div>
+                                <div class="my-2"><i class="text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">Betalas senast:</span> @invoice.PaymentDate.ToString("yyyy-MM-dd")</div>
 
-                                <div class="my-2"><i class="fa fa-circle text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">BG:</span> 2830-1450<span class="badge badge-warning badge-pill px-25"></span></div>
+                                <div class="my-2"><i class="text-blue-m2 text-xs mr-1"></i> <span class="text-600 text-90">BG:</span><b> 5499-8059</b><span class="badge badge-warning badge-pill px-25"></span></div>
                             </div>
                         </div>
                         <!-- /.col -->
@@ -121,11 +137,12 @@ else
 
                         <div class="row mt-3">
                             <div class="col-12 col-sm-7 text-grey-d2 text-95 mt-2 mt-lg-0">
-                                Tack för att Ni väljer att bo hos oss!
+                                Ange referensnummer som meddelande vid inbetalning.
                             </div>
 
                             <div class="col-12 col-sm-5 text-grey text-90 order-first order-sm-last">
-                                <!--
+                                @if (apartment.BusinessProperty)
+                                {
                                 <div class="row my-2">
                                     <div class="col-7 text-right">
                                         Exkl moms
@@ -143,7 +160,7 @@ else
                                         <span class="text-110 text-secondary-d1">@MomsAmount kr</span>
                                     </div>
                                 </div>
-                                -->
+                                }
                                 <div class="row my-2 align-items-center bgc-primary-l3 p-2">
                                     <div class="col-7 text-right">
                                         <b>Totalt:</b>
@@ -158,7 +175,11 @@ else
                         <hr />
 
                         <div>
-                            <span class="text-secondary-d1 text-105">Vi innehar F-skattesedel</span>
+                            <center>
+                            <i class="fa fa-phone fa-flip-horizontal text-secondary"></i> 076 829 90 77<br>
+                            <span class="text-secondary-d1 text-105">Epost: monicafransson@telia.com</span><br>
+                            <span class="text-secondary-d1 text-105">VAT nr: SE-450720350501</span>
+                            </center>
                         </div>
                     </div>
                 </div>

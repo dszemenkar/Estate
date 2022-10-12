@@ -121,19 +121,18 @@ namespace Estate.Server.Services
 
         public async Task<ServiceResponse<int>> GenerateAllInvoices(Invoice generate)
         {
-            var apartments = await _context.Apartments.Where(x => x.IsAvailable == false).Include(x => x.Tenant).ToListAsync();
+            var apartments = await _context.Apartments.Where(x => x.IsAvailable == false && x.Archieved == false).Include(x => x.Tenant).ToListAsync();
             string response = "";
             int count = 0;
 
             foreach (var i in apartments)
             {
-                var tenant = await _tenantRepository.GetTenantForApartment(i.Id);
-                var alreadyCreated = await CheckIfInvoiceAlreadyCreated(tenant, generate);
+                var alreadyCreated = await CheckIfInvoiceAlreadyCreated(i.Tenant, generate);
                 if (!alreadyCreated)
                 {
                     count++;
                     Invoice invoice = new Invoice();
-                    invoice.TenantId = i.Id;
+                    invoice.TenantId = i.Tenant.Id;
                     invoice.InvoiceDate = generate.InvoiceDate;
                     invoice.PaymentDate = generate.PaymentDate;
                     invoice.InvoiceNo = await GetInvoiceNo();
@@ -145,9 +144,9 @@ namespace Estate.Server.Services
                     line.AmountInclTax = i.Price;
                     line.AmountExclTax = i.Price * Convert.ToDecimal(0.8);
                     await AddLine(line);
-                    if (tenant.ParkingId.HasValue)
+                    if (i.Tenant.ParkingId.HasValue)
                     {
-                        var parking = await _tenantRepository.GetParkingForTenant(tenant.ParkingId.Value);
+                        var parking = await _tenantRepository.GetParkingForTenant(i.Tenant.ParkingId.Value);
                         InvoiceLine line2 = new InvoiceLine();
                         line2.LineNo = await GetInvoiceLineNo(result.Data);
                         line2.InvoiceId = result.Data;
@@ -159,11 +158,11 @@ namespace Estate.Server.Services
                 }
                 else
                 {
-                    response += $"Faktura för {tenant.FirstName} {tenant.LastName} redan skapad för innevarande period. ";
+                    response += $"Faktura för {i.Tenant.FirstName} {i.Tenant.LastName} redan skapad för innevarande period. ";
                 }
             }
 
-            var parkingSpaces = await _context.ParkingSpaces.Where(x => x.IsAvailable == false).Include(x => x.Tenant).ToListAsync();
+            var parkingSpaces = await _context.ParkingSpaces.Where(x => x.IsAvailable == false && x.Archieved == false).Include(x => x.Tenant).ToListAsync();
             foreach (var space in parkingSpaces)
             {
                 if (!space.Tenant.ApartmentId.HasValue)
@@ -221,7 +220,7 @@ namespace Estate.Server.Services
         {
             var invoice = await _context.Invoices.OrderByDescending(x => x.InvoiceNo).FirstOrDefaultAsync();
             if (invoice == null || invoice.InvoiceNo == 0)
-                return 1001; //SET DEFAULT VALUE OF INVOICE NUMBER
+                return 1239; //SET DEFAULT VALUE OF INVOICE NUMBER
             var no = invoice.InvoiceNo + 1;
             return no;
         }

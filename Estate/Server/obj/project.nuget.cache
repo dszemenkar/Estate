@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QKszvXd5/s5iTVOlrysvYlhgFDzkX/lEwEvcvNNQGhE7vqCpiN7pOgq7piq8+0Ho9r6WTDZ8QRhFk9YVPKyGLw==",
+  "dgSpecHash": "kIkZDjnznCoJXIIdab36HIurqQ8MqlgKDlgCs7J5pgfOn9RIJ9VVT+dCBP36yhyNS6mooeqHCEC3X5yE628pow==",
   "success": true,
-  "projectFilePath": "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Server\\Estate.Server.csproj",
+  "projectFilePath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Server\\Estate.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\dszem\\.nuget\\packages\\append.blazor.printing\\1.0.0\\append.blazor.printing.1.0.0.nupkg.sha512",
     "C:\\Users\\dszem\\.nuget\\packages\\blazored.localstorage\\4.1.2\\blazored.localstorage.4.1.2.nupkg.sha512",

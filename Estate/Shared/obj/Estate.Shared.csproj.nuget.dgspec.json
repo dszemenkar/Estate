@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {}
+    "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {}
   },
   "projects": {
-    "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {
+    "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
+        "projectUniqueName": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
         "projectName": "Estate.Shared",
-        "projectPath": "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
+        "projectPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
         "packagesPath": "C:\\Users\\dszem\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Shared\\obj\\",
+        "outputPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\dszem\\AppData\\Roaming\\NuGet\\NuGet.Config",
