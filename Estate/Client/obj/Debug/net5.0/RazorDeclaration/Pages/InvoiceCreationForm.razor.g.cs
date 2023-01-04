@@ -159,11 +159,11 @@ using System.Globalization;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/invoice/addline/{Id:int}")]
-    public partial class InvoiceCreationForm : Microsoft.AspNetCore.Components.ComponentBase
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/invoice/addline/{Id:int}")]
+    public partial class InvoiceCreationForm : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998
@@ -183,7 +183,7 @@ using System.Globalization;
     protected override async Task OnInitializedAsync()
     {
         invoice = await InvoiceService.GetInvoice(Id);
-        tenant = await TenantService.GetTenantForApartment(invoice.TenantId);
+        tenant = await TenantService.GetTenant(invoice.TenantId);
         apartment = await ApartmentService.GetApartment(tenant.ApartmentId.Value);
         lines = await InvoiceService.GetInvoiceLines(Id);
 

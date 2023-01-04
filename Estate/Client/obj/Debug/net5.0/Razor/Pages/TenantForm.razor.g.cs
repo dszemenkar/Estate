@@ -149,12 +149,12 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/tenant/create")]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/tenant/edit/{Id:int}")]
-    public partial class TenantForm : Microsoft.AspNetCore.Components.ComponentBase
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/tenant/create")]
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/tenant/edit/{Id:int}")]
+    public partial class TenantForm : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.OpenElement(0, "div");
             __builder.AddAttribute(1, "class", "row mt-2 mb-5");
@@ -176,8 +176,8 @@ __builder.AddContent(4, Title);
             __builder.AddAttribute(10, "class", "card");
             __builder.OpenElement(11, "div");
             __builder.AddAttribute(12, "class", "card-body");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(13);
-            __builder.AddAttribute(14, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.EditForm>(13);
+            __builder.AddAttribute(14, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Object>(
 #nullable restore
 #line 14 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                  tenant
@@ -186,7 +186,7 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(15, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(15, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::Microsoft.AspNetCore.Components.Forms.EditContext>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 14 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                                         HandleSubmit
@@ -195,17 +195,17 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(16, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>(17);
+            __builder.AddAttribute(16, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>(17);
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(18, "\r\n                    ");
                 __builder2.OpenElement(19, "div");
                 __builder2.AddAttribute(20, "class", "form-group");
                 __builder2.AddMarkupContent(21, "<label for=\"firstName\" class=\"required\">Förnamn</label>\r\n                        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(22);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(22);
                 __builder2.AddAttribute(23, "id", "firstName");
                 __builder2.AddAttribute(24, "class", "form-control");
-                __builder2.AddAttribute(25, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(25, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 18 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                                                tenant.FirstName
@@ -214,18 +214,18 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(26, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.FirstName = __value, tenant.FirstName))));
-                __builder2.AddAttribute(27, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.FirstName));
+                __builder2.AddAttribute(26, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.FirstName = __value, tenant.FirstName))));
+                __builder2.AddAttribute(27, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.FirstName));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(28, "\r\n                    ");
                 __builder2.OpenElement(29, "div");
                 __builder2.AddAttribute(30, "class", "form-group");
                 __builder2.AddMarkupContent(31, "<label for=\"lastName\">Efternamn</label>\r\n                        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(32);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(32);
                 __builder2.AddAttribute(33, "id", "lastName");
                 __builder2.AddAttribute(34, "class", "form-control");
-                __builder2.AddAttribute(35, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(35, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 22 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                                               tenant.LastName
@@ -234,18 +234,18 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(36, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.LastName = __value, tenant.LastName))));
-                __builder2.AddAttribute(37, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.LastName));
+                __builder2.AddAttribute(36, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.LastName = __value, tenant.LastName))));
+                __builder2.AddAttribute(37, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.LastName));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(38, "\r\n                    ");
                 __builder2.OpenElement(39, "div");
                 __builder2.AddAttribute(40, "class", "form-group");
                 __builder2.AddMarkupContent(41, "<label for=\"address\">Gatuadress</label>\r\n                        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(42);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(42);
                 __builder2.AddAttribute(43, "id", "address");
                 __builder2.AddAttribute(44, "class", "form-control");
-                __builder2.AddAttribute(45, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(45, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 26 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                                              tenant.Address
@@ -254,18 +254,18 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(46, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.Address = __value, tenant.Address))));
-                __builder2.AddAttribute(47, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.Address));
+                __builder2.AddAttribute(46, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.Address = __value, tenant.Address))));
+                __builder2.AddAttribute(47, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.Address));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(48, "\r\n                    ");
                 __builder2.OpenElement(49, "div");
                 __builder2.AddAttribute(50, "class", "form-group");
                 __builder2.AddMarkupContent(51, "<label for=\"zipCode\">Postnummer</label>\r\n                        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(52);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(52);
                 __builder2.AddAttribute(53, "id", "zipCode");
                 __builder2.AddAttribute(54, "class", "form-control");
-                __builder2.AddAttribute(55, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(55, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 30 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                                              tenant.ZipCode
@@ -274,18 +274,18 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(56, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.ZipCode = __value, tenant.ZipCode))));
-                __builder2.AddAttribute(57, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.ZipCode));
+                __builder2.AddAttribute(56, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.ZipCode = __value, tenant.ZipCode))));
+                __builder2.AddAttribute(57, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.ZipCode));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(58, "\r\n                    ");
                 __builder2.OpenElement(59, "div");
                 __builder2.AddAttribute(60, "class", "form-group");
                 __builder2.AddMarkupContent(61, "<label for=\"city\">Stad</label>\r\n                        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(62);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(62);
                 __builder2.AddAttribute(63, "id", "city");
                 __builder2.AddAttribute(64, "class", "form-control");
-                __builder2.AddAttribute(65, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(65, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 34 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                                           tenant.City
@@ -294,18 +294,18 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(66, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.City = __value, tenant.City))));
-                __builder2.AddAttribute(67, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.City));
+                __builder2.AddAttribute(66, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.City = __value, tenant.City))));
+                __builder2.AddAttribute(67, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.City));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(68, "\r\n                    ");
                 __builder2.OpenElement(69, "div");
                 __builder2.AddAttribute(70, "class", "form-group");
                 __builder2.AddMarkupContent(71, "<label for=\"phone\">Telefonnummer</label>\r\n                        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(72);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(72);
                 __builder2.AddAttribute(73, "id", "phone");
                 __builder2.AddAttribute(74, "class", "form-control");
-                __builder2.AddAttribute(75, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(75, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 38 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                                            tenant.Phone
@@ -314,18 +314,18 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(76, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.Phone = __value, tenant.Phone))));
-                __builder2.AddAttribute(77, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.Phone));
+                __builder2.AddAttribute(76, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.Phone = __value, tenant.Phone))));
+                __builder2.AddAttribute(77, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.Phone));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(78, "\r\n                    ");
                 __builder2.OpenElement(79, "div");
                 __builder2.AddAttribute(80, "class", "form-group");
                 __builder2.AddMarkupContent(81, "<label for=\"email\">Epost</label>\r\n                        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(82);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(82);
                 __builder2.AddAttribute(83, "id", "email");
                 __builder2.AddAttribute(84, "class", "form-control");
-                __builder2.AddAttribute(85, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(85, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 42 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                                            tenant.Email
@@ -334,18 +334,18 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(86, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.Email = __value, tenant.Email))));
-                __builder2.AddAttribute(87, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.Email));
+                __builder2.AddAttribute(86, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.Email = __value, tenant.Email))));
+                __builder2.AddAttribute(87, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => tenant.Email));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(88, "\r\n                    ");
                 __builder2.OpenElement(89, "div");
                 __builder2.AddAttribute(90, "class", "form-check");
                 __builder2.AddMarkupContent(91, "<span style=\"margin-right: 50px;\"><label for=\"einvoice\">E-faktura</label></span>\r\n                        ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputCheckbox>(92);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputCheckbox>(92);
                 __builder2.AddAttribute(93, "id", "eInvoice");
                 __builder2.AddAttribute(94, "class", "form-check-input");
-                __builder2.AddAttribute(95, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+                __builder2.AddAttribute(95, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Boolean>(
 #nullable restore
 #line 48 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\TenantForm.razor"
                                                                   tenant.EInvoice
@@ -354,8 +354,8 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(96, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Boolean>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Boolean>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.EInvoice = __value, tenant.EInvoice))));
-                __builder2.AddAttribute(97, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.Boolean>>>(() => tenant.EInvoice));
+                __builder2.AddAttribute(96, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.Boolean>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.Boolean>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => tenant.EInvoice = __value, tenant.EInvoice))));
+                __builder2.AddAttribute(97, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.Boolean>>>(() => tenant.EInvoice));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(98, "\r\n                    ");

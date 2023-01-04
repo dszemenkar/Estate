@@ -149,12 +149,12 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/parkingspaces/create")]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/parkingspaces/edit/{Id:int}")]
-    public partial class ParkingSpaceForm : Microsoft.AspNetCore.Components.ComponentBase
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/parkingspaces/create")]
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/parkingspaces/edit/{Id:int}")]
+    public partial class ParkingSpaceForm : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.OpenElement(0, "div");
             __builder.AddAttribute(1, "class", "row mt-2 mb-5");
@@ -176,8 +176,8 @@ __builder.AddContent(4, Title);
             __builder.AddAttribute(10, "class", "card");
             __builder.OpenElement(11, "div");
             __builder.AddAttribute(12, "class", "card-body");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(13);
-            __builder.AddAttribute(14, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.EditForm>(13);
+            __builder.AddAttribute(14, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Object>(
 #nullable restore
 #line 15 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaceForm.razor"
                                  parking
@@ -186,7 +186,7 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(15, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(15, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::Microsoft.AspNetCore.Components.Forms.EditContext>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 15 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaceForm.razor"
                                                          HandleSubmit
@@ -195,14 +195,14 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(16, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>(17);
+            __builder.AddAttribute(16, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>(17);
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(18, "\r\n                    ");
                 __builder2.OpenElement(19, "div");
                 __builder2.AddAttribute(20, "class", "form-group");
                 __builder2.AddMarkupContent(21, "<label for=\"number\">Parkingsnummer</label>\r\n                        ");
-                __Blazor.Estate.Client.Pages.ParkingSpaceForm.TypeInference.CreateInputNumber_0(__builder2, 22, 23, "number", 24, "form-control", 25, 
+                global::__Blazor.Estate.Client.Pages.ParkingSpaceForm.TypeInference.CreateInputNumber_0(__builder2, 22, 23, "number", 24, "form-control", 25, 
 #nullable restore
 #line 19 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaceForm.razor"
                                                               parking.Number
@@ -210,13 +210,13 @@ __builder.AddContent(4, Title);
 #line default
 #line hidden
 #nullable disable
-                , 26, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => parking.Number = __value, parking.Number)), 27, () => parking.Number);
+                , 26, global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => parking.Number = __value, parking.Number)), 27, () => parking.Number);
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(28, "\r\n                    ");
                 __builder2.OpenElement(29, "div");
                 __builder2.AddAttribute(30, "class", "form-group");
                 __builder2.AddMarkupContent(31, "<label for=\"price\">Pris</label>\r\n                        ");
-                __Blazor.Estate.Client.Pages.ParkingSpaceForm.TypeInference.CreateInputNumber_1(__builder2, 32, 33, "price", 34, "form-control", 35, 
+                global::__Blazor.Estate.Client.Pages.ParkingSpaceForm.TypeInference.CreateInputNumber_1(__builder2, 32, 33, "price", 34, "form-control", 35, 
 #nullable restore
 #line 23 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaceForm.razor"
                                                              parking.Price
@@ -224,7 +224,7 @@ __builder.AddContent(4, Title);
 #line default
 #line hidden
 #nullable disable
-                , 36, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => parking.Price = __value, parking.Price)), 37, () => parking.Price);
+                , 36, global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => parking.Price = __value, parking.Price)), 37, () => parking.Price);
                 __builder2.CloseElement();
 #nullable restore
 #line 25 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaceForm.razor"
@@ -239,7 +239,7 @@ __builder.AddContent(4, Title);
                 __builder2.AddMarkupContent(40, "<label for=\"tenant\">Hyresgäst</label>\r\n                            ");
                 __builder2.OpenElement(41, "select");
                 __builder2.AddAttribute(42, "class", "form-control");
-                __builder2.AddAttribute(43, "value", Microsoft.AspNetCore.Components.BindConverter.FormatValue(
+                __builder2.AddAttribute(43, "value", global::Microsoft.AspNetCore.Components.BindConverter.FormatValue(
 #nullable restore
 #line 29 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaceForm.razor"
                                                                 selectedTenant
@@ -248,7 +248,7 @@ __builder.AddContent(4, Title);
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(44, "onchange", Microsoft.AspNetCore.Components.EventCallback.Factory.CreateBinder(this, __value => selectedTenant = __value, selectedTenant));
+                __builder2.AddAttribute(44, "onchange", global::Microsoft.AspNetCore.Components.EventCallback.Factory.CreateBinder(this, __value => selectedTenant = __value, selectedTenant));
                 __builder2.SetUpdatesAttributeName("value");
                 __builder2.OpenElement(45, "option");
                 __builder2.AddAttribute(46, "selected");
@@ -401,7 +401,7 @@ namespace __Blazor.Estate.Client.Pages.ParkingSpaceForm
     #line hidden
     internal static class TypeInference
     {
-        public static void CreateInputNumber_0<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, System.Object __arg0, int __seq1, System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
+        public static void CreateInputNumber_0<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, global::System.Object __arg0, int __seq1, global::System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
         {
         __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>>(seq);
         __builder.AddAttribute(__seq0, "id", __arg0);
@@ -411,7 +411,7 @@ namespace __Blazor.Estate.Client.Pages.ParkingSpaceForm
         __builder.AddAttribute(__seq4, "ValueExpression", __arg4);
         __builder.CloseComponent();
         }
-        public static void CreateInputNumber_1<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, System.Object __arg0, int __seq1, System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
+        public static void CreateInputNumber_1<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, global::System.Object __arg0, int __seq1, global::System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
         {
         __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputNumber<TValue>>(seq);
         __builder.AddAttribute(__seq0, "id", __arg0);

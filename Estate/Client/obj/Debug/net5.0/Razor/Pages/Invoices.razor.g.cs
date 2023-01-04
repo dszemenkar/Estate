@@ -156,16 +156,16 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/invoices")]
-    public partial class Invoices : Microsoft.AspNetCore.Components.ComponentBase
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/invoices")]
+    public partial class Invoices : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.AddMarkupContent(0, "<h3>Betalningar</h3>\r\n\r\n");
             __builder.OpenElement(1, "div");
             __builder.AddAttribute(2, "style", "margin: 20px;");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(3);
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Routing.NavLink>(3);
             __builder.AddAttribute(4, "href", 
 #nullable restore
 #line 13 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
@@ -176,7 +176,7 @@ using Append.Blazor.Printing;
 #nullable disable
             );
             __builder.AddAttribute(5, "class", "btn btn-primary");
-            __builder.AddAttribute(6, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+            __builder.AddAttribute(6, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
                 __builder2.AddContent(7, " Skapa faktura ");
             }
             ));
@@ -184,7 +184,7 @@ using Append.Blazor.Printing;
             __builder.AddMarkupContent(8, "\r\n    <span style=\"margin-right: 100px;\"></span>\r\n    ");
             __builder.OpenElement(9, "button");
             __builder.AddAttribute(10, "class", "btn btn-primary");
-            __builder.AddAttribute(11, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(11, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 15 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                 () => Generate()
@@ -202,7 +202,7 @@ using Append.Blazor.Printing;
             __builder.AddMarkupContent(16, "<p>Filtrera: </p>\r\n    ");
             __builder.OpenElement(17, "select");
             __builder.AddAttribute(18, "class", "form-control");
-            __builder.AddAttribute(19, "onchange", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.ChangeEventArgs>(this, 
+            __builder.AddAttribute(19, "onchange", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.ChangeEventArgs>(this, 
 #nullable restore
 #line 19 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                             FilterChanged
@@ -337,7 +337,7 @@ __builder.AddContent(59, entry.Tenant.LastName);
             __builder.OpenElement(61, "td");
             __builder.OpenElement(62, "button");
             __builder.AddAttribute(63, "class", "btn btn-primary");
-            __builder.AddAttribute(64, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(64, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 56 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                     () => Print(entry)
@@ -370,7 +370,7 @@ __builder.AddContent(68, entry.Status);
             __builder.OpenElement(69, "td");
             __builder.OpenElement(70, "button");
             __builder.AddAttribute(71, "class", "btn btn-info");
-            __builder.AddAttribute(72, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(72, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 60 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                      () => ShowModalView("Paid", entry)
@@ -417,7 +417,7 @@ __builder.AddContent(76, entry.MarkedAsPaid.ToString("yyyy-MM-dd"));
 #line hidden
 #nullable disable
             __builder.OpenElement(77, "td");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(78);
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Routing.NavLink>(78);
             __builder.AddAttribute(79, "href", 
 #nullable restore
 #line 68 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
@@ -428,7 +428,7 @@ __builder.AddContent(76, entry.MarkedAsPaid.ToString("yyyy-MM-dd"));
 #nullable disable
             );
             __builder.AddAttribute(80, "class", "btn btn-dark");
-            __builder.AddAttribute(81, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+            __builder.AddAttribute(81, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
                 __builder2.AddMarkupContent(82, "Ändra");
             }
             ));
@@ -447,7 +447,7 @@ __builder.AddContent(76, entry.MarkedAsPaid.ToString("yyyy-MM-dd"));
             __builder.OpenElement(83, "td");
             __builder.OpenElement(84, "button");
             __builder.AddAttribute(85, "class", "btn btn-outline-dark");
-            __builder.AddAttribute(86, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(86, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 73 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                              () => Archive(entry)
@@ -469,7 +469,7 @@ __builder.AddContent(76, entry.MarkedAsPaid.ToString("yyyy-MM-dd"));
             __builder.OpenElement(88, "td");
             __builder.OpenElement(89, "button");
             __builder.AddAttribute(90, "class", "btn btn-danger");
-            __builder.AddAttribute(91, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(91, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 75 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                    () => ShowModalView("Delete", entry)
@@ -526,7 +526,7 @@ __builder.AddContent(108, Title);
             __builder.OpenElement(110, "button");
             __builder.AddAttribute(111, "type", "button");
             __builder.AddAttribute(112, "class", "close");
-            __builder.AddAttribute(113, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(113, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 88 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                        Close
@@ -551,8 +551,8 @@ __builder.AddContent(108, Title);
 #line default
 #line hidden
 #nullable disable
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(120);
-            __builder.AddAttribute(121, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.EditForm>(120);
+            __builder.AddAttribute(121, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Object>(
 #nullable restore
 #line 95 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                              selectedInvoice
@@ -561,7 +561,7 @@ __builder.AddContent(108, Title);
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(122, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(122, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::Microsoft.AspNetCore.Components.Forms.EditContext>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 95 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                              HandleSubmit
@@ -570,11 +570,11 @@ __builder.AddContent(108, Title);
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(123, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
+            __builder.AddAttribute(123, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
                 __builder2.OpenElement(124, "div");
                 __builder2.AddAttribute(125, "class", "form-group");
                 __builder2.AddMarkupContent(126, "<label for=\"markedAsPaid\">Betalt datum: </label>\r\n                                    ");
-                __Blazor.Estate.Client.Pages.Invoices.TypeInference.CreateInputDate_0(__builder2, 127, 128, "markedAsPaid", 129, "form-control", 130, 
+                global::__Blazor.Estate.Client.Pages.Invoices.TypeInference.CreateInputDate_0(__builder2, 127, 128, "markedAsPaid", 129, "form-control", 130, 
 #nullable restore
 #line 98 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                               selectedInvoice.MarkedAsPaid
@@ -582,7 +582,7 @@ __builder.AddContent(108, Title);
 #line default
 #line hidden
 #nullable disable
-                , 131, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => selectedInvoice.MarkedAsPaid = __value, selectedInvoice.MarkedAsPaid)), 132, () => selectedInvoice.MarkedAsPaid);
+                , 131, global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => selectedInvoice.MarkedAsPaid = __value, selectedInvoice.MarkedAsPaid)), 132, () => selectedInvoice.MarkedAsPaid);
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(133, "\r\n                                ");
                 __builder2.AddMarkupContent(134, "<button type=\"submit\" class=\"btn btn-success\">Markera som betald</button>");
@@ -621,7 +621,7 @@ __builder.AddContent(108, Title);
             __builder.OpenElement(139, "button");
             __builder.AddAttribute(140, "type", "button");
             __builder.AddAttribute(141, "class", "btn btn-danger");
-            __builder.AddAttribute(142, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(142, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 111 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                                      () => Delete(selectedInvoice)
@@ -648,7 +648,7 @@ __builder.AddContent(143, Title);
             __builder.OpenElement(144, "button");
             __builder.AddAttribute(145, "type", "button");
             __builder.AddAttribute(146, "class", "btn btn-secondary");
-            __builder.AddAttribute(147, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(147, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 113 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                                    Close
@@ -695,7 +695,7 @@ __builder.AddContent(143, Title);
             __builder.OpenElement(162, "button");
             __builder.AddAttribute(163, "type", "button");
             __builder.AddAttribute(164, "class", "close");
-            __builder.AddAttribute(165, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(165, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 127 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                        Close
@@ -712,8 +712,8 @@ __builder.AddContent(143, Title);
             __builder.AddMarkupContent(169, "\r\n                    ");
             __builder.OpenElement(170, "div");
             __builder.AddAttribute(171, "class", "modal-body");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(172);
-            __builder.AddAttribute(173, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.EditForm>(172);
+            __builder.AddAttribute(173, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Object>(
 #nullable restore
 #line 132 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                          generateInvoice
@@ -722,7 +722,7 @@ __builder.AddContent(143, Title);
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(174, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(174, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::Microsoft.AspNetCore.Components.Forms.EditContext>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 132 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                          GenerateInvoices
@@ -731,11 +731,11 @@ __builder.AddContent(143, Title);
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(175, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
+            __builder.AddAttribute(175, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
                 __builder2.OpenElement(176, "div");
                 __builder2.AddAttribute(177, "class", "form-group");
                 __builder2.AddMarkupContent(178, "<label for=\"invoiceDate\">Fakturadatum: </label>\r\n                                ");
-                __Blazor.Estate.Client.Pages.Invoices.TypeInference.CreateInputDate_1(__builder2, 179, 180, "invoiceDate", 181, "form-control", 182, 
+                global::__Blazor.Estate.Client.Pages.Invoices.TypeInference.CreateInputDate_1(__builder2, 179, 180, "invoiceDate", 181, "form-control", 182, 
 #nullable restore
 #line 135 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                          generateInvoice.InvoiceDate
@@ -743,13 +743,13 @@ __builder.AddContent(143, Title);
 #line default
 #line hidden
 #nullable disable
-                , 183, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => generateInvoice.InvoiceDate = __value, generateInvoice.InvoiceDate)), 184, () => generateInvoice.InvoiceDate);
+                , 183, global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => generateInvoice.InvoiceDate = __value, generateInvoice.InvoiceDate)), 184, () => generateInvoice.InvoiceDate);
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(185, "\r\n                            \r\n                            ");
                 __builder2.OpenElement(186, "div");
                 __builder2.AddAttribute(187, "class", "form-group");
                 __builder2.AddMarkupContent(188, "<label for=\"paymentDate\">Betalningsdag: </label>\r\n                                ");
-                __Blazor.Estate.Client.Pages.Invoices.TypeInference.CreateInputDate_2(__builder2, 189, 190, "paymentDate", 191, "form-control", 192, 
+                global::__Blazor.Estate.Client.Pages.Invoices.TypeInference.CreateInputDate_2(__builder2, 189, 190, "paymentDate", 191, "form-control", 192, 
 #nullable restore
 #line 140 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                          generateInvoice.PaymentDate
@@ -757,7 +757,7 @@ __builder.AddContent(143, Title);
 #line default
 #line hidden
 #nullable disable
-                , 193, Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => generateInvoice.PaymentDate = __value, generateInvoice.PaymentDate)), 194, () => generateInvoice.PaymentDate);
+                , 193, global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => generateInvoice.PaymentDate = __value, generateInvoice.PaymentDate)), 194, () => generateInvoice.PaymentDate);
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(195, "\r\n                            ");
                 __builder2.AddMarkupContent(196, "<button type=\"submit\" class=\"btn btn-success\">Skapa fakturor</button>");
@@ -771,7 +771,7 @@ __builder.AddContent(143, Title);
             __builder.OpenElement(200, "button");
             __builder.AddAttribute(201, "type", "button");
             __builder.AddAttribute(202, "class", "btn btn-secondary");
-            __builder.AddAttribute(203, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(203, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 146 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Invoices.razor"
                                                                                    Close
@@ -940,7 +940,7 @@ namespace __Blazor.Estate.Client.Pages.Invoices
     #line hidden
     internal static class TypeInference
     {
-        public static void CreateInputDate_0<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, System.Object __arg0, int __seq1, System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
+        public static void CreateInputDate_0<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, global::System.Object __arg0, int __seq1, global::System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
         {
         __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputDate<TValue>>(seq);
         __builder.AddAttribute(__seq0, "id", __arg0);
@@ -950,7 +950,7 @@ namespace __Blazor.Estate.Client.Pages.Invoices
         __builder.AddAttribute(__seq4, "ValueExpression", __arg4);
         __builder.CloseComponent();
         }
-        public static void CreateInputDate_1<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, System.Object __arg0, int __seq1, System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
+        public static void CreateInputDate_1<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, global::System.Object __arg0, int __seq1, global::System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
         {
         __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputDate<TValue>>(seq);
         __builder.AddAttribute(__seq0, "id", __arg0);
@@ -960,7 +960,7 @@ namespace __Blazor.Estate.Client.Pages.Invoices
         __builder.AddAttribute(__seq4, "ValueExpression", __arg4);
         __builder.CloseComponent();
         }
-        public static void CreateInputDate_2<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, System.Object __arg0, int __seq1, System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
+        public static void CreateInputDate_2<TValue>(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder, int seq, int __seq0, global::System.Object __arg0, int __seq1, global::System.Object __arg1, int __seq2, TValue __arg2, int __seq3, global::Microsoft.AspNetCore.Components.EventCallback<TValue> __arg3, int __seq4, global::System.Linq.Expressions.Expression<global::System.Func<TValue>> __arg4)
         {
         __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputDate<TValue>>(seq);
         __builder.AddAttribute(__seq0, "id", __arg0);

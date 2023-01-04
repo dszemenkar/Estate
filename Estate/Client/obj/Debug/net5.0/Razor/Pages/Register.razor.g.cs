@@ -149,11 +149,11 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/register")]
-    public partial class Register : Microsoft.AspNetCore.Components.ComponentBase
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/register")]
+    public partial class Register : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.AddMarkupContent(0, "<h3>Skapa ett konto</h3>\r\n");
             __builder.OpenElement(1, "div");
@@ -162,8 +162,8 @@ using Append.Blazor.Printing;
             __builder.AddAttribute(4, "class", "card");
             __builder.OpenElement(5, "div");
             __builder.AddAttribute(6, "class", "card-body");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Forms.EditForm>(7);
-            __builder.AddAttribute(8, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Object>(
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.EditForm>(7);
+            __builder.AddAttribute(8, "Model", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Object>(
 #nullable restore
 #line 10 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                              user
@@ -172,7 +172,7 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
             ));
-            __builder.AddAttribute(9, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<Microsoft.AspNetCore.Components.Forms.EditContext>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
+            __builder.AddAttribute(9, "OnValidSubmit", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::Microsoft.AspNetCore.Components.Forms.EditContext>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Forms.EditContext>(this, 
 #nullable restore
 #line 10 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                                   HandleRegistration
@@ -181,17 +181,17 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
             )));
-            __builder.AddAttribute(10, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>(11);
+            __builder.AddAttribute(10, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Forms.EditContext>)((context) => (__builder2) => {
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.DataAnnotationsValidator>(11);
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(12, "\r\n                ");
                 __builder2.OpenElement(13, "div");
                 __builder2.AddAttribute(14, "class", "form-group");
                 __builder2.AddMarkupContent(15, "<label for=\"email\" class=\"required\">Epost</label>\r\n                    ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(16);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(16);
                 __builder2.AddAttribute(17, "id", "email");
                 __builder2.AddAttribute(18, "class", "form-control");
-                __builder2.AddAttribute(19, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(19, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 14 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                                        user.Email
@@ -200,11 +200,11 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(20, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.Email = __value, user.Email))));
-                __builder2.AddAttribute(21, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.Email));
+                __builder2.AddAttribute(20, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.Email = __value, user.Email))));
+                __builder2.AddAttribute(21, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.Email));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(22, "\r\n                    ");
-                __Blazor.Estate.Client.Pages.Register.TypeInference.CreateValidationMessage_0(__builder2, 23, 24, 
+                global::__Blazor.Estate.Client.Pages.Register.TypeInference.CreateValidationMessage_0(__builder2, 23, 24, 
 #nullable restore
 #line 15 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                               () => user.Email
@@ -218,10 +218,10 @@ using Append.Blazor.Printing;
                 __builder2.OpenElement(26, "div");
                 __builder2.AddAttribute(27, "class", "form-group");
                 __builder2.AddMarkupContent(28, "<label for=\"firstName\">Förnamn</label>\r\n                    ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(29);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(29);
                 __builder2.AddAttribute(30, "id", "firstName");
                 __builder2.AddAttribute(31, "class", "form-control");
-                __builder2.AddAttribute(32, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(32, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 19 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                                            user.FirstName
@@ -230,18 +230,18 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(33, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.FirstName = __value, user.FirstName))));
-                __builder2.AddAttribute(34, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.FirstName));
+                __builder2.AddAttribute(33, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.FirstName = __value, user.FirstName))));
+                __builder2.AddAttribute(34, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.FirstName));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(35, "\r\n                ");
                 __builder2.OpenElement(36, "div");
                 __builder2.AddAttribute(37, "class", "form-group");
                 __builder2.AddMarkupContent(38, "<label for=\"lastName\">Efternamn</label>\r\n                    ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(39);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(39);
                 __builder2.AddAttribute(40, "id", "lastName");
                 __builder2.AddAttribute(41, "class", "form-control");
-                __builder2.AddAttribute(42, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(42, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 23 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                                           user.LastName
@@ -250,19 +250,19 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(43, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.LastName = __value, user.LastName))));
-                __builder2.AddAttribute(44, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.LastName));
+                __builder2.AddAttribute(43, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.LastName = __value, user.LastName))));
+                __builder2.AddAttribute(44, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.LastName));
                 __builder2.CloseComponent();
                 __builder2.CloseElement();
                 __builder2.AddMarkupContent(45, "\r\n                ");
                 __builder2.OpenElement(46, "div");
                 __builder2.AddAttribute(47, "class", "form-group");
                 __builder2.AddMarkupContent(48, "<label for=\"password\" class=\"required\">Lösenord</label>\r\n                    ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(49);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(49);
                 __builder2.AddAttribute(50, "id", "password");
                 __builder2.AddAttribute(51, "class", "form-control");
                 __builder2.AddAttribute(52, "type", "password");
-                __builder2.AddAttribute(53, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(53, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 27 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                                           user.Password
@@ -271,11 +271,11 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(54, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.Password = __value, user.Password))));
-                __builder2.AddAttribute(55, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.Password));
+                __builder2.AddAttribute(54, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.Password = __value, user.Password))));
+                __builder2.AddAttribute(55, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.Password));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(56, "\r\n                    ");
-                __Blazor.Estate.Client.Pages.Register.TypeInference.CreateValidationMessage_1(__builder2, 57, 58, 
+                global::__Blazor.Estate.Client.Pages.Register.TypeInference.CreateValidationMessage_1(__builder2, 57, 58, 
 #nullable restore
 #line 28 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                               () => user.Password
@@ -289,11 +289,11 @@ using Append.Blazor.Printing;
                 __builder2.OpenElement(60, "div");
                 __builder2.AddAttribute(61, "class", "form-group");
                 __builder2.AddMarkupContent(62, "<label for=\"confirmPassword\">Bekräfta lösenord</label>\r\n                    ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputText>(63);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputText>(63);
                 __builder2.AddAttribute(64, "id", "confirmPassword");
                 __builder2.AddAttribute(65, "class", "form-control");
                 __builder2.AddAttribute(66, "type", "password");
-                __builder2.AddAttribute(67, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.String>(
+                __builder2.AddAttribute(67, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.String>(
 #nullable restore
 #line 32 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                                                  user.ConfirmPassword
@@ -302,11 +302,11 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(68, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.String>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.ConfirmPassword = __value, user.ConfirmPassword))));
-                __builder2.AddAttribute(69, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.ConfirmPassword));
+                __builder2.AddAttribute(68, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.String>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.String>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.ConfirmPassword = __value, user.ConfirmPassword))));
+                __builder2.AddAttribute(69, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.String>>>(() => user.ConfirmPassword));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(70, "\r\n                    ");
-                __Blazor.Estate.Client.Pages.Register.TypeInference.CreateValidationMessage_2(__builder2, 71, 72, 
+                global::__Blazor.Estate.Client.Pages.Register.TypeInference.CreateValidationMessage_2(__builder2, 71, 72, 
 #nullable restore
 #line 33 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                               () => user.ConfirmPassword
@@ -320,10 +320,10 @@ using Append.Blazor.Printing;
                 __builder2.OpenElement(74, "div");
                 __builder2.AddAttribute(75, "class", "form-check");
                 __builder2.AddMarkupContent(76, "<span style=\"margin-right: 50px;\"><label for=\"confirmed\">Godkänn villkor</label></span>\r\n                    ");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Forms.InputCheckbox>(77);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Forms.InputCheckbox>(77);
                 __builder2.AddAttribute(78, "id", "gold");
                 __builder2.AddAttribute(79, "class", "form-check-input");
-                __builder2.AddAttribute(80, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+                __builder2.AddAttribute(80, "Value", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Boolean>(
 #nullable restore
 #line 44 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                                           user.IsConfirmed
@@ -332,11 +332,11 @@ using Append.Blazor.Printing;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(81, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.EventCallback<System.Boolean>>(Microsoft.AspNetCore.Components.EventCallback.Factory.Create<System.Boolean>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.IsConfirmed = __value, user.IsConfirmed))));
-                __builder2.AddAttribute(82, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Linq.Expressions.Expression<System.Func<System.Boolean>>>(() => user.IsConfirmed));
+                __builder2.AddAttribute(81, "ValueChanged", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.EventCallback<global::System.Boolean>>(global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::System.Boolean>(this, global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.CreateInferredEventCallback(this, __value => user.IsConfirmed = __value, user.IsConfirmed))));
+                __builder2.AddAttribute(82, "ValueExpression", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Linq.Expressions.Expression<System.Func<System.Boolean>>>(() => user.IsConfirmed));
                 __builder2.CloseComponent();
                 __builder2.AddMarkupContent(83, "\r\n                    ");
-                __Blazor.Estate.Client.Pages.Register.TypeInference.CreateValidationMessage_3(__builder2, 84, 85, 
+                global::__Blazor.Estate.Client.Pages.Register.TypeInference.CreateValidationMessage_3(__builder2, 84, 85, 
 #nullable restore
 #line 45 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\Register.razor"
                                               () => user.IsConfirmed

@@ -149,15 +149,15 @@ using Estate.Client.Shared;
 #line default
 #line hidden
 #nullable disable
-    public partial class App : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class App : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>(0);
-            __builder.AddAttribute(1, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.Router>(2);
-                __builder2.AddAttribute(3, "AppAssembly", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Reflection.Assembly>(
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Authorization.CascadingAuthenticationState>(0);
+            __builder.AddAttribute(1, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Routing.Router>(2);
+                __builder2.AddAttribute(3, "AppAssembly", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Reflection.Assembly>(
 #nullable restore
 #line 4 "C:\Users\dszem\source\repos\Estate\Estate\Client\App.razor"
                           typeof(Program).Assembly
@@ -166,7 +166,7 @@ using Estate.Client.Shared;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(4, "PreferExactMatches", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Boolean>(
+                __builder2.AddAttribute(4, "PreferExactMatches", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Boolean>(
 #nullable restore
 #line 4 "C:\Users\dszem\source\repos\Estate\Estate\Client\App.razor"
                                                                          true
@@ -175,9 +175,9 @@ using Estate.Client.Shared;
 #line hidden
 #nullable disable
                 ));
-                __builder2.AddAttribute(5, "Found", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.RouteData>)((routeData) => (__builder3) => {
-                    __builder3.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView>(6);
-                    __builder3.AddAttribute(7, "RouteData", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Microsoft.AspNetCore.Components.RouteData>(
+                __builder2.AddAttribute(5, "Found", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.RouteData>)((routeData) => (__builder3) => {
+                    __builder3.OpenComponent<global::Microsoft.AspNetCore.Components.Authorization.AuthorizeRouteView>(6);
+                    __builder3.AddAttribute(7, "RouteData", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Microsoft.AspNetCore.Components.RouteData>(
 #nullable restore
 #line 6 "C:\Users\dszem\source\repos\Estate\Estate\Client\App.razor"
                                             routeData
@@ -186,7 +186,7 @@ using Estate.Client.Shared;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(8, "DefaultLayout", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Type>(
+                    __builder3.AddAttribute(8, "DefaultLayout", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Type>(
 #nullable restore
 #line 6 "C:\Users\dszem\source\repos\Estate\Estate\Client\App.razor"
                                                                        typeof(MainLayout)
@@ -195,17 +195,17 @@ using Estate.Client.Shared;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(9, "NotAuthorized", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder4) => {
-                        __builder4.OpenComponent<Estate.Client.Shared.Login>(10);
+                    __builder3.AddAttribute(9, "NotAuthorized", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder4) => {
+                        __builder4.OpenComponent<global::Estate.Client.Shared.Login>(10);
                         __builder4.CloseComponent();
                     }
                     ));
                     __builder3.CloseComponent();
                 }
                 ));
-                __builder2.AddAttribute(11, "NotFound", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
-                    __builder3.OpenComponent<Microsoft.AspNetCore.Components.LayoutView>(12);
-                    __builder3.AddAttribute(13, "Layout", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<System.Type>(
+                __builder2.AddAttribute(11, "NotFound", (global::Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
+                    __builder3.OpenComponent<global::Microsoft.AspNetCore.Components.LayoutView>(12);
+                    __builder3.AddAttribute(13, "Layout", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::System.Type>(
 #nullable restore
 #line 13 "C:\Users\dszem\source\repos\Estate\Estate\Client\App.razor"
                                  typeof(MainLayout)
@@ -214,7 +214,7 @@ using Estate.Client.Shared;
 #line hidden
 #nullable disable
                     ));
-                    __builder3.AddAttribute(14, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
+                    __builder3.AddAttribute(14, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment)((__builder4) => {
                         __builder4.AddMarkupContent(15, "<p>Sorry, there\'s nothing at this address.</p>");
                     }
                     ));

@@ -1438,3 +1438,8 @@ C:\Users\dszem\Source\Repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\2qWyh
 C:\Users\dszem\Source\Repos\Estate\Estate\Client\obj\Debug\net5.0\refint\Estate.Client.dll
 C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\Ep+DZBOx.gz
 C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\build-gz\VTeD2+Y1.gz
+C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\staticwebassets\Estate.Client.StaticWebAssets.Pack.cache
+C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\staticwebassets\msbuild.Estate.Client.Microsoft.AspNetCore.StaticWebAssets.props
+C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\staticwebassets\msbuild.build.Estate.Client.props
+C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\staticwebassets\msbuild.buildMultiTargeting.Estate.Client.props
+C:\Users\dszem\source\repos\Estate\Estate\Client\obj\Debug\net5.0\staticwebassets\msbuild.buildTransitive.Estate.Client.props

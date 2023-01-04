@@ -159,7 +159,7 @@ using Blazored.Toast.Configuration;
     public partial class MainLayout : LayoutComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.OpenElement(0, "div");
             __builder.AddAttribute(1, "class", "page");
@@ -167,7 +167,7 @@ using Blazored.Toast.Configuration;
             __builder.OpenElement(3, "div");
             __builder.AddAttribute(4, "class", "sidebar");
             __builder.AddAttribute(5, "b-ppazhj0vf2");
-            __builder.OpenComponent<Estate.Client.Shared.NavMenu>(6);
+            __builder.OpenComponent<global::Estate.Client.Shared.NavMenu>(6);
             __builder.CloseComponent();
             __builder.CloseElement();
             __builder.AddMarkupContent(7, "\r\n\r\n    ");
@@ -177,7 +177,7 @@ using Blazored.Toast.Configuration;
             __builder.OpenElement(11, "div");
             __builder.AddAttribute(12, "class", "top-row px-4");
             __builder.AddAttribute(13, "b-ppazhj0vf2");
-            __builder.OpenComponent<Estate.Client.Shared.TopMenu>(14);
+            __builder.OpenComponent<global::Estate.Client.Shared.TopMenu>(14);
             __builder.CloseComponent();
             __builder.CloseElement();
             __builder.AddMarkupContent(15, "\r\n\r\n        ");
@@ -195,8 +195,8 @@ __builder.AddContent(19, Body);
             __builder.CloseElement();
             __builder.CloseElement();
             __builder.AddMarkupContent(20, "\r\n\r\n");
-            __builder.OpenComponent<Blazored.Toast.BlazoredToasts>(21);
-            __builder.AddAttribute(22, "Position", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<Blazored.Toast.Configuration.ToastPosition>(
+            __builder.OpenComponent<global::Blazored.Toast.BlazoredToasts>(21);
+            __builder.AddAttribute(22, "Position", global::Microsoft.AspNetCore.Components.CompilerServices.RuntimeHelpers.TypeCheck<global::Blazored.Toast.Configuration.ToastPosition>(
 #nullable restore
 #line 20 "C:\Users\dszem\source\repos\Estate\Estate\Client\Shared\MainLayout.razor"
                           ToastPosition.BottomRight

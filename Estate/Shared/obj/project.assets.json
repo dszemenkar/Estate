@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
       "projectName": "Estate.Shared",
-      "projectPath": "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
+      "projectPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\Estate.Shared.csproj",
       "packagesPath": "C:\\Users\\dszem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\dszem\\Source\\Repos\\Estate\\Estate\\Shared\\obj\\",
+      "outputPath": "C:\\Users\\dszem\\source\\repos\\Estate\\Estate\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\dszem\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.101\\RuntimeIdentifierGraph.json"
       }
     }
   }

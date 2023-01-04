@@ -152,12 +152,12 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/invoice/create")]
-    [Microsoft.AspNetCore.Components.RouteAttribute("/invoice/edit/{Id:int}")]
-    public partial class InvoiceForm : Microsoft.AspNetCore.Components.ComponentBase
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/invoice/create")]
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/invoice/edit/{Id:int}")]
+    public partial class InvoiceForm : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998

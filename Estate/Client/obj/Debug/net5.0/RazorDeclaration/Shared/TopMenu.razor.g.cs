@@ -152,10 +152,10 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    public partial class TopMenu : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
+    public partial class TopMenu : global::Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
         }
         #pragma warning restore 1998

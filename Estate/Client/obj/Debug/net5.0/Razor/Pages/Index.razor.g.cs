@@ -149,15 +149,15 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/")]
-    public partial class Index : Microsoft.AspNetCore.Components.ComponentBase
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/")]
+    public partial class Index : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(0);
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(0);
             __builder.AddAttribute(1, "Roles", "Admin");
-            __builder.AddAttribute(2, "Authorized", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
+            __builder.AddAttribute(2, "Authorized", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
                 __builder2.OpenElement(3, "div");
                 __builder2.AddAttribute(4, "class", "jumbotron");
                 __builder2.OpenElement(5, "h1");
@@ -179,9 +179,9 @@ __builder2.AddContent(8, context.User.Identity.Name);
             ));
             __builder.CloseComponent();
             __builder.AddMarkupContent(12, "\r\n");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(13);
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(13);
             __builder.AddAttribute(14, "Roles", "Tenant");
-            __builder.AddAttribute(15, "Authorized", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
+            __builder.AddAttribute(15, "Authorized", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
                 __builder2.OpenElement(16, "div");
                 __builder2.AddAttribute(17, "class", "jumbotron");
                 __builder2.OpenElement(18, "h1");
@@ -203,11 +203,11 @@ __builder2.AddContent(21, context.User.Identity.Name);
             ));
             __builder.CloseComponent();
             __builder.AddMarkupContent(25, "\r\n");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(26);
-            __builder.AddAttribute(27, "NotAuthorized", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(26);
+            __builder.AddAttribute(27, "NotAuthorized", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
                 __builder2.AddMarkupContent(28, "<h3>Logga in</h3>\r\n    ");
                 __builder2.AddMarkupContent(29, "<p>Du behöver access för att komma in på denna sidan.</p>\r\n    ");
-                __builder2.OpenComponent<Estate.Client.Shared.Login>(30);
+                __builder2.OpenComponent<global::Estate.Client.Shared.Login>(30);
                 __builder2.CloseComponent();
             }
             ));

@@ -149,10 +149,10 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    public partial class DeleteModal : Microsoft.AspNetCore.Components.ComponentBase
+    public partial class DeleteModal : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.OpenElement(0, "div");
             __builder.AddAttribute(1, "class", "modal fade show d-block");
@@ -181,7 +181,7 @@ __builder.AddContent(15, Title);
             __builder.OpenElement(17, "button");
             __builder.AddAttribute(18, "type", "button");
             __builder.AddAttribute(19, "class", "close");
-            __builder.AddAttribute(20, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(20, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 6 "C:\Users\dszem\source\repos\Estate\Estate\Client\Shared\DeleteModal.razor"
                                                                Close
@@ -202,7 +202,7 @@ __builder.AddContent(15, Title);
             __builder.OpenElement(28, "button");
             __builder.AddAttribute(29, "type", "button");
             __builder.AddAttribute(30, "class", "btn btn-danger");
-            __builder.AddAttribute(31, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(31, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 14 "C:\Users\dszem\source\repos\Estate\Estate\Client\Shared\DeleteModal.razor"
                                                                          () => Delete(1)
@@ -223,7 +223,7 @@ __builder.AddContent(32, Title);
             __builder.OpenElement(34, "button");
             __builder.AddAttribute(35, "type", "button");
             __builder.AddAttribute(36, "class", "btn btn-secondary");
-            __builder.AddAttribute(37, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(37, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 15 "C:\Users\dszem\source\repos\Estate\Estate\Client\Shared\DeleteModal.razor"
                                                                            Close

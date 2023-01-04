@@ -156,16 +156,16 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    [Microsoft.AspNetCore.Components.RouteAttribute("/parkingspaces")]
-    public partial class ParkingSpaces : Microsoft.AspNetCore.Components.ComponentBase
+    [global::Microsoft.AspNetCore.Components.RouteAttribute("/parkingspaces")]
+    public partial class ParkingSpaces : global::Microsoft.AspNetCore.Components.ComponentBase
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
             __builder.AddMarkupContent(0, "<h3>Parkeringsplatser</h3>\r\n\r\n");
             __builder.OpenElement(1, "div");
             __builder.AddAttribute(2, "style", "margin: 20px;");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(3);
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Routing.NavLink>(3);
             __builder.AddAttribute(4, "href", 
 #nullable restore
 #line 11 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaces.razor"
@@ -176,7 +176,7 @@ using Append.Blazor.Printing;
 #nullable disable
             );
             __builder.AddAttribute(5, "class", "btn btn-primary");
-            __builder.AddAttribute(6, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+            __builder.AddAttribute(6, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
                 __builder2.AddMarkupContent(7, " Lägg till parkeringsplats ");
             }
             ));
@@ -261,7 +261,7 @@ __builder.AddContent(19, entry.Price);
             __builder.OpenElement(21, "td");
             __builder.OpenElement(22, "button");
             __builder.AddAttribute(23, "class", "btn btn-danger");
-            __builder.AddAttribute(24, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(24, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 46 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaces.razor"
                                                                () => ShowModalView(entry)
@@ -275,7 +275,7 @@ __builder.AddContent(19, entry.Price);
             __builder.CloseElement();
             __builder.AddMarkupContent(26, "\r\n                ");
             __builder.OpenElement(27, "td");
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(28);
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Routing.NavLink>(28);
             __builder.AddAttribute(29, "href", 
 #nullable restore
 #line 47 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaces.razor"
@@ -286,7 +286,7 @@ __builder.AddContent(19, entry.Price);
 #nullable disable
             );
             __builder.AddAttribute(30, "class", "btn btn-dark");
-            __builder.AddAttribute(31, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
+            __builder.AddAttribute(31, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment)((__builder2) => {
                 __builder2.AddMarkupContent(32, "Ändra");
             }
             ));
@@ -326,7 +326,7 @@ __builder.AddContent(19, entry.Price);
             __builder.OpenElement(46, "button");
             __builder.AddAttribute(47, "type", "button");
             __builder.AddAttribute(48, "class", "close");
-            __builder.AddAttribute(49, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(49, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 60 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaces.razor"
                                                                        Close
@@ -347,7 +347,7 @@ __builder.AddContent(19, entry.Price);
             __builder.OpenElement(57, "button");
             __builder.AddAttribute(58, "type", "button");
             __builder.AddAttribute(59, "class", "btn btn-danger");
-            __builder.AddAttribute(60, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(60, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 68 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaces.razor"
                                                                                  () => Delete(Selected.Id)
@@ -362,7 +362,7 @@ __builder.AddContent(19, entry.Price);
             __builder.OpenElement(63, "button");
             __builder.AddAttribute(64, "type", "button");
             __builder.AddAttribute(65, "class", "btn btn-secondary");
-            __builder.AddAttribute(66, "onclick", Microsoft.AspNetCore.Components.EventCallback.Factory.Create<Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
+            __builder.AddAttribute(66, "onclick", global::Microsoft.AspNetCore.Components.EventCallback.Factory.Create<global::Microsoft.AspNetCore.Components.Web.MouseEventArgs>(this, 
 #nullable restore
 #line 69 "C:\Users\dszem\source\repos\Estate\Estate\Client\Pages\ParkingSpaces.razor"
                                                                                    Close

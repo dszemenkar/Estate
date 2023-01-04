@@ -149,21 +149,21 @@ using Append.Blazor.Printing;
 #line default
 #line hidden
 #nullable disable
-    public partial class TopMenu : Microsoft.AspNetCore.Components.ComponentBase, IDisposable
+    public partial class TopMenu : global::Microsoft.AspNetCore.Components.ComponentBase, IDisposable
     {
         #pragma warning disable 1998
-        protected override void BuildRenderTree(Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
+        protected override void BuildRenderTree(global::Microsoft.AspNetCore.Components.Rendering.RenderTreeBuilder __builder)
         {
-            __builder.OpenComponent<Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(0);
-            __builder.AddAttribute(1, "Authorized", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
+            __builder.OpenComponent<global::Microsoft.AspNetCore.Components.Authorization.AuthorizeView>(0);
+            __builder.AddAttribute(1, "Authorized", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
                 __builder2.AddMarkupContent(2, "<div class=\"top-menu\"><span class=\"popover-header\"></span></div>");
             }
             ));
-            __builder.AddAttribute(3, "NotAuthorized", (Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
+            __builder.AddAttribute(3, "NotAuthorized", (global::Microsoft.AspNetCore.Components.RenderFragment<Microsoft.AspNetCore.Components.Authorization.AuthenticationState>)((context) => (__builder2) => {
                 __builder2.OpenElement(4, "div");
-                __builder2.OpenComponent<Microsoft.AspNetCore.Components.Routing.NavLink>(5);
+                __builder2.OpenComponent<global::Microsoft.AspNetCore.Components.Routing.NavLink>(5);
                 __builder2.AddAttribute(6, "href", "");
-                __builder2.AddAttribute(7, "ChildContent", (Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
+                __builder2.AddAttribute(7, "ChildContent", (global::Microsoft.AspNetCore.Components.RenderFragment)((__builder3) => {
                     __builder3.AddContent(8, "Logga in");
                 }
                 ));
